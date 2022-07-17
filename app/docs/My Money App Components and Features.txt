@@ -1,0 +1,26 @@
+Language: Kotlin
+Design Patern: MVVM
+
+Components and Features:
+
+- Splash screen api
+- ConstraintLayout
+- ViewBinding
+- DataBinding
+- RecyclerView
+- LiveData
+- Navigation
+- SharedPreferences
+- DataStore Preferences
+- Room
+- Coroutines
+- DI (dependency injection) (Hilt)
+- Unit Testing
+- Multi language
+
+- Firebase:
+  - Authentication
+  - RealTime Database
+  - Crashlytics
+  - ADS (advertisements)
+

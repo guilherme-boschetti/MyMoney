@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_details"
+    app:startDestination="@id/fragment_item_detail">
+    <fragment
+        android:id="@+id/fragment_item_detail"
+        android:name="com.guilhermeb.mymoney.view.money.fragment.MoneyItemDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_money_item_detail">
+        <argument
+            android:name="item_id"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <argument
+            android:name="is_tablet"
+            android:defaultValue="true"
+            app:argType="boolean" />
+        <argument
+            android:name="new_item"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="edit_item"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+
+</navigation>

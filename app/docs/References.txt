@@ -1,0 +1,168 @@
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Splash Screen API:
+
+	https://developer.android.com/guide/topics/ui/splash-screen
+	https://developer.android.com/guide/topics/ui/splash-screen/migrate
+	https://developer.android.com/reference/android/window/SplashScreen
+	https://www.youtube.com/watch?v=Loo4i5IrZ4Y
+	https://medium.com/android-dev-br/implementando-a-core-splashscreen-api-642c7f8c581b
+	https://proandroiddev.com/splashscreen-api-android-12-part-1-b2272e0ae98e
+	https://stackoverflow.com/questions/70114555/android-12-spash-api-crashes-on-launch
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Up Action:
+
+	https://developer.android.com/training/appbar/up-action
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Spinner Style TextInput:
+
+	https://www.google.com.br/search?q=android+spinner+style+like+textinputlayout
+	https://mobikul.com/floating-lablel-spinner-using-material-autocompletetextview/
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Dark Theme:
+
+	https://developer.android.com/guide/topics/ui/look-and-feel/darktheme
+	https://stackoverflow.com/questions/68241378/unable-to-change-the-color-of-action-bar-in-the-app
+	https://stackoverflow.com/questions/47495534/how-to-enable-night-mode-programmatically
+	https://stackoverflow.com/questions/30174042/how-to-switch-themes-night-mode-without-restarting-the-activity
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Recyclerview Item Swipe:
+
+	https://medium.com/@zackcosborn/step-by-step-recyclerview-swipe-to-delete-and-undo-7bbae1fce27e
+	https://medium.com/@kitek/recyclerview-swipe-to-delete-easier-than-you-thought-cff67ff5e5f6
+	https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-b9456d2b1aaf
+	https://stackoverflow.com/questions/41015101/itemtouchhelper-limit-swipe-width-of-itemtouchhelper-simplecallback-on-recycle
+	https://stackoverflow.com/questions/44965278/recyclerview-itemtouchhelper-buttons-on-swipe
+	https://www.freecodecamp.org/news/how-to-implement-swipe-for-options-in-recyclerview/
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Context Menu For Recyclerview:
+
+	https://stackoverflow.com/questions/26466877/how-to-create-context-menu-for-recyclerview
+	https://stackoverflow.com/questions/32969172/how-to-display-menu-item-with-icon-and-text-in-appcompatactivity
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+OptionsMenu:
+
+	https://developer.android.com/jetpack/androidx/releases/activity#1.4.0-alpha01
+        https://stackoverflow.com/questions/71917856/sethasoptionsmenuboolean-unit-is-deprecated-deprecated-in-java
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Bottom Sheet:
+
+	https://www.google.com.br/search?q=android+bottom+sheet&source=hp&ei=ldpMYpbvIrq25OUP75Sj-A8&iflsig=AHkkrS4AAAAAYkzopX6RUGYiHGx8RQ_b2gm8NQwpAPFF&ved=0ahUKEwjWjdOSk_72AhU6G7kGHW_KCP8Q4dUDCAc&uact=5&oq=android+bottom+sheet&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46EQguEIAEELEDEIMBEMcBENEDOgQIABBDOg4ILhCABBCxAxDHARCjAjoOCC4QgAQQsQMQxwEQ0QM6CwguEIAEEMcBENEDOggILhCxAxCDAToICAAQgAQQsQM6CgguEMcBENEDEEM6BwgAELEDEEM6EQguEIAEELEDEIMBEMcBEKMCOggILhCABBCxAzoLCC4QgAQQxwEQowI6BQguEIAEOgsILhCABBDHARCvAToHCAAQgAQQCjoHCAAQsQMQCjoECAAQDToECC4QDToGCAAQDRAeUABYoG1g9m5oCHAAeACAAd4CiAGaJpIBCDAuMjIuNC4ymAEAoAEB&sclient=gws-wiz
+	https://material.io/components/sheets-bottom/android#using-bottom-sheets
+	https://medium.com/android-dev-br/android-ui-bottom-sheet-4709cad826d2
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Animations:
+
+	https://developer.android.com/training/animation/reveal-or-hide-view
+	https://stackoverflow.com/questions/19765938/show-and-hide-a-view-with-a-slide-up-down-animation
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Change App Language:
+
+	https://stackoverflow.com/questions/12908289/how-to-change-language-of-app-when-user-selects-language
+	https://stackoverflow.com/questions/2900023/change-app-language-programmatically-in-android
+	https://geeksforgeeks.org/how-to-change-the-whole-app-language-in-android-programmatically
+	https://infyom.com/blog/how-to-change-app-language-in-android-programmatically
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Android Architecture:
+
+	https://developer.android.com/topic/architecture
+	https://medium.com/android-news/getting-started-with-android-architecture-components-and-mvvm-156a96a1bd05
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Room:
+
+	https://developer.android.com/jetpack/androidx/releases/room?gclid=EAIaIQobChMIzqXozaaF-AIVH0JIAB2nlQSkEAAYASAAEgKTdPD_BwE&gclsrc=aw.ds
+	https://developer.android.com/training/data-storage/room/defining-data
+	https://stackoverflow.com/questions/44697418/how-to-populate-android-room-database-table-on-fisrt-run
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Coroutines:
+
+	https://developer.android.com/kotlin/coroutines?gclid=EAIaIQobChMIhMmh9qaF-AIV6GpvBB2MLQqxEAAYASAAEgKs2vD_BwE&gclsrc=aw.ds
+	https://kotlinlang.org/docs/coroutines-guide.html#table-of-contents
+	https://github.com/Kotlin/kotlinx.coroutines/blob/master/README.md#using-in-your-projects
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Kotlin Flow:
+
+	https://developer.android.com/kotlin/flow
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Firebase Authentication:
+
+	https://firebase.google.com/docs/auth?hl=pt-br
+	https://firebase.google.com/docs/auth/android/start?hl=pt-br
+	https://firebase.google.com/docs/auth/android/password-auth?hl=pt-br
+	https://firebase.google.com/docs/auth/android/manage-users?hl=pt-br
+	https://firebase.google.com/docs/android/setup?hl=pt-br
+	https://firebase.google.com/docs/samples?hl=pt
+
+	https://www.google.com.br/search?q=firebase+auth+with+mvvm&source=hp&ei=1lGWYp7NFOiZ1sQPw4GBoAY&iflsig=AJiK0e8AAAAAYpZf5kav1csvyvEpj1WrUlJo62Z_uxyw&ved=0ahUKEwiekPORo4r4AhXojJUCHcNAAGQQ4dUDCAc&uact=5&oq=firebase+auth+with+mvvm&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEB4QFjIGCAAQHhAWMgYIABAeEBY6EQguEIAEELEDEIMBEMcBENEDOgsILhCABBCxAxCDAToLCC4QgAQQxwEQrwE6CwgAEIAEELEDEIMBOgsILhCABBDHARCjAjoICC4QgAQQsQM6BQgAEIAEOggIABCABBCxAzoICC4QsQMQgwE6CwguEIAEELEDENQCOg4ILhCABBCxAxCDARDUAjoECAAQEzoICAAQHhAWEBM6CggAEB4QDxAWEApQAFjkJmDMK2gAcAB4AYAB3AOIAZIpkgEKMC45LjEyLjAuMpgBAKABAQ&sclient=gws-wiz
+	https://medium.com/firebase-tips-tricks/how-to-create-a-clean-firebase-authentication-using-mvvm-37f9b8eb7336
+
+	Validation:
+	http://www.techotopia.com/index.php/Handling_Firebase_Authentication_Errors_and_Failures
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Dependency Injection:
+
+	Dagger e Hilt:
+	https://developer.android.com/training/dependency-injection?hl=pt-br
+	https://developer.android.com/training/dependency-injection/manual?hl=pt-br
+	https://dagger.dev/
+	Hilt:
+	https://developer.android.com/training/dependency-injection/hilt-android?hl=pt-br
+	https://www.youtube.com/watch?v=ZE2Jkvnk2Bs
+	https://www.youtube.com/watch?v=bbMsuI2p1DQ
+	https://www.youtube.com/watch?v=ct5etYgB5pQ
+	koin:
+	https://insert-koin.io/
+	https://medium.com/collabcode/inje%C3%A7%C3%A3o-de-depend%C3%AAncia-no-kotlin-com-koin-4d093f80cb63
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Mask:
+
+	https://receitasdecodigo.com.br/android/como-inserir-mascara-em-um-edittext-no-android
+    	https://jansenfelipe.com.br/2015/05/08/android-como-inserir-mascara-em-um-edittext/
+    	https://pt.stackoverflow.com/questions/204788/setando-mascara-campo-telefone-android
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+DataStore:
+
+	https://developer.android.com/topic/libraries/architecture/datastore?hl=pt-br
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+DataBinding:
+
+	https://developer.android.com/topic/libraries/data-binding
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+

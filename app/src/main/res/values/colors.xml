@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/app_green</color>
+    <color name="colorPrimaryDark">@color/app_green_dark</color>
+    <color name="colorAccent">@color/app_yellow_dark</color>
+
+    <color name="app_green">#FF04B804</color>
+    <color name="app_green_dark">#FF00B100</color>
+    <color name="app_yellow">#FFFFF200</color>
+    <color name="app_yellow_dark">#FFFFC90E</color>
+
+    <color name="yellow_logo">#FFFFC90E</color>
+    <color name="red">#FFFF0000</color>
+    <color name="red_pressed">#FFBB0202</color>
+
+    <color name="nav_gradient_start_color">#FF12F812</color>
+    <color name="app_screen_background">#1904B804</color>
+    <color name="item_money_background">#FFE6F9E6</color>
+    <color name="bottom_sheet_background">#FFFFFA90</color>
+    <color name="color_text">@color/black_80</color>
+    <color name="color_text_link">@color/colorPrimary</color>
+    <color name="cancel_button">#FFFFFFFF</color>
+    <color name="cancel_button_pressed">#FFE5E5E5</color>
+    <color name="progress_bar_circular_background">#19000000</color>
+
+    <color name="black">#FF000000</color> <!-- 100% black-->
+    <color name="black_90">#FF191919</color> <!-- 90% black-->
+    <color name="black_80">#FF333333</color> <!-- 80% black-->
+    <color name="black_70">#FF4C4C4C</color> <!-- 70% black-->
+    <color name="black_60">#FF666666</color> <!-- 60% black-->
+    <color name="black_50">#FF7F7F7F</color> <!-- 50% black-->
+    <color name="black_40">#FF999999</color> <!-- 40% black-->
+    <color name="black_30">#FFB2B2B2</color> <!-- 30% black-->
+    <color name="black_20">#FFCCCCCC</color> <!-- 20% black-->
+    <color name="black_10">#FFE5E5E5</color> <!-- 10% black-->
+    <color name="white">#FFFFFFFF</color> <!-- 0% black-->
+</resources>

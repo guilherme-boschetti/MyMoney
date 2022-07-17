@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="languages">
+        <item>English (United States)</item>
+        <item>Español (España)</item>
+        <item>Português (Brasil)</item>
+    </string-array>
+    <string-array name="language_codes">
+        <item>en-US</item>
+        <item>es-ES</item>
+        <item>pt-BR</item>
+    </string-array>
+    <string-array name="currencies">
+        <item>Dollar - USD</item>
+        <item>Euro - EUR</item>
+        <item>Real - BRL</item>
+    </string-array>
+    <string-array name="currency_signs">
+        <item>US$</item>
+        <item>€</item>
+        <item>R$</item>
+    </string-array>
+</resources>

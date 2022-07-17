@@ -1,0 +1,62 @@
+package com.guilhermeb.mymoney.view.money.adapter
+
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.view.money.adapter.viewholder.MoneyItemViewHolder
+import com.guilhermeb.mymoney.view.money.listener.MoneyItemClickListener
+
+class MoneyItemAdapter(
+    private val deleteCallback: DeleteMoneyItemCallback,
+    private val moneyList: LiveData<List<Money>>,
+    private val isTablet: Boolean,
+    private val newItem: Boolean,
+    private val rootView: View
+) : ListAdapter<Money, RecyclerView.ViewHolder>(MoneyDiffCallBack()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return MoneyItemViewHolder.from(parent, this)
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is MoneyItemViewHolder) {
+            moneyList.value?.let {
+                val moneyItem = it[position]
+                holder.bind(
+                    moneyItem,
+                    MoneyItemClickListener(moneyItem.id, isTablet, false, newItem, rootView)
+                )
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return moneyList.value?.count() ?: 0
+    }
+
+    fun removeItemAt(position: Int) {
+        moneyList.value?.let {
+            val moneyItem = it[position]
+            deleteCallback.deleteMoneyItem(moneyItem)
+        }
+    }
+
+    class MoneyDiffCallBack : DiffUtil.ItemCallback<Money>() {
+
+        override fun areItemsTheSame(oldItem: Money, newItem: Money): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Money, newItem: Money): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    interface DeleteMoneyItemCallback {
+        fun deleteMoneyItem(moneyItem: Money)
+    }
+}
