@@ -2,7 +2,6 @@ package com.guilhermeb.mymoney.view.app.settings.activity
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.AdapterView
@@ -15,15 +14,16 @@ import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
 import com.guilhermeb.mymoney.common.extension.isUiModeNightActive
 import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
+import com.guilhermeb.mymoney.common.util.getCurrentLanguageLocale
 import com.guilhermeb.mymoney.databinding.ActivitySettingsBinding
 import com.guilhermeb.mymoney.databinding.DialogNightModeBinding
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
-import java.util.*
 import kotlin.collections.ArrayList
 
 class SettingsActivity : AbstractActivity() {
 
     private lateinit var settingsViewBinding: ActivitySettingsBinding
+    private val sharedPreferencesHelper = SharedPreferencesHelper.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +53,11 @@ class SettingsActivity : AbstractActivity() {
             autocompleteLanguage.onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     val languageCodesArray = resources.getStringArray(R.array.language_codes)
-                    SharedPreferencesHelper.getInstance()
-                        ?.setValue(
-                            getSharedPreferencesKey(Constants.LOCALE),
-                            languageCodesArray[position]
-                        )
-                    MyMoneyApplication.getInstance()?.setLocale()
+                    sharedPreferencesHelper.setValue(
+                        getSharedPreferencesKey(Constants.LOCALE),
+                        languageCodesArray[position]
+                    )
+                    MyMoneyApplication.getInstance().setLocale()
                     Intent().apply {
                         putExtra(
                             Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED,
@@ -79,11 +78,10 @@ class SettingsActivity : AbstractActivity() {
             autocompleteCurrency.onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     val currenciesArray = resources.getStringArray(R.array.currencies)
-                    SharedPreferencesHelper.getInstance()
-                        ?.setValue(
-                            getSharedPreferencesKey(Constants.CURRENCY),
-                            currenciesArray[position]
-                        )
+                    sharedPreferencesHelper.setValue(
+                        getSharedPreferencesKey(Constants.CURRENCY),
+                        currenciesArray[position]
+                    )
                 }
 
             swhNightMode.setOnLongClickListener {
@@ -98,22 +96,18 @@ class SettingsActivity : AbstractActivity() {
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
-                SharedPreferencesHelper.getInstance()
-                    ?.setValue(
-                        getSharedPreferencesKey(Constants.NIGHT_MODE),
-                        if (checked) Constants.YES else Constants.NO
-                    )
+                sharedPreferencesHelper.setValue(
+                    getSharedPreferencesKey(Constants.NIGHT_MODE),
+                    if (checked) Constants.YES else Constants.NO
+                )
             }
 
             val sharedPreferencesKeyPreviousMonthBalance =
                 getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE)
             swhUsePreviousMonthBalance.isChecked =
-                SharedPreferencesHelper.getInstance()
-                    ?.getValue(sharedPreferencesKeyPreviousMonthBalance, false)
-                    ?: false
+                sharedPreferencesHelper.getValue(sharedPreferencesKeyPreviousMonthBalance, false)
             swhUsePreviousMonthBalance.setOnCheckedChangeListener { _, checked ->
-                SharedPreferencesHelper.getInstance()
-                    ?.setValue(sharedPreferencesKeyPreviousMonthBalance, checked)
+                sharedPreferencesHelper.setValue(sharedPreferencesKeyPreviousMonthBalance, checked)
             }
         }
     }
@@ -138,49 +132,28 @@ class SettingsActivity : AbstractActivity() {
 
     private fun getCurrentLanguageSelectionPosition(): Int {
         val languageCodesArray = resources.getStringArray(R.array.language_codes)
-        val sharedPreferencesKeyLocale = getSharedPreferencesKey(Constants.LOCALE)
-        val localeString: String? =
-            SharedPreferencesHelper.getInstance()?.getValue(sharedPreferencesKeyLocale, null)
-        if (localeString != null) {
+        val localeString: String? = getCurrentLanguageLocale()
+        val selectionPosition: Int = if (localeString != null) {
             when (localeString) {
-                languageCodesArray[0] -> {
-                    return 0
-                }
-                languageCodesArray[1] -> {
-                    return 1
-                }
-                languageCodesArray[2] -> {
-                    return 2
-                }
+                languageCodesArray[0] -> 0
+                languageCodesArray[1] -> 1
+                languageCodesArray[2] -> 2
+                else -> 0
             }
-        }
-        val selectionPosition: Int
-        val locale: Locale
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            locale = resources.configuration.locales[0]
-        } else {
-            @Suppress("DEPRECATION")
-            locale = resources.configuration.locale
-        }
-        selectionPosition = if (locale.language.equals("en") && locale.country.equals("US")) {
-            0
-        } else if (locale.language.equals("es") && locale.country.equals("ES")) {
-            1
-        } else if (locale.language.equals("pt") && locale.country.equals("BR")) {
-            2
         } else {
             0
         }
-        SharedPreferencesHelper.getInstance()
-            ?.setValue(sharedPreferencesKeyLocale, languageCodesArray[selectionPosition])
+        sharedPreferencesHelper.setValue(
+            getSharedPreferencesKey(Constants.LOCALE),
+            languageCodesArray[selectionPosition]
+        )
         return selectionPosition
     }
 
     private fun getCurrentCurrencySelectionPosition(): Int {
         val currenciesArray = resources.getStringArray(R.array.currencies)
         val sharedPreferencesKeyCurrency = getSharedPreferencesKey(Constants.CURRENCY)
-        val currency: String? =
-            SharedPreferencesHelper.getInstance()?.getValue(sharedPreferencesKeyCurrency, null)
+        val currency: String? = sharedPreferencesHelper.getValue(sharedPreferencesKeyCurrency, null)
         if (currency != null) {
             when (currency) {
                 currenciesArray[0] -> {
@@ -195,8 +168,10 @@ class SettingsActivity : AbstractActivity() {
             }
         }
         val selectionPosition = getCurrentLanguageSelectionPosition()
-        SharedPreferencesHelper.getInstance()
-            ?.setValue(sharedPreferencesKeyCurrency, currenciesArray[selectionPosition])
+        sharedPreferencesHelper.setValue(
+            sharedPreferencesKeyCurrency,
+            currenciesArray[selectionPosition]
+        )
         return selectionPosition
     }
 
@@ -214,6 +189,7 @@ class SettingsActivity : AbstractActivity() {
 
         private lateinit var nightModeViewBinding: DialogNightModeBinding
         private lateinit var dialog: AlertDialog
+        private val sharedPreferencesHelper = SharedPreferencesHelper.getInstance()
 
         fun openDialog() {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -226,7 +202,7 @@ class SettingsActivity : AbstractActivity() {
         }
 
         private fun init() {
-            when (SharedPreferencesHelper.getInstance()?.getValue(
+            when (sharedPreferencesHelper.getValue(
                 getSharedPreferencesKey(Constants.NIGHT_MODE),
                 Constants.FOLLOW_SYSTEM
             )) {
@@ -245,16 +221,13 @@ class SettingsActivity : AbstractActivity() {
                 val sharedPreferencesKey = getSharedPreferencesKey(Constants.NIGHT_MODE)
                 if (nightModeViewBinding.rBtnModeNightNo.isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    SharedPreferencesHelper.getInstance()
-                        ?.setValue(sharedPreferencesKey, Constants.NO)
+                    sharedPreferencesHelper.setValue(sharedPreferencesKey, Constants.NO)
                 } else if (nightModeViewBinding.rBtnModeNightYes.isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    SharedPreferencesHelper.getInstance()
-                        ?.setValue(sharedPreferencesKey, Constants.YES)
+                    sharedPreferencesHelper.setValue(sharedPreferencesKey, Constants.YES)
                 } else if (nightModeViewBinding.rBtnModeNightSystemDefault.isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                    SharedPreferencesHelper.getInstance()
-                        ?.setValue(sharedPreferencesKey, Constants.FOLLOW_SYSTEM)
+                    sharedPreferencesHelper.setValue(sharedPreferencesKey, Constants.FOLLOW_SYSTEM)
                 }
                 dialog.dismiss()
             }

@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.guilhermeb.mymoney.R
+import com.guilhermeb.mymoney.common.util.getAppVersion
 import com.guilhermeb.mymoney.databinding.ActivityMoneyHostBinding
 import com.guilhermeb.mymoney.databinding.NavHeaderDrawerBinding
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
@@ -78,8 +79,9 @@ class MoneyHostActivity : AbstractActivity() {
 
         val navHeaderDrawerBinding: NavHeaderDrawerBinding =
             NavHeaderDrawerBinding.bind(binding.navViewDrawer.getHeaderView(0))
-        navHeaderDrawerBinding.txtEmail.text = moneyViewModel.getCurrentUserEmail()
 
+        navHeaderDrawerBinding.txtAppVersion.text = getAppVersion()
+        navHeaderDrawerBinding.txtEmail.text = moneyViewModel.getCurrentUserEmail()
 
         /*val drawerMenuMonths = moneyViewModel.getAllMonthsByUser(moneyViewModel.getCurrentUserEmail()!!)
         for (i in 0 until drawerMenuMonths.size) {
@@ -94,6 +96,7 @@ class MoneyHostActivity : AbstractActivity() {
         binding.navViewDrawer.setNavigationItemSelectedListener {
             if (this::mDrawerMenuMonths.isInitialized) {
                 moneyViewModel.setSelectedYearAndMonthName(mDrawerMenuMonths[it.itemId])
+                moneyViewModel.setDrawerMenuItemChecked(it.order)
             }
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
@@ -114,10 +117,16 @@ class MoneyHostActivity : AbstractActivity() {
             }
 
             binding.navViewDrawer.menu.setGroupCheckable(R.id.group_menu_drawer, true, true)
+
+            moneyViewModel.drawerMenuItemChecked.value?.let {
+                if (it >= 0 && binding.navViewDrawer.menu.size() > it) {
+                    binding.navViewDrawer.menu.getItem(it).isChecked = true
+                }
+            }
         }
 
-        moneyViewModel.firstDrawerMenuItemChecked.observe(this) {
-            if (it >= 0) {
+        moneyViewModel.drawerMenuItemChecked.observe(this) {
+            if (it >= 0 && binding.navViewDrawer.menu.size() > it) {
                 binding.navViewDrawer.menu.getItem(it).isChecked = true
             }
         }
@@ -151,7 +160,7 @@ class MoneyHostActivity : AbstractActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun recreate() {
+    fun recreateActivity() {
         finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         startActivity(intent)

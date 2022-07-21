@@ -23,10 +23,10 @@ class MyMoneyApplication : Application() {
         private var INSTANCE: MyMoneyApplication? = null
 
         @Synchronized
-        fun getInstance(): MyMoneyApplication? {
+        fun getInstance(): MyMoneyApplication {
             if (INSTANCE == null)
                 throw IllegalStateException("Configure the application on AndroidManifest.xml")
-            return INSTANCE
+            return INSTANCE!!
         }
     }
 
@@ -36,7 +36,7 @@ class MyMoneyApplication : Application() {
     fun setLocale() {
         val localeString =
             SharedPreferencesHelper.getInstance()
-                ?.getValue(getSharedPreferencesKey(Constants.LOCALE), null)
+                .getValue(getSharedPreferencesKey(Constants.LOCALE), null)
 
         if (localeString != null) {
 

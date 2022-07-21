@@ -3,10 +3,6 @@ package com.guilhermeb.mymoney.common.util
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import com.guilhermeb.mymoney.MyMoneyApplication
-import com.guilhermeb.mymoney.common.constant.Constants
-import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
-import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import kotlin.math.pow
@@ -36,8 +32,7 @@ class MaskUtil {
         private const val CURRENCY_SIGN_US = "US\$"
 
         fun getDecimalFormat(): DecimalFormat {
-            return when (SharedPreferencesHelper.getInstance()
-                ?.getValue(getSharedPreferencesKey(Constants.LOCALE), null)) {
+            return when (getCurrentLanguageLocale()) {
                 PT_BR -> DecimalFormat(FORMAT_CURRENCY_BR)
                 ES_ES -> DecimalFormat(FORMAT_CURRENCY_ES)
                 EN_US -> DecimalFormat(FORMAT_CURRENCY_US)
@@ -46,8 +41,7 @@ class MaskUtil {
         }
 
         private fun getCurrencySign(): String {
-            return when (SharedPreferencesHelper.getInstance()
-                ?.getValue(getSharedPreferencesKey(Constants.LOCALE), null)) {
+            return when (getCurrentLanguageLocale()) {
                 PT_BR -> CURRENCY_SIGN_BR
                 ES_ES -> CURRENCY_SIGN_ES
                 EN_US -> CURRENCY_SIGN_US

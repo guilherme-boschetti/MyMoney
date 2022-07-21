@@ -17,17 +17,17 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "MY
 
 fun savePasswordIntoDataStorePreferences(preferencesKey: String, password: String) {
     CoroutineScope(Dispatchers.IO).launch {
-        MyMoneyApplication.getInstance()?.applicationContext?.let { context ->
-            context.applicationContext!!.dataStore.edit { preferences ->
-                preferences[stringPreferencesKey(preferencesKey)] = password
-            }
+        MyMoneyApplication.getInstance().applicationContext.dataStore.edit { preferences ->
+            preferences[stringPreferencesKey(
+                preferencesKey
+            )] = password
         }
     }
 }
 
 fun getPasswordFromDataStorePreferences(preferencesKey: String): String? {
-    var password: String? = null
-    /*CoroutineScope(Dispatchers.IO).launch {
+    /*var password: String? = null
+    CoroutineScope(Dispatchers.IO).launch {
         MyMoneyApplication.getInstance()?.applicationContext?.let { context ->
             context.dataStore.data.collect { preferences ->
                 preferences[stringPreferencesKey(preferencesKey)]?.let {
@@ -35,16 +35,19 @@ fun getPasswordFromDataStorePreferences(preferencesKey: String): String? {
                 }
             }
         }
-    }*/
+    }
+    return password*/
+    var password: String?
     // synchronous
     runBlocking {
-        MyMoneyApplication.getInstance()?.applicationContext?.let { context ->
-            password = context.dataStore.data.first()[stringPreferencesKey(preferencesKey)]
-        }
+        password =
+            MyMoneyApplication.getInstance().applicationContext.dataStore.data.first()[stringPreferencesKey(
+                preferencesKey
+            )]
     }
     return password
 }
 
 fun getPreferencesDataStoreKey(key: String): String {
-    return MyMoneyApplication.getInstance()?.getCurrentUserEmail() + "/" + key
+    return MyMoneyApplication.getInstance().getCurrentUserEmail() + "/" + key
 }

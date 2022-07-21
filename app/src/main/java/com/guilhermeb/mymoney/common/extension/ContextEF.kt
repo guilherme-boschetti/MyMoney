@@ -5,7 +5,6 @@ import android.content.res.Configuration
 import android.util.TypedValue
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import com.guilhermeb.mymoney.MyMoneyApplication
 import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
 import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
@@ -23,7 +22,7 @@ fun Context.getAndroidTextColorPrimary(): Int {
 fun Context.isUiModeNightActive(): Boolean {
     val nightMode: String? =
         SharedPreferencesHelper.getInstance()
-            ?.getValue(getSharedPreferencesKey(Constants.NIGHT_MODE), Constants.FOLLOW_SYSTEM)
+            .getValue(getSharedPreferencesKey(Constants.NIGHT_MODE), Constants.FOLLOW_SYSTEM)
     if (nightMode != null) {
         when (nightMode) {
             Constants.YES -> return true

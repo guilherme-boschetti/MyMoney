@@ -2,6 +2,10 @@ package com.guilhermeb.mymoney.view.account.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.core.view.MenuProvider
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.extension.showConfirmationDialog
 import com.guilhermeb.mymoney.common.util.showToast
@@ -13,18 +17,46 @@ import com.guilhermeb.mymoney.viewmodel.account.AccountViewModel
 
 class AccountActivity : AbstractActivity() {
 
+    private lateinit var accountViewBinding: ActivityAccountBinding
+
     private val accountViewModel by lazy {
         AccountViewModel()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val accountViewBinding = ActivityAccountBinding.inflate(layoutInflater)
+        accountViewBinding = ActivityAccountBinding.inflate(layoutInflater)
         setContentView(accountViewBinding.root)
         setTitle(R.string.account)
 
+        buildOptionsMenu()
+        initScreen()
+    }
+
+    private fun buildOptionsMenu() {
+        addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menu.add(1, 1, 1, R.string.terms_and_conditions_title)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (menuItem.itemId == 1) {
+                    val it = Intent(this@AccountActivity, TermsAndConditionsActivity::class.java)
+                    startActivity(it)
+                    return true
+                }
+                return false
+            }
+        })
+    }
+
+    private fun initScreen() {
         accountViewBinding.edtEmail.setText(accountViewModel.getCurrentUserEmail())
 
+        handleClicks()
+    }
+
+    private fun handleClicks() {
         accountViewBinding.btnLogout.setOnClickListener {
             showConfirmationDialog(
                 R.string.are_you_sure_you_want_to_logout
@@ -46,7 +78,7 @@ class AccountActivity : AbstractActivity() {
                 accountViewModel.deleteUser(object : AsyncProcess {
                     override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
                         if (isSuccessful) {
-                            showToast(this@AccountActivity, R.string.account_deleteded_successfully)
+                            showToast(this@AccountActivity, R.string.account_deleted_successfully)
                             goToLoginActivity()
                         } else {
                             val message =

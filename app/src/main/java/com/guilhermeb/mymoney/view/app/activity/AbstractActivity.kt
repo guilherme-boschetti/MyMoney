@@ -3,7 +3,6 @@ package com.guilhermeb.mymoney.view.app.activity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.guilhermeb.mymoney.MyMoneyApplication
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.component.CustomProgressDialog
 import com.guilhermeb.mymoney.common.constant.Constants
@@ -37,7 +36,7 @@ abstract class AbstractActivity : AppCompatActivity() {
     private fun setLocale() {
         val localeString =
             SharedPreferencesHelper.getInstance()
-                ?.getValue(getSharedPreferencesKey(Constants.LOCALE), null)
+                .getValue(getSharedPreferencesKey(Constants.LOCALE), null)
 
         if (localeString != null) {
 

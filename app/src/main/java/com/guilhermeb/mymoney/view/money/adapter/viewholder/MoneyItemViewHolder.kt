@@ -39,15 +39,17 @@ class MoneyItemViewHolder(
     fun bind(moneyItem: Money, clickListener: MoneyItemClickListener) {
         this.clickListener = clickListener
 
+        val context = MyMoneyApplication.getInstance().applicationContext
+
         itemMoneyViewBinding.txtItemTitle.text = moneyItem.title
         itemMoneyViewBinding.txtItemDescription.text = moneyItem.description
         itemMoneyViewBinding.txtItemValue.text = MaskUtil.getFormattedValueText(moneyItem.value)
 
         if (moneyItem.dueDay != null && moneyItem.dueDay!! > 0) {
             val label = if (MoneyType.INCOME.name == moneyItem.type) {
-                MyMoneyApplication.getInstance()?.applicationContext?.getString(R.string.reception_day)
+                context.getString(R.string.reception_day)
             } else {
-                MyMoneyApplication.getInstance()?.applicationContext?.getString(R.string.due_day)
+                context.getString(R.string.due_day)
             }
             itemMoneyViewBinding.txtItemDueDay.visibility = View.VISIBLE
             itemMoneyViewBinding.txtItemDueDay.text = label + ": " + moneyItem.dueDay.toString()
@@ -57,14 +59,14 @@ class MoneyItemViewHolder(
 
         if (MoneyType.INCOME.name == moneyItem.type) {
             itemMoneyViewBinding.txtItemNotPaid.text =
-                MyMoneyApplication.getInstance()?.applicationContext?.getString(R.string.not_received)
+                context.getString(R.string.not_received)
             itemMoneyViewBinding.chkItemPaid.text =
-                MyMoneyApplication.getInstance()?.applicationContext?.getString(R.string.reception_day)
+                context.getString(R.string.received)
         } else {
             itemMoneyViewBinding.txtItemNotPaid.text =
-                MyMoneyApplication.getInstance()?.applicationContext?.getString(R.string.not_paid)
+                context.getString(R.string.not_paid)
             itemMoneyViewBinding.chkItemPaid.text =
-                MyMoneyApplication.getInstance()?.applicationContext?.getString(R.string.paid)
+                context.getString(R.string.paid)
         }
         if (moneyItem.paid) {
             itemMoneyViewBinding.txtItemNotPaid.visibility = View.INVISIBLE
@@ -76,19 +78,17 @@ class MoneyItemViewHolder(
             itemMoneyViewBinding.chkItemPaid.isChecked = false
         }
 
-        val type = MyMoneyApplication.getInstance()?.applicationContext?.let {
-            if (MoneyType.INCOME.name == moneyItem.type) {
-                it.getString(R.string.income)
-            } else if (MoneyType.EXPENSE.name == moneyItem.type) {
-                it.getString(R.string.expense)
-            } else {
-                ""
-            }
+        val type = if (MoneyType.INCOME.name == moneyItem.type) {
+            context.getString(R.string.income)
+        } else if (MoneyType.EXPENSE.name == moneyItem.type) {
+            context.getString(R.string.expense)
+        } else {
+            ""
         }
-        itemMoneyViewBinding.txtItemType.text = type ?: ""
+        itemMoneyViewBinding.txtItemType.text = type
 
         val itemValueColor = ContextCompat.getColor(
-            MyMoneyApplication.getInstance()?.applicationContext!!,
+            context,
             if (MoneyType.INCOME.name == moneyItem.type) {
                 R.color.app_green
             } else if (MoneyType.EXPENSE.name == moneyItem.type) {
@@ -139,57 +139,56 @@ class MoneyItemViewHolder(
     }
 
     override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenuInfo?) {
-        MyMoneyApplication.getInstance()?.applicationContext?.let {
-            // groupId, itemId, order, title
-            val menuItemView = menu.add(
-                1,
-                1,
-                1,
-                menuWithIconAndText(
-                    it,
-                    AppCompatResources.getDrawable(it, R.drawable.ic_baseline_visibility_24),
-                    it.getString(R.string.view)
-                )
+        val context = MyMoneyApplication.getInstance().applicationContext
+        // groupId, itemId, order, title
+        val menuItemView = menu.add(
+            1,
+            1,
+            1,
+            menuWithIconAndText(
+                context,
+                AppCompatResources.getDrawable(context, R.drawable.ic_baseline_visibility_24),
+                context.getString(R.string.view)
             )
-            val menuItemEdit = menu.add(
-                1,
-                2,
-                2,
-                menuWithIconAndText(
-                    it,
-                    AppCompatResources.getDrawable(it, R.drawable.ic_baseline_edit_24),
-                    it.getString(R.string.edit)
-                )
+        )
+        val menuItemEdit = menu.add(
+            1,
+            2,
+            2,
+            menuWithIconAndText(
+                context,
+                AppCompatResources.getDrawable(context, R.drawable.ic_baseline_edit_24),
+                context.getString(R.string.edit)
             )
-            val menuItemDelete = menu.add(
-                1,
-                3,
-                3,
-                menuWithIconAndText(
-                    it,
-                    AppCompatResources.getDrawable(it, R.drawable.ic_baseline_delete_24),
-                    it.getString(R.string.delete)
-                )
+        )
+        val menuItemDelete = menu.add(
+            1,
+            3,
+            3,
+            menuWithIconAndText(
+                context,
+                AppCompatResources.getDrawable(context, R.drawable.ic_baseline_delete_24),
+                context.getString(R.string.delete)
             )
+        )
 
-            menuItemView.setOnMenuItemClickListener {
-                clickListener.editItem = false
-                clickListener.onClick(itemMoneyViewBinding.root)
-                return@setOnMenuItemClickListener true
+        menuItemView.setOnMenuItemClickListener {
+            clickListener.editItem = false
+            clickListener.onClick(itemMoneyViewBinding.root)
+            return@setOnMenuItemClickListener true
+        }
+        menuItemEdit.setOnMenuItemClickListener {
+            clickListener.editItem = true
+            clickListener.onClick(itemMoneyViewBinding.root)
+            return@setOnMenuItemClickListener true
+        }
+        menuItemDelete.setOnMenuItemClickListener {
+            itemView.context.showConfirmationDialog(
+                R.string.are_you_sure_you_want_to_delete
+            ) {
+                mAdapter.removeItemAt(bindingAdapterPosition)
             }
-            menuItemEdit.setOnMenuItemClickListener {
-                clickListener.editItem = true
-                clickListener.onClick(itemMoneyViewBinding.root)
-                return@setOnMenuItemClickListener true
-            }
-            menuItemDelete.setOnMenuItemClickListener {
-                itemView.context.showConfirmationDialog(
-                    R.string.are_you_sure_you_want_to_delete
-                ) {
-                    mAdapter.removeItemAt(bindingAdapterPosition)
-                }
-                return@setOnMenuItemClickListener true
-            }
+            return@setOnMenuItemClickListener true
         }
     }
 }

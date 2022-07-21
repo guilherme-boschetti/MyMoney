@@ -23,12 +23,12 @@ class SharedPreferencesHelper private constructor(context: Context) {
         private var instance: SharedPreferencesHelper? = null
 
         @Synchronized
-        fun getInstance(): SharedPreferencesHelper? {
+        fun getInstance(): SharedPreferencesHelper {
             if (instance == null) {
                 instance =
-                    SharedPreferencesHelper(MyMoneyApplication.getInstance()?.applicationContext!!)
+                    SharedPreferencesHelper(MyMoneyApplication.getInstance().applicationContext)
             }
-            return instance
+            return instance!!
         }
     }
 
@@ -116,5 +116,9 @@ class SharedPreferencesHelper private constructor(context: Context) {
 }
 
 fun getSharedPreferencesKey(key: String): String {
-    return MyMoneyApplication.getInstance()?.getCurrentUserEmail() + "/" + key
+    return MyMoneyApplication.getInstance().getCurrentUserEmail() + "/" + key
+}
+
+fun getSharedPreferencesKey(userEmail: String?, key: String): String {
+    return "$userEmail/$key"
 }

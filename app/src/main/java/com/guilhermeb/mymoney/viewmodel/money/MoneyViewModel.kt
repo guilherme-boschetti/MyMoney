@@ -24,7 +24,7 @@ class MoneyViewModel : ViewModel() {
     }
     private val moneyRepository by lazy {
         val dataSource =
-            MyMoneyDB.getInstance(MyMoneyApplication.getInstance()!!.applicationContext).moneyDao
+            MyMoneyDB.getInstance(MyMoneyApplication.getInstance().applicationContext).moneyDao
         MoneyRepository(dataSource)
     }
 
@@ -40,8 +40,8 @@ class MoneyViewModel : ViewModel() {
     private val _drawerMonths = MutableLiveData<List<String>>()
     val drawerMonths: LiveData<List<String>> get() = _drawerMonths
 
-    private val _firstDrawerMenuItemChecked = MutableLiveData<Int>()
-    val firstDrawerMenuItemChecked: LiveData<Int> get() = _firstDrawerMenuItemChecked
+    private val _drawerMenuItemChecked = MutableLiveData<Int>()
+    val drawerMenuItemChecked: LiveData<Int> get() = _drawerMenuItemChecked
 
     private val _selectedYearAndMonthName = MutableLiveData<String>()
     val selectedYearAndMonthName: LiveData<String> get() = _selectedYearAndMonthName
@@ -141,8 +141,8 @@ class MoneyViewModel : ViewModel() {
         viewModelScope.launch {
             moneyRepository.getAllMonthsByUser(userEmail).collect {
                 _drawerMonths.value = getListWithYearAndMonthName(it)
-                if (_firstDrawerMenuItemChecked.value == null) {
-                    _firstDrawerMenuItemChecked.value = it.indexOf(
+                if (_drawerMenuItemChecked.value == null) {
+                    _drawerMenuItemChecked.value = it.indexOf(
                         DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(Date()).substring(0, 7)
                     )
                 }
@@ -168,6 +168,10 @@ class MoneyViewModel : ViewModel() {
     fun setSelectedYearAndMonthName(selectedYearAndMonthName: String) {
         _selectedYearAndMonthName.value = selectedYearAndMonthName
         getMoneyItems()
+    }
+
+    fun setDrawerMenuItemChecked(drawerMenuItemChecked: Int) {
+        _drawerMenuItemChecked.value = drawerMenuItemChecked
     }
 
     // == -- User == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==

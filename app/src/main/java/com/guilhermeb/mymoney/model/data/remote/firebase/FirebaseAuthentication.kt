@@ -63,55 +63,51 @@ class FirebaseAuthentication : Authenticable {
     }
 
     private fun errorVerification(e: Exception?): String? {
+        val context = MyMoneyApplication.getInstance().applicationContext
         // http://www.techotopia.com/index.php/Handling_Firebase_Authentication_Errors_and_Failures
         when (e) {
             is FirebaseAuthWeakPasswordException -> {
-                return MyMoneyApplication.getInstance()?.getString(R.string.weak_password)
+                return context.getString(R.string.weak_password)
             }
-            is FirebaseAuthUserCollisionException -> {
-                when (e.errorCode) {
-                    "ERROR_EMAIL_ALREADY_IN_USE" -> {
-                        return MyMoneyApplication.getInstance()
-                            ?.getString(R.string.account_already_exists)
+            is FirebaseAuthInvalidCredentialsException -> {
+                return when (e.errorCode) {
+                    "ERROR_INVALID_EMAIL" -> {
+                        context.getString(R.string.invalid_email)
                     }
-                    "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" -> {
-                        return MyMoneyApplication.getInstance()
-                            ?.getString(R.string.email_already_in_use)
-                    }
-                    "ERROR_CREDENTIAL_ALREADY_IN_USE" -> {
-                        return MyMoneyApplication.getInstance()
-                            ?.getString(R.string.credentials_already_in_use)
+                    "ERROR_WRONG_PASSWORD" -> {
+                        context.getString(R.string.invalid_password)
                     }
                     else -> {
-                        return e.localizedMessage
+                        e.localizedMessage
+                    }
+                }
+            }
+            is FirebaseAuthUserCollisionException -> {
+                return when (e.errorCode) {
+                    "ERROR_EMAIL_ALREADY_IN_USE" -> {
+                        context.getString(R.string.account_already_exists)
+                    }
+                    "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" -> {
+                        context.getString(R.string.email_already_in_use)
+                    }
+                    "ERROR_CREDENTIAL_ALREADY_IN_USE" -> {
+                        context.getString(R.string.credentials_already_in_use)
+                    }
+                    else -> {
+                        e.localizedMessage
                     }
                 }
             }
             is FirebaseAuthInvalidUserException -> {
                 return when (e.errorCode) {
                     "ERROR_USER_NOT_FOUND" -> {
-                        MyMoneyApplication.getInstance()?.getString(R.string.invalid_account)
+                        context.getString(R.string.invalid_account)
                     }
                     "ERROR_USER_DISABLED" -> {
-                        MyMoneyApplication.getInstance()
-                            ?.getString(R.string.account_disabled)
+                        context.getString(R.string.account_disabled)
                     }
                     else -> {
                         e.getLocalizedMessage()
-                    }
-                }
-            }
-            is FirebaseAuthInvalidCredentialsException -> {
-                return when (e.errorCode) {
-                    "ERROR_INVALID_EMAIL" -> {
-                        MyMoneyApplication.getInstance()?.getString(R.string.invalid_email)
-                    }
-                    "ERROR_WRONG_PASSWORD" -> {
-                        MyMoneyApplication.getInstance()
-                            ?.getString(R.string.invalid_password)
-                    }
-                    else -> {
-                        e.localizedMessage
                     }
                 }
             }

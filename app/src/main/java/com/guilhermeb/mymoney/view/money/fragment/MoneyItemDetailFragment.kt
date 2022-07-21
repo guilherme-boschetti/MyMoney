@@ -241,9 +241,11 @@ class MoneyItemDetailFragment : Fragment() {
 
             rGrpType.setOnCheckedChangeListener { _, _ ->
                 if (rBtnIncome.isChecked) {
+                    chkPaid.text = getString(R.string.received)
                     inPayDate.hint = getString(R.string.reception_date)
                     inDueDay.hint = getString(R.string.reception_day)
                 } else {
+                    chkPaid.text = getString(R.string.paid)
                     inPayDate.hint = getString(R.string.pay_date)
                     inDueDay.hint = getString(R.string.due_day)
                 }
@@ -339,9 +341,7 @@ class MoneyItemDetailFragment : Fragment() {
                         val datePicker = datePickerBuilder.build()
 
                         datePicker.addOnPositiveButtonClickListener {
-                            val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-                            calendar.timeInMillis = it
-                            edtPayDate.setText(DateUtil.DAY_MONTH_YEAR.format(calendar.time))
+                            edtPayDate.setText(DateUtil.DAY_MONTH_YEAR.format(Date(it)))
                         }
 
                         datePicker.show(childFragmentManager, "PAY_DATE")

@@ -25,6 +25,10 @@
             android:theme="@style/Theme.MyMoney.NoActionBar"
             tools:targetApi="24" />
         <activity
+            android:name=".view.account.activity.TermsAndConditionsActivity"
+            android:exported="false"
+            android:label="@string/terms_and_conditions_title" />
+        <activity
             android:name=".view.account.activity.ChangePasswordActivity"
             android:exported="false"
             android:label="@string/change_password" />

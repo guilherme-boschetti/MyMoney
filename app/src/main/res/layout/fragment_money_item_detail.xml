@@ -129,7 +129,7 @@
 
                     <RadioButton
                         android:id="@+id/r_btn_income"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/income"
@@ -139,7 +139,7 @@
 
                     <RadioButton
                         android:id="@+id/r_btn_expense"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/expense"
@@ -218,7 +218,7 @@
 
                     <CheckBox
                         android:id="@+id/chk_paid"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/paid"
@@ -229,7 +229,7 @@
 
                     <CheckBox
                         android:id="@+id/chk_fixed"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/fixed"

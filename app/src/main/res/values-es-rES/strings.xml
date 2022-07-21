@@ -37,40 +37,27 @@
     <string name="account_disabled">Cuenta deshabilitada</string>
     <string name="invalid_email">E-mail inválido</string>
     <string name="invalid_password">Contraseña inválida</string>
-    <string name="weak_password">Contraseña débil; Usa letras, números y caracteres especiales.</string>
+    <string name="weak_password">Contraseña débil; Usa al menos 6 caracteres, letras, números y caracteres especiales.</string>
     <string name="account_already_exists">La cuenta ya existe; E-mail ya registrado.</string>
     <string name="email_already_in_use">E-mail ya en uso; E-mail ya registrado.</string>
     <string name="credentials_already_in_use">Credenciales ya en uso</string>
 
     <!-- Terms and conditions -->
     <string name="terms_and_conditions_title">Términos y Condiciones</string>
-    <string name="terms_and_conditions_text">test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test</string>
+    <string name="terms_and_conditions_text">Al usar la aplicación, inevitablemente compartirá alguna información. Su privacidad y seguridad son valoradas, lea atentamente esta Política de privacidad para que pueda tomar decisiones informadas sobre su uso de la aplicación.\n
+\nQué tipo de información se recopila de las personas que usan la aplicación?\n
+\nDatos personales\n
+\nLos datos personales se refieren a información de identificación personal que lo identifica específicamente como individuo (por ejemplo, correo electrónico). Su correo electrónico se utiliza solo para la autenticación.\n
+\nDatos no personales\n
+\nLos datos no personales se refieren a información que, por sí misma, no lo identifica personalmente.\n
+\nLos datos no personales actualmente no se recopilan en la aplicación.\n
+\nLa Aplicación utiliza servicios de Firebase. Al utilizar la aplicación, acepta los términos de esta política.\n
+\nPuede encontrar más información sobre la política de Firebase aquí: https://firebase.google.com/terms\n
+\nAceptación de los términos\n
+\nAl usar la aplicación, acepta los términos de esta política. Si no acepta los términos de esta política, no instale ni utilice la aplicación. Su uso continuado de la aplicación después de cualquier cambio en esta política de privacidad se considerará como su aceptación de los cambios y/o nuevos términos.\n
+\nCambios en la política\n
+\nEsta Política de Privacidad puede ser actualizada en cualquier momento. Se sugiere que verifique estos términos con cada actualización de la aplicación para estar al tanto de cualquier cambio. Usted reconoce y acepta que es su responsabilidad revisar esta política con cada actualización de la aplicación para estar al tanto de los cambios.\n
+\nSi se cambia esta Política, una nueva versión de la aplicación estará disponible para su actualización. Los cambios entrarán en vigor cuando se actualice la aplicación. Por favor revise regularmente la aplicación para actualizaciones.</string>
     <string name="i_accept_the_terms_and_conditions">Acepto el términos y Condiciones</string>
     <!-- Menu -->
     <string name="menu">Menú</string>
@@ -103,6 +90,7 @@
     <string name="not_paid">No pagado</string>
     <string name="received">Recibió</string>
     <string name="not_received">No recibió</string>
+    <string name="no_items">No hay elementos</string>
     <!-- Item Detail -->
     <string name="title">Título</string>
     <string name="description">Descripción</string>
@@ -149,7 +137,7 @@
     <string name="delete_account">Eliminar cuenta</string>
     <string name="are_you_sure_you_want_to_logout">Estas seguro que quieres cerrar sesión?</string>
     <string name="are_you_sure_you_want_to_delete_account">Estas seguro que quieres eliminar la cuenta?</string>
-    <string name="account_deleteded_successfully">Cuenta eliminada exitosamente</string>
+    <string name="account_deleted_successfully">Cuenta eliminada exitosamente</string>
     <string name="failed_to_delete_account">No se puedo eliminar la cuenta</string>
     <!-- Change Password -->
     <string name="change_password">Cambia la contraseña</string>
@@ -159,33 +147,13 @@
     <string name="password_updated_successfully">Contraseña actualizada exitosamente</string>
     <string name="failed_to_update_password">No se puedo actualizar la contraseña</string>
     <!-- About -->
-    <string name="about_text">test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test</string>
+    <string name="version">Versión: %1$s</string>
+    <string name="about_text">Esta es una aplicación para hacer gestión financiera.\n
+\nControlar los gastos mensuales puede ser una tarea difícil para muchas personas. Muchos de ellos no llevan la cuenta de sus gastos, y en ocasiones terminan siendo negativos por gastar más de lo debido. Otras personas llevan la cuenta de sus gastos escribiéndolos, ya sea en una libreta, agenda, diario o incluso en un bloc de notas, y utilizan la ayuda de una calculadora para calcular sus gastos y/o su saldo del mes.\n
+\nEstos gastos pueden ser de los más variados tipos, como compras en el mercado, recibos del hogar como agua, luz, teléfono, gas, cuotas para compras de ropa o menaje, gastos de estudio, útiles escolares, gastos de vehículos, hay una multitud de posibles tipos de gastos que tienen las personas cada mes, y que a muchas de estas personas les resulta difícil llevar un registro de sus gastos.\n
+\nUno de los problemas que sufren las personas que anotan sus gastos en papel es que no siempre que hacen una compra, o pagan alguna factura o gasto, tienen a mano papel y bolígrafo para hacer sus apuntes, y luego se les acaba olvidando anotarlo, y como resultado, terminan por no tener un control eficiente de sus gastos.\n
+\nEn este contexto, esta aplicación pretende ayudar a las personas a controlar sus gastos.\n
+\nEs posible informar gastos, de los más diversos tipos, para controlar todo lo que se gasta en el mes. También es posible reportar ganancias. La aplicación suma ganancias y gastos y muestra el saldo del mes.</string>
     <!-- Month -->
     <string name="january">Enero</string>
     <string name="february">Febrero</string>

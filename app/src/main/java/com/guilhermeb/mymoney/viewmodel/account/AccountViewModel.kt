@@ -8,6 +8,8 @@ import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.cryptography.md5
 import com.guilhermeb.mymoney.common.datastore.getPasswordFromDataStorePreferences
 import com.guilhermeb.mymoney.common.datastore.getPreferencesDataStoreKey
+import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
+import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
 import com.guilhermeb.mymoney.common.validation.isPasswordValid
@@ -30,14 +32,26 @@ class AccountViewModel : ViewModel() {
     }
 
     fun deleteUser(asyncProcess: AsyncProcess) {
+        val userEmail = authenticationViewModel.getCurrentUserEmail()
         authenticationViewModel.deleteUser(object : AsyncProcess {
             override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
                 if (isSuccessful) {
-                    moneyViewModel.removeAllMoneyItemsByUser(authenticationViewModel.getCurrentUserEmail()!!)
+                    userEmail?.let {
+                        moneyViewModel.removeAllMoneyItemsByUser(userEmail)
+                    }
+                    removeUserPreferences(userEmail)
                 }
                 asyncProcess.onComplete(isSuccessful, errorMessage)
             }
         })
+    }
+
+    private fun removeUserPreferences(userEmail: String?) {
+        val sharedPreferencesHelper = SharedPreferencesHelper.getInstance()
+        sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.PASSWORD))
+        sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.LOCALE))
+        sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.CURRENCY))
+        sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.NIGHT_MODE))
     }
 
     // == -- Change Password == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==

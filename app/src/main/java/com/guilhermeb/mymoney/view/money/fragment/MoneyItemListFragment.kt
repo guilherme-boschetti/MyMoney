@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
-import com.guilhermeb.mymoney.MyMoneyApplication
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.component.AnchoredFabBehavior
 import com.guilhermeb.mymoney.common.constant.Constants
@@ -69,7 +68,11 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     if (it.hasExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED) &&
                         it.getBooleanExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED, false)
                     ) {
-                        activity?.recreate()
+                        activity?.let { fragmentActivity ->
+                            if (fragmentActivity is MoneyHostActivity) {
+                                fragmentActivity.recreateActivity()
+                            }
+                        }
                     }
                 }
             }
@@ -116,6 +119,8 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                 binding.layoutListOfItems.recyclerViewMoney.adapter as MoneyItemAdapter
             adapter.submitList(it)
 
+            setupEmptyView(it == null || it.isEmpty())
+
             var totalIncome: BigDecimal = BigDecimal.ZERO
             var totalExpense: BigDecimal = BigDecimal.ZERO
             var totalExpenseFixed: BigDecimal = BigDecimal.ZERO
@@ -154,8 +159,8 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                 )
 
                 val usePreviousMonthBalance = SharedPreferencesHelper.getInstance()
-                    ?.getValue(getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE), false)
-                if (usePreviousMonthBalance != null && usePreviousMonthBalance) {
+                    .getValue(getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE), false)
+                if (usePreviousMonthBalance) {
                     txtBalanceDescription.text =
                         getString(R.string.balance_description_with_previous_month)
                 } else {
@@ -189,7 +194,6 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
         // RecyclerView ----------
         val adapter = MoneyItemAdapter(
             this,
-            moneyViewModel.moneyItems,
             binding.guideline != null,
             false,
             binding.root
@@ -200,6 +204,8 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
         // RecyclerView ItemTouchHelper SwipeCallBack
         val itemTouchHelper = ItemTouchHelper(RecyclerViewSwipeCallBack(adapter))
         itemTouchHelper.attachToRecyclerView(binding.layoutListOfItems.recyclerViewMoney)
+
+        setupEmptyView(moneyViewModel.moneyItems.value == null || moneyViewModel.moneyItems.value!!.isEmpty())
 
         // FloatActionButton ----------
         binding.layoutListOfItems.fabAddItem.setOnClickListener(
@@ -249,6 +255,16 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     R.drawable.ic_baseline_keyboard_arrow_up_24
                 )
             }
+        }
+    }
+
+    private fun setupEmptyView(isEmpty: Boolean) {
+        if (isEmpty) {
+            binding.layoutListOfItems.recyclerViewMoney.visibility = View.GONE
+            binding.layoutListOfItems.txtNoItems.visibility = View.VISIBLE
+        } else {
+            binding.layoutListOfItems.recyclerViewMoney.visibility = View.VISIBLE
+            binding.layoutListOfItems.txtNoItems.visibility = View.GONE
         }
     }
 

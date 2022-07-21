@@ -36,40 +36,27 @@
     <string name="account_disabled">Account disabled</string>
     <string name="invalid_email">Invalid e-mail</string>
     <string name="invalid_password">Invalid password</string>
-    <string name="weak_password">Weak password; Use letters, numbers and special characters.</string>
+    <string name="weak_password">Weak password; Use at least 6 characters, letters, numbers and special characters.</string>
     <string name="account_already_exists">Account already exists; E-mail already registered.</string>
     <string name="email_already_in_use">E-mail already in use; E-mail already registered.</string>
     <string name="credentials_already_in_use">Credentials already in use</string>
 
     <!-- Terms and conditions -->
     <string name="terms_and_conditions_title">Terms and conditions</string>
-    <string name="terms_and_conditions_text">test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test</string>
+    <string name="terms_and_conditions_text">When using the app, you will inevitably share some information. Your privacy and security is valued, please read this Privacy Policy carefully so you can make informed decisions about your use of the app.\n
+\nWhat kind of information is collected from people using the app?\n
+\nPersonal data\n
+\nPersonal data refers to personally identifiable information that specifically identifies you as an individual (e.g. email address). Your email is used for authentication only.\n
+\nNon-personal data\n
+\nNon-personal data refers to information that, by itself, does not personally identify you.\n
+\nNon-personal data is currently not collected in the app.\n
+\nThe Application uses Firebase services. By using the app, you agree to the terms of this policy.\n
+\nYou can find more information about Firebase policy here: https://firebase.google.com/terms\n
+\nAcceptance of terms\n
+\nBy using the app, you agree to the terms of this policy. If you do not accept the terms of this policy, do not install or use the application. Your continued use of the app after any change to this privacy policy will be deemed your acceptance of the changes and/or new terms.\n
+\nPolicy changes\n
+\nThis Privacy Policy may be updated at any time. It is suggested that you check these terms with each app update to be aware of any changes. You acknowledge and accept that it is your responsibility to review this policy with each application update to be aware of changes.\n
+\nIf this Policy is changed, a new version of the application will be made available for update. The changes will take effect when the app is updated. Please regularly check the app for updates.</string>
     <string name="i_accept_the_terms_and_conditions">I accept the terms and conditions</string>
     <!-- Menu -->
     <string name="menu">Menu</string>
@@ -102,6 +89,7 @@
     <string name="not_paid">Not paid</string>
     <string name="received">Received</string>
     <string name="not_received">Not received</string>
+    <string name="no_items">No items</string>
     <!-- Item Detail -->
     <string name="title">Title</string>
     <string name="description">Description</string>
@@ -148,7 +136,7 @@
     <string name="delete_account">Delete account</string>
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
     <string name="are_you_sure_you_want_to_delete_account">Are you sure you want to delete account?</string>
-    <string name="account_deleteded_successfully">Account deleted successfully</string>
+    <string name="account_deleted_successfully">Account deleted successfully</string>
     <string name="failed_to_delete_account">Failed to delete account</string>
     <!-- Change Password -->
     <string name="change_password">Change Password</string>
@@ -158,33 +146,13 @@
     <string name="password_updated_successfully">Password updated successfully</string>
     <string name="failed_to_update_password">Failed to update password</string>
     <!-- About -->
-    <string name="about_text">test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-    \n\n
-     test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test
-     test test test test test test test test test test test test test test test test test test test test test</string>
+    <string name="version">Version: %1$s</string>
+    <string name="about_text">This is an application to do financial management.\n
+\nControlling monthly expenses can be a difficult task for many people. Many of them do not keep track of their spending, and sometimes end up being negative for spending more than they should. Other people keep track of their expenses by writing it down, whether in a notebook, diary or even a notepad, and use the help of a calculator to calculate their expenses and/or their balance for the month.\n
+\nThese expenses can be of varied types, such as purchases at the market, household bills such as water, electricity, telephone, gas, installments for purchases of clothes or household items, study expenses, school supplies, vehicle expenses, there are a multitude of possible types of expenses that people have every month, and many of these people have difficulty keeping track of their expenses.\n
+\nOne of the problems suffered by people who write down their expenses on paper is that not whenever they make a purchase, or pay for some bill or expense, they have their paper and pen at hand to make their notes, and later they end up forgetting to write it down, and as a result, they end up not having an efficient control of their expenses.\n
+\nIn this context, this application aims to help people to control their expenses.\n
+\nIt is possible to inform expenses, of the most diverse types, to control everything that is spent in the month. It is also possible to report earnings. The application adds up earnings and expenses and displays the balance for the month.</string>
     <!-- Month -->
     <string name="january">January</string>
     <string name="february">February</string>
