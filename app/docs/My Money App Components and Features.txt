@@ -7,13 +7,13 @@ Components and Features:
 - ConstraintLayout
 - ViewBinding
 - DataBinding
-- RecyclerView
 - LiveData
+- RecyclerView
 - Navigation
-- SharedPreferences
 - DataStore Preferences
 - Room
 - Coroutines
+- Flow
 - DI (dependency injection) (Hilt)
 - Unit Testing
 - Multi language

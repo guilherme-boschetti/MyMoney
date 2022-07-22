@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.cryptography.md5
-import com.guilhermeb.mymoney.common.datastore.getPasswordFromDataStorePreferences
-import com.guilhermeb.mymoney.common.datastore.getPreferencesDataStoreKey
+import com.guilhermeb.mymoney.common.helper.DataStorePreferencesHelper
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
+import com.guilhermeb.mymoney.common.helper.getPreferencesDataStoreKey
 import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
@@ -47,8 +47,13 @@ class AccountViewModel : ViewModel() {
     }
 
     private fun removeUserPreferences(userEmail: String?) {
+        DataStorePreferencesHelper.getInstance().removeStringFromDataStorePreferences(
+            getPreferencesDataStoreKey(
+                userEmail,
+                Constants.PASSWORD
+            )
+        )
         val sharedPreferencesHelper = SharedPreferencesHelper.getInstance()
-        sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.PASSWORD))
         sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.LOCALE))
         sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.CURRENCY))
         sharedPreferencesHelper.remove(getSharedPreferencesKey(userEmail, Constants.NIGHT_MODE))
@@ -75,7 +80,8 @@ class AccountViewModel : ViewModel() {
         newPasswordRepeated: String
     ): Boolean {
         val passwordFromDataStore =
-            getPasswordFromDataStorePreferences(getPreferencesDataStoreKey(Constants.PASSWORD))
+            DataStorePreferencesHelper.getInstance()
+                .getStringFromDataStorePreferences(getPreferencesDataStoreKey(Constants.PASSWORD))
         if (!isPasswordValid(currentPassword) || md5(currentPassword) != passwordFromDataStore) {
             _changePasswordFormState.value =
                 ChangePasswordFormState(

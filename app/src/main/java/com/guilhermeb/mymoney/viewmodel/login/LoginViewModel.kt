@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.cryptography.md5
-import com.guilhermeb.mymoney.common.datastore.getPreferencesDataStoreKey
-import com.guilhermeb.mymoney.common.datastore.savePasswordIntoDataStorePreferences
+import com.guilhermeb.mymoney.common.helper.DataStorePreferencesHelper
+import com.guilhermeb.mymoney.common.helper.getPreferencesDataStoreKey
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
 import com.guilhermeb.mymoney.viewmodel.login.state.LoginFormState
@@ -46,7 +46,7 @@ class LoginViewModel : ViewModel() {
     fun signIn(email: String, password: String, asyncProcess: AsyncProcess) {
         authenticationViewModel.signIn(email, password, object : AsyncProcess {
             override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
-                savePasswordIntoDataStorePreferences(
+                DataStorePreferencesHelper.getInstance().saveStringIntoDataStorePreferences(
                     getPreferencesDataStoreKey(Constants.PASSWORD),
                     md5(password)
                 )

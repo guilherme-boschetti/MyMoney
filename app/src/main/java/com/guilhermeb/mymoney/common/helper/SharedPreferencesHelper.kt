@@ -1,19 +1,18 @@
 package com.guilhermeb.mymoney.common.helper
 
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
-
-import android.content.SharedPreferences
 import com.guilhermeb.mymoney.MyMoneyApplication
+import com.guilhermeb.mymoney.model.data.local.sharedpreferences.SharedPrefs
+import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
+import com.guilhermeb.mymoney.model.repository.sharedpreferences.SharedPreferencesRepository
 
-class SharedPreferencesHelper private constructor(context: Context) {
+class SharedPreferencesHelper {
 
-    private var preferences: SharedPreferences? = null
-
-    init {
-        preferences =
-            context.getSharedPreferences(MyMoneyApplication::class.java.toString(), MODE_PRIVATE)
-    }
+    private val sharedPrefs =
+        SharedPrefs.getInstance(MyMoneyApplication.getInstance().applicationContext)
+    private val sharedPrefsDataAccess =
+        SharedPrefsDataAccess(sharedPrefs)
+    private val sharedPreferencesRepository =
+        SharedPreferencesRepository(sharedPrefsDataAccess)
 
     /**
      * Singleton instance
@@ -26,92 +25,38 @@ class SharedPreferencesHelper private constructor(context: Context) {
         fun getInstance(): SharedPreferencesHelper {
             if (instance == null) {
                 instance =
-                    SharedPreferencesHelper(MyMoneyApplication.getInstance().applicationContext)
+                    SharedPreferencesHelper()
             }
             return instance!!
         }
     }
 
-    /**
-     * Get a String value from Shared Preferences
-     *
-     * @param key
-     * @param returnOnNull
-     * @return
-     */
     fun getValue(key: String?, returnOnNull: String?): String? {
-        return preferences!!.getString(key, returnOnNull)
+        return sharedPreferencesRepository.getValue(key, returnOnNull)
     }
 
-    /**
-     * Get a Boolean value from Shared Preferences
-     *
-     * @param key
-     * @param returnOnNull
-     * @return
-     */
     fun getValue(key: String?, returnOnNull: Boolean): Boolean {
-        return preferences!!.getBoolean(key, returnOnNull)
+        return sharedPreferencesRepository.getValue(key, returnOnNull)
     }
 
-    /**
-     * Get a Int value from Shared Preferences
-     *
-     * @param key
-     * @param returnOnNull
-     * @return
-     */
     fun getValue(key: String?, returnOnNull: Int): Int {
-        return preferences!!.getInt(key, returnOnNull)
+        return sharedPreferencesRepository.getValue(key, returnOnNull)
     }
 
-    /**
-     * Put a String value in Shared Preferences
-     *
-     * @param key
-     * @param value
-     */
     fun setValue(key: String?, value: String?) {
-        val editor = preferences!!.edit()
-        editor.putString(key, value)
-        editor.commit()
+        sharedPreferencesRepository.setValue(key, value)
     }
 
-
-    /**
-     * Put a Boolean value in Shared Preferences
-     *
-     * @param key
-     * @param value
-     */
     fun setValue(key: String?, value: Boolean) {
-        val editor = preferences!!.edit()
-        editor.putBoolean(key, value)
-        editor.commit()
+        sharedPreferencesRepository.setValue(key, value)
     }
 
-    /**
-     * Put a Int value in Shared Preferences
-     *
-     * @param key
-     * @param value
-     */
     fun setValue(key: String?, value: Int) {
-        val editor = preferences!!.edit()
-        editor.putInt(key, value)
-        editor.commit()
+        sharedPreferencesRepository.setValue(key, value)
     }
 
-    /**
-     * Remove a key from Shared Preferences
-     *
-     * @param key
-     */
-    @Suppress("unused")
     fun remove(key: String?) {
-        val editor = preferences!!.edit()
-        editor.remove(key)
-        editor.commit()
+        sharedPreferencesRepository.remove(key)
     }
 }
 
