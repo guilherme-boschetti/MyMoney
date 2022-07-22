@@ -144,13 +144,13 @@ class MaskUtil {
 
         fun mask(text: String, mask: String?): String {
             return if (mask == null) {
-                // get only the numbers
-                val auxValue = text.replace("[^\\d]".toRegex(), "")
-                //Convert to BigDecimal
-                var aux = BigDecimal(auxValue)
-                aux = aux.divide(BigDecimal.valueOf(10.0.pow(2.0)), 2, BigDecimal.ROUND_HALF_EVEN)
-                val mascara: String = getDecimalFormat().format(aux)
-                mascara
+                try {
+                    //Convert to BigDecimal
+                    val value = BigDecimal(text)
+                    getFormattedValueText(value)
+                } catch (e: Exception) {
+                    ""
+                }
             } else {
                 val str = unmask(text)
                 var mascara = ""

@@ -74,6 +74,7 @@
             android:id="@+id/txt_balance_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:background="@color/app_screen_background"
             android:gravity="center"
@@ -89,38 +90,10 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/txt_previous_month_balance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="@string/previous_month_balance"
-            android:textColor="@color/color_text"
-            android:textSize="@dimen/default_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txt_previous_month_balance_value"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_balance_description"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/txt_previous_month_balance_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_text"
-            android:textSize="@dimen/default_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/txt_previous_month_balance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txt_previous_month_balance"
-            tools:text="@string/hint_value" />
-
-        <TextView
             android:id="@+id/txt_total_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
             android:text="@string/total_income"
             android:textColor="@color/color_text"
@@ -129,7 +102,7 @@
             app:layout_constraintEnd_toStartOf="@id/txt_total_income_value"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_previous_month_balance"
+            app:layout_constraintTop_toBottomOf="@id/txt_balance_description"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -174,10 +147,39 @@
             tools:text="@string/hint_value" />
 
         <TextView
+            android:id="@+id/txt_previous_month_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:text="@string/previous_month_balance"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txt_previous_month_balance_value"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_total_expense"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_previous_month_balance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/txt_previous_month_balance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_previous_month_balance"
+            tools:text="@string/hint_value" />
+
+        <TextView
             android:id="@+id/txt_total_expense_fixed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
             android:text="@string/total_expense_fixed"
             android:textColor="@color/color_text"
@@ -186,7 +188,7 @@
             app:layout_constraintEnd_toStartOf="@id/txt_total_expense_value"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_total_expense"
+            app:layout_constraintTop_toBottomOf="@id/txt_previous_month_balance"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView

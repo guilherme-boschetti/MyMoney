@@ -163,8 +163,12 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                 if (usePreviousMonthBalance) {
                     txtBalanceDescription.text =
                         getString(R.string.balance_description_with_previous_month)
+                    txtPreviousMonthBalance.visibility = View.VISIBLE
+                    txtPreviousMonthBalanceValue.visibility = View.VISIBLE
                 } else {
                     txtBalanceDescription.text = getString(R.string.balance_description)
+                    txtPreviousMonthBalance.visibility = View.GONE
+                    txtPreviousMonthBalanceValue.visibility = View.GONE
                 }
 
                 txtBalanceValueTitle.setTextColor(balanceValueColor)
