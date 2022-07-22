@@ -3,7 +3,7 @@ Design Patern: MVVM
 
 Components and Features:
 
-- Splash screen api
+- Splash Screen API
 - ConstraintLayout
 - ViewBinding
 - DataBinding
@@ -16,7 +16,7 @@ Components and Features:
 - Flow
 - DI (dependency injection) (Hilt)
 - Unit Test
-- Multi language
+- Multi Language
 
 - Firebase:
   - Authentication
