@@ -51,7 +51,7 @@ class LoginActivity : AbstractActivity() {
         // Check if user is signed in
         val currentUserEmail = loginViewModel.getCurrentUserEmail()
         if (currentUserEmail != null) {
-            goToMoneyHostActivity()
+            configNightModeAndGoToMoneyHostActivity()
         }
     }
 
@@ -153,8 +153,12 @@ class LoginActivity : AbstractActivity() {
         }
     }
 
-    private fun goToMoneyHostActivity() {
+    private fun configNightModeAndGoToMoneyHostActivity() {
         configNightMode()
+        goToMoneyHostActivity()
+    }
+
+    private fun goToMoneyHostActivity() {
         val intent = Intent(this, MoneyHostActivity::class.java)
         startActivity(intent)
         finish()
@@ -168,7 +172,7 @@ class LoginActivity : AbstractActivity() {
             override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
                 progressDialog.dismiss()
                 if (isSuccessful) {
-                    goToMoneyHostActivity()
+                    configNightModeAndGoToMoneyHostActivity()
                 } else {
                     val message = errorMessage ?: getString(R.string.failed_to_login)
                     showToast(this@LoginActivity, message)

@@ -15,7 +15,7 @@ Components and Features:
 - Coroutines
 - Flow
 - DI (dependency injection) (Hilt)
-- Unit Testing
+- Unit Test
 - Multi language
 
 - Firebase:
