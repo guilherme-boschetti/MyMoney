@@ -9,6 +9,7 @@ import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.extension.afterTextChanged
 import com.guilhermeb.mymoney.common.extension.changeHintOnFocusChange
 import com.guilhermeb.mymoney.common.extension.hideSoftKeyboard
+import com.guilhermeb.mymoney.common.util.configNightMode
 import com.guilhermeb.mymoney.common.util.isNetworkAvailable
 import com.guilhermeb.mymoney.common.util.showToast
 import com.guilhermeb.mymoney.databinding.ActivityLoginBinding
@@ -153,6 +154,7 @@ class LoginActivity : AbstractActivity() {
     }
 
     private fun goToMoneyHostActivity() {
+        configNightMode()
         val intent = Intent(this, MoneyHostActivity::class.java)
         startActivity(intent)
         finish()

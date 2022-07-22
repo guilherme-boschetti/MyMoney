@@ -25,8 +25,8 @@ fun Context.isUiModeNightActive(): Boolean {
             .getValue(getSharedPreferencesKey(Constants.NIGHT_MODE), Constants.FOLLOW_SYSTEM)
     if (nightMode != null) {
         when (nightMode) {
-            Constants.YES -> return true
             Constants.NO -> return false
+            Constants.YES -> return true
         }
     }
     when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
