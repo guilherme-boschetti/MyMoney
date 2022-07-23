@@ -1,18 +1,29 @@
 package com.guilhermeb.mymoney.common.helper
 
 import com.guilhermeb.mymoney.MyMoneyApplication
-import com.guilhermeb.mymoney.model.data.local.datastore.preferences.DataStorePrefs
-import com.guilhermeb.mymoney.model.data.local.datastore.preferences.dataaccess.DataStorePrefsDataAccess
 import com.guilhermeb.mymoney.model.repository.datastore.preferences.DataStorePreferencesRepository
+import dagger.hilt.EntryPoint
+import dagger.hilt.EntryPoints
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 class DataStorePreferencesHelper {
 
-    private val dataStorePrefs =
-        DataStorePrefs.getInstance(MyMoneyApplication.getInstance().applicationContext)
-    private val dataStorePrefsDataAccess =
-        DataStorePrefsDataAccess(dataStorePrefs)
-    private val dataStorePreferencesRepository =
-        DataStorePreferencesRepository(dataStorePrefsDataAccess)
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface DataStorePreferencesRepositoryInterface {
+        fun getDataStorePreferencesRepository(): DataStorePreferencesRepository
+    }
+
+    private val dataStorePreferencesRepository: DataStorePreferencesRepository
+
+    init {
+        val dataStorePrefsInterface = EntryPoints.get(
+            MyMoneyApplication.getInstance().applicationContext,
+            DataStorePreferencesRepositoryInterface::class.java
+        )
+        dataStorePreferencesRepository = dataStorePrefsInterface.getDataStorePreferencesRepository()
+    }
 
     /**
      * Singleton instance

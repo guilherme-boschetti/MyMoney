@@ -18,7 +18,6 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -43,9 +42,11 @@ import com.guilhermeb.mymoney.view.money.adapter.MoneyItemAdapter
 import com.guilhermeb.mymoney.view.money.adapter.RecyclerViewSwipeCallBack
 import com.guilhermeb.mymoney.view.money.listener.MoneyItemClickListener
 import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModel
-import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import java.math.BigDecimal
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallback {
 
     private var _binding: FragmentMoneyItemListBinding? = null
@@ -53,12 +54,8 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-    private val moneyViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MoneyViewModelFactory(false)
-        )[MoneyViewModel::class.java]
-    }
+    @Inject
+    lateinit var moneyViewModel: MoneyViewModel
 
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

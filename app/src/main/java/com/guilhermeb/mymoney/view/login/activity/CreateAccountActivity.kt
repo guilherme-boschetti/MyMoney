@@ -15,15 +15,17 @@ import com.guilhermeb.mymoney.view.app.offline.activity.OfflineActivity
 import com.guilhermeb.mymoney.view.login.dialog.TermsAndConditionsDialog
 import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
 import com.guilhermeb.mymoney.viewmodel.login.CreateAccountViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class CreateAccountActivity : AbstractActivity(),
     TermsAndConditionsDialog.TermsAndConditionsCallback {
 
     private lateinit var createAccountViewBinding: ActivityCreateAccountBinding
 
-    private val createAccountViewModel by lazy {
-        CreateAccountViewModel()
-    }
+    @Inject
+    lateinit var createAccountViewModel: CreateAccountViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.guilhermeb.mymoney.MyMoneyApplication
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.util.DateUtil
 import com.guilhermeb.mymoney.common.util.MaskUtil
-import com.guilhermeb.mymoney.model.data.local.room.database.MyMoneyDB
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.model.repository.money.MoneyRepository
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
@@ -16,17 +14,12 @@ import com.guilhermeb.mymoney.viewmodel.money.state.MoneyFormState
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.util.*
+import javax.inject.Inject
 
-class MoneyViewModel : ViewModel() {
-
-    private val authenticationViewModel by lazy {
-        AuthenticationViewModel()
-    }
-    private val moneyRepository by lazy {
-        val dataSource =
-            MyMoneyDB.getInstance(MyMoneyApplication.getInstance().applicationContext).moneyDao
-        MoneyRepository(dataSource)
-    }
+class MoneyViewModel @Inject constructor(
+    private val moneyRepository: MoneyRepository,
+    private val authenticationViewModel: AuthenticationViewModel
+) : ViewModel() {
 
     private val _moneyItems = MutableLiveData<List<Money>>()
     val moneyItems: LiveData<List<Money>> get() = _moneyItems

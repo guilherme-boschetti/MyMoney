@@ -5,13 +5,15 @@ import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
 import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
+import dagger.hilt.android.HiltAndroidApp
 import java.util.*
+import javax.inject.Inject
 
+@HiltAndroidApp
 class MyMoneyApplication : Application() {
 
-    private val authenticationViewModel by lazy {
-        AuthenticationViewModel()
-    }
+    @Inject
+    lateinit var  authenticationViewModel: AuthenticationViewModel
 
     override fun onCreate() {
         super.onCreate()

@@ -18,14 +18,16 @@ import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
 import com.guilhermeb.mymoney.view.app.offline.activity.OfflineActivity
 import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
 import com.guilhermeb.mymoney.viewmodel.login.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : AbstractActivity() {
 
     private lateinit var loginViewBinding: ActivityLoginBinding
 
-    private val loginViewModel by lazy {
-        LoginViewModel()
-    }
+    @Inject
+    lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen() // Handle the splash screen transition.

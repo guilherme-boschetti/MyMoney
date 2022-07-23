@@ -13,14 +13,16 @@ import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
 import com.guilhermeb.mymoney.view.app.offline.activity.OfflineActivity
 import com.guilhermeb.mymoney.viewmodel.login.ForgotPasswordViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ForgotPasswordActivity : AbstractActivity() {
 
     private lateinit var forgotPasswordViewBinding: ActivityForgotPasswordBinding
 
-    private val forgotPasswordViewModel by lazy {
-        ForgotPasswordViewModel()
-    }
+    @Inject
+    lateinit var forgotPasswordViewModel: ForgotPasswordViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

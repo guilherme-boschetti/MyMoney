@@ -1,15 +1,12 @@
 package com.guilhermeb.mymoney.viewmodel.authentication
 
 import androidx.lifecycle.ViewModel
-import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseAuthentication
 import com.guilhermeb.mymoney.model.repository.authentication.AuthenticationRepository
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
+import javax.inject.Inject
 
-class AuthenticationViewModel : ViewModel() {
-
-    private val authenticationRepository by lazy {
-        AuthenticationRepository(FirebaseAuthentication())
-    }
+class AuthenticationViewModel @Inject constructor(private val authenticationRepository: AuthenticationRepository) :
+    ViewModel() {
 
     fun getCurrentUserEmail(): String? {
         return authenticationRepository.getCurrentUserEmail()

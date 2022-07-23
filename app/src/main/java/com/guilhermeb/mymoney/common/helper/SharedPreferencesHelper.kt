@@ -1,18 +1,30 @@
 package com.guilhermeb.mymoney.common.helper
 
 import com.guilhermeb.mymoney.MyMoneyApplication
-import com.guilhermeb.mymoney.model.data.local.sharedpreferences.SharedPrefs
-import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
 import com.guilhermeb.mymoney.model.repository.sharedpreferences.SharedPreferencesRepository
+import dagger.hilt.EntryPoint
+import dagger.hilt.EntryPoints
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 class SharedPreferencesHelper {
 
-    private val sharedPrefs =
-        SharedPrefs.getInstance(MyMoneyApplication.getInstance().applicationContext)
-    private val sharedPrefsDataAccess =
-        SharedPrefsDataAccess(sharedPrefs)
-    private val sharedPreferencesRepository =
-        SharedPreferencesRepository(sharedPrefsDataAccess)
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface SharedPreferencesRepositoryInterface {
+        fun getSharedPreferencesRepository(): SharedPreferencesRepository
+    }
+
+    private val sharedPreferencesRepository: SharedPreferencesRepository
+
+    init {
+        val sharedPreferencesRepositoryInterface = EntryPoints.get(
+            MyMoneyApplication.getInstance().applicationContext,
+            SharedPreferencesRepositoryInterface::class.java
+        )
+        sharedPreferencesRepository =
+            sharedPreferencesRepositoryInterface.getSharedPreferencesRepository()
+    }
 
     /**
      * Singleton instance

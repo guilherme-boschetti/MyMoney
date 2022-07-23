@@ -13,12 +13,10 @@ import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
 import com.guilhermeb.mymoney.viewmodel.login.state.CreateAccountFormState
 import com.guilhermeb.mymoney.common.validation.isEmailValid
 import com.guilhermeb.mymoney.common.validation.isPasswordValid
+import javax.inject.Inject
 
-class CreateAccountViewModel : ViewModel() {
-
-    private val authenticationViewModel by lazy {
-        AuthenticationViewModel()
-    }
+class CreateAccountViewModel @Inject constructor(private val authenticationViewModel: AuthenticationViewModel) :
+    ViewModel() {
 
     private val _createAccountFormState = MutableLiveData<CreateAccountFormState>()
     val createAccountFormState: LiveData<CreateAccountFormState> = _createAccountFormState

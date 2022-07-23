@@ -19,7 +19,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.guilhermeb.mymoney.R
@@ -35,10 +34,12 @@ import com.guilhermeb.mymoney.databinding.FragmentMoneyItemDetailBinding
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
 import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModel
-import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import java.math.BigDecimal
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MoneyItemDetailFragment : Fragment() {
 
     private var itemId: Long = 0
@@ -52,12 +53,8 @@ class MoneyItemDetailFragment : Fragment() {
 
     private val binding get() = _binding!! // This property is only valid between onCreateView and onDestroyView.
 
-    private val moneyViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MoneyViewModelFactory(true)
-        )[MoneyViewModel::class.java]
-    }
+    @Inject
+    lateinit var moneyViewModel: MoneyViewModel
 
     private var money: Money? = null
 

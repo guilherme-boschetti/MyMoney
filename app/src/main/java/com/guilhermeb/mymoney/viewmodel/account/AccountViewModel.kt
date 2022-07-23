@@ -15,15 +15,12 @@ import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
 import com.guilhermeb.mymoney.common.validation.isPasswordValid
 import com.guilhermeb.mymoney.viewmodel.account.state.ChangePasswordFormState
 import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModel
+import javax.inject.Inject
 
-class AccountViewModel : ViewModel() {
-
-    private val authenticationViewModel by lazy {
-        AuthenticationViewModel()
-    }
-    private val moneyViewModel by lazy {
-        MoneyViewModel()
-    }
+class AccountViewModel @Inject constructor(
+    private val moneyViewModel: MoneyViewModel,
+    private val authenticationViewModel: AuthenticationViewModel
+) : ViewModel() {
 
     // == -- Account == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==
 

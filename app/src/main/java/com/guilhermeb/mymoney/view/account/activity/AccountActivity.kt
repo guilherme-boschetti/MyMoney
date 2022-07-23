@@ -14,14 +14,16 @@ import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
 import com.guilhermeb.mymoney.view.login.activity.LoginActivity
 import com.guilhermeb.mymoney.viewmodel.account.AccountViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AccountActivity : AbstractActivity() {
 
     private lateinit var accountViewBinding: ActivityAccountBinding
 
-    private val accountViewModel by lazy {
-        AccountViewModel()
-    }
+    @Inject
+    lateinit var accountViewModel: AccountViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

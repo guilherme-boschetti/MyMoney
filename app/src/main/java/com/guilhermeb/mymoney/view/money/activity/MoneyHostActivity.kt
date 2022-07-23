@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -14,8 +13,10 @@ import com.guilhermeb.mymoney.databinding.ActivityMoneyHostBinding
 import com.guilhermeb.mymoney.databinding.NavHeaderDrawerBinding
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
 import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModel
-import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MoneyHostActivity : AbstractActivity() {
 
     private lateinit var binding: ActivityMoneyHostBinding
@@ -27,12 +28,8 @@ class MoneyHostActivity : AbstractActivity() {
 
     private lateinit var mDrawerMenuMonths: List<String>
 
-    private val moneyViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MoneyViewModelFactory(true)
-        )[MoneyViewModel::class.java]
-    }
+    @Inject
+    lateinit var moneyViewModel: MoneyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
