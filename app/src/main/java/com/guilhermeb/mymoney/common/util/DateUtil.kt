@@ -16,7 +16,7 @@ class DateUtil {
 
         init {
             val timeZone = TimeZone.getTimeZone("UTC")
-            YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.timeZone = timeZone
+            //YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.timeZone = timeZone
             DAY_MONTH_YEAR.timeZone = timeZone
         }
 

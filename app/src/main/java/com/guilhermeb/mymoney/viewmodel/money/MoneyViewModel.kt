@@ -100,7 +100,7 @@ class MoneyViewModel @Inject constructor(
         calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY))
         calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE))
         calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND))
-        calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND))
+        //calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND))
 
         val startDate = DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(calendar.time)
 
@@ -108,7 +108,7 @@ class MoneyViewModel @Inject constructor(
         calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMaximum(Calendar.HOUR_OF_DAY))
         calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE))
         calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND))
-        calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND))
+        //calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND))
 
         val endDate = DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(calendar.time)
 
