@@ -15,100 +15,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.guilhermeb.mymoney.MyMoneyApplication
 import com.guilhermeb.mymoney.R
-import com.guilhermeb.mymoney.common.enum.MoneyType
 import com.guilhermeb.mymoney.common.extension.getAndroidTextColorPrimary
 import com.guilhermeb.mymoney.common.extension.showConfirmationDialog
-import com.guilhermeb.mymoney.common.util.MaskUtil
 import com.guilhermeb.mymoney.databinding.ItemMoneyBinding
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.view.money.adapter.MoneyItemAdapter
 import com.guilhermeb.mymoney.view.money.listener.MoneyItemClickListener
 
 class MoneyItemViewHolder(
-    private val itemMoneyViewBinding: ItemMoneyBinding,
+    private val itemMoneyBinding: ItemMoneyBinding,
     private val mAdapter: MoneyItemAdapter
 ) :
-    RecyclerView.ViewHolder(itemMoneyViewBinding.root), View.OnCreateContextMenuListener {
+    RecyclerView.ViewHolder(itemMoneyBinding.root), View.OnCreateContextMenuListener {
 
     private lateinit var clickListener: MoneyItemClickListener
 
     fun bind(moneyItem: Money, clickListener: MoneyItemClickListener) {
         this.clickListener = clickListener
 
-        val context = MyMoneyApplication.getInstance().applicationContext
+        itemMoneyBinding.money = moneyItem
 
-        itemMoneyViewBinding.txtItemTitle.text = moneyItem.title
-        itemMoneyViewBinding.txtItemDescription.text = moneyItem.description
-        itemMoneyViewBinding.txtItemValue.text = MaskUtil.getFormattedValueText(moneyItem.value)
+        itemMoneyBinding.root.setOnClickListener(clickListener)
 
-        if (moneyItem.dueDay != null && moneyItem.dueDay!! > 0) {
-            val label = if (MoneyType.INCOME.name == moneyItem.type) {
-                context.getString(R.string.reception_day)
-            } else {
-                context.getString(R.string.due_day)
-            }
-            itemMoneyViewBinding.txtItemDueDay.visibility = View.VISIBLE
-            itemMoneyViewBinding.txtItemDueDay.text = label + ": " + moneyItem.dueDay.toString()
-        } else {
-            itemMoneyViewBinding.txtItemDueDay.visibility = View.INVISIBLE
-        }
-
-        if (MoneyType.INCOME.name == moneyItem.type) {
-            itemMoneyViewBinding.txtItemNotPaid.text =
-                context.getString(R.string.not_received)
-            itemMoneyViewBinding.chkItemPaid.text =
-                context.getString(R.string.received)
-        } else {
-            itemMoneyViewBinding.txtItemNotPaid.text =
-                context.getString(R.string.not_paid)
-            itemMoneyViewBinding.chkItemPaid.text =
-                context.getString(R.string.paid)
-        }
-        if (moneyItem.paid) {
-            itemMoneyViewBinding.txtItemNotPaid.visibility = View.INVISIBLE
-            itemMoneyViewBinding.chkItemPaid.visibility = View.VISIBLE
-            itemMoneyViewBinding.chkItemPaid.isChecked = true
-        } else {
-            itemMoneyViewBinding.txtItemNotPaid.visibility = View.VISIBLE
-            itemMoneyViewBinding.chkItemPaid.visibility = View.INVISIBLE
-            itemMoneyViewBinding.chkItemPaid.isChecked = false
-        }
-
-        val type = if (MoneyType.INCOME.name == moneyItem.type) {
-            context.getString(R.string.income)
-        } else if (MoneyType.EXPENSE.name == moneyItem.type) {
-            context.getString(R.string.expense)
-        } else {
-            ""
-        }
-        itemMoneyViewBinding.txtItemType.text = type
-
-        val itemValueColor = ContextCompat.getColor(
-            context,
-            if (MoneyType.INCOME.name == moneyItem.type) {
-                R.color.app_green
-            } else if (MoneyType.EXPENSE.name == moneyItem.type) {
-                R.color.red
-            } else {
-                R.color.color_text
-            }
-        )
-        itemMoneyViewBinding.txtItemValue.setTextColor(itemValueColor)
-
-        itemMoneyViewBinding.root.setOnClickListener(clickListener)
-
-        itemMoneyViewBinding.root.setOnCreateContextMenuListener(this)
+        itemMoneyBinding.root.setOnCreateContextMenuListener(this)
     }
 
     companion object {
         fun from(parent: ViewGroup, adapter: MoneyItemAdapter): MoneyItemViewHolder {
-            val itemMoneyViewBinding: ItemMoneyBinding =
+            val itemMoneyBinding =
                 ItemMoneyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return MoneyItemViewHolder(itemMoneyViewBinding, adapter)
+            return MoneyItemViewHolder(itemMoneyBinding, adapter)
         }
     }
 
@@ -174,12 +113,12 @@ class MoneyItemViewHolder(
 
         menuItemView.setOnMenuItemClickListener {
             clickListener.editItem = false
-            clickListener.onClick(itemMoneyViewBinding.root)
+            clickListener.onClick(itemMoneyBinding.root)
             return@setOnMenuItemClickListener true
         }
         menuItemEdit.setOnMenuItemClickListener {
             clickListener.editItem = true
-            clickListener.onClick(itemMoneyViewBinding.root)
+            clickListener.onClick(itemMoneyBinding.root)
             return@setOnMenuItemClickListener true
         }
         menuItemDelete.setOnMenuItemClickListener {

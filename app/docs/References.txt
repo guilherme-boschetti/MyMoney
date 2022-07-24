@@ -163,6 +163,7 @@ DataStore:
 DataBinding:
 
 	https://developer.android.com/topic/libraries/data-binding
+	https://developer.android.com/codelabs/android-databinding
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 

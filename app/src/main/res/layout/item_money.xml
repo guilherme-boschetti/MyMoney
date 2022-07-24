@@ -1,118 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/item_money_background"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:padding="@dimen/screen_margin"
-    tools:ignore="UnusedAttribute">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/txt_item_title"
-        android:layout_width="wrap_content"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="money"
+            type="com.guilhermeb.mymoney.model.data.local.room.entity.money.Money" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/default_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck"
-        tools:text="@string/title" />
+        android:background="@color/item_money_background"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/screen_margin"
+        tools:ignore="UnusedAttribute">
 
-    <TextView
-        android:id="@+id/txt_item_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/small_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_item_title"
-        tools:ignore="TextContrastCheck"
-        tools:text="@string/description" />
+        <TextView
+            android:id="@+id/txt_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{money.title}"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/title" />
 
-    <CheckBox
-        android:id="@+id/chk_item_paid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:checked="true"
-        android:clickable="false"
-        android:enabled="false"
-        android:focusable="false"
-        android:text="@string/paid"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/default_text_size"
-        android:theme="@style/AppCheckBoxAndRadioButtonAndSwitch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_item_description"
-        tools:ignore="TextContrastCheck" />
+        <TextView
+            android:id="@+id/txt_item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{money.description}"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_item_title"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/description" />
 
-    <TextView
-        android:id="@+id/txt_item_not_paid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_paid"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/default_text_size"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/chk_item_paid"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/chk_item_paid"
-        tools:ignore="TextContrastCheck" />
+        <CheckBox
+            android:id="@+id/chk_item_paid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="@{money.paid ? true : false}"
+            android:clickable="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            android:theme="@style/AppCheckBoxAndRadioButtonAndSwitch"
+            android:visibility="@{money.paid ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_item_description"
+            app:setTextChkItemPaidByType="@{money.type}"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/paid" />
 
-    <TextView
-        android:id="@+id/txt_item_due_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/due_day"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/default_text_size"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chk_item_paid"
-        tools:ignore="TextContrastCheck" />
+        <TextView
+            android:id="@+id/txt_item_not_paid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            android:visibility="@{money.paid ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@id/chk_item_paid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/chk_item_paid"
+            app:setTextItemNotPaidByType="@{money.type}"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/not_paid" />
 
-    <TextView
-        android:id="@+id/txt_item_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/default_text_size"
-        app:layout_constraintBottom_toBottomOf="@id/txt_item_due_day"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/txt_item_due_day"
-        app:layout_constraintTop_toTopOf="@id/txt_item_due_day"
-        tools:ignore="TextContrastCheck"
-        tools:text="@string/expense" />
+        <TextView
+            android:id="@+id/txt_item_due_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            android:visibility="@{money.fixed &amp;&amp; money.dueDay > 0 ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chk_item_paid"
+            app:setTextDueDay="@{money}"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/due_day" />
 
-    <TextView
-        android:id="@+id/txt_item_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_text"
-        android:textSize="@dimen/default_text_size"
-        app:layout_constraintBottom_toBottomOf="@id/chk_item_paid"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/chk_item_paid"
-        app:layout_constraintTop_toTopOf="@id/chk_item_paid"
-        tools:ignore="TextContrastCheck"
-        tools:text="@string/hint_value" />
+        <TextView
+            android:id="@+id/txt_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/txt_item_due_day"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/txt_item_due_day"
+            app:layout_constraintTop_toTopOf="@id/txt_item_due_day"
+            app:setMoneyType="@{money.type}"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/expense" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txt_item_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/chk_item_paid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/chk_item_paid"
+            app:layout_constraintTop_toTopOf="@id/chk_item_paid"
+            app:setTextColorByType="@{money.type}"
+            app:setTextMoneyValue="@{money.value}"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/hint_value" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -114,6 +114,8 @@ class MoneyItemDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        money = null
+        moneyViewModel.clearMoneyItem()
     }
 
     private fun observeProperties() {

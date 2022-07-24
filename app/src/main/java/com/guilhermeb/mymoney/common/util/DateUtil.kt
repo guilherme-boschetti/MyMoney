@@ -15,7 +15,9 @@ class DateUtil {
             SimpleDateFormat("dd/MM/yyyy", getLocaleOrDefault())
 
         init {
-            DAY_MONTH_YEAR.timeZone = TimeZone.getTimeZone("UTC")
+            val timeZone = TimeZone.getTimeZone("UTC")
+            YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.timeZone = timeZone
+            DAY_MONTH_YEAR.timeZone = timeZone
         }
 
         fun getMonthNameByMonthNumber(month: Int): String {
