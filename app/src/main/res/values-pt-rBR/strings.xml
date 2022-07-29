@@ -96,7 +96,7 @@
     <string name="description">Descrição</string>
     <string name="value">Valor</string>
     <string name="pay_date">Data do pagamento</string>
-    <string name="reception_date">Data do recebimento</string>
+    <string name="reception_date">Data de recebimento</string>
     <string name="income">Ganho</string>
     <string name="expense">Gasto</string>
     <string name="type">Tipo</string>
@@ -104,7 +104,7 @@
     <string name="paid">Pago</string>
     <string name="fixed">Fixo</string>
     <string name="due_day">Dia de vencimento</string>
-    <string name="reception_day">Dia do recebimento</string>
+    <string name="reception_day">Dia de recebimento</string>
     <string name="hint_description">Descrição (Opcional)</string>
     <string name="hint_value">0.000,00</string>
     <string name="hint_date">dd/mm/aaaa</string>

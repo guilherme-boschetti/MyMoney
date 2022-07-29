@@ -8,13 +8,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
-import com.guilhermeb.mymoney.MyMoneyApplication
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
 import com.guilhermeb.mymoney.common.extension.isUiModeNightActive
 import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import com.guilhermeb.mymoney.common.util.getCurrentLanguageLocale
+import com.guilhermeb.mymoney.common.util.setLocale
 import com.guilhermeb.mymoney.databinding.ActivitySettingsBinding
 import com.guilhermeb.mymoney.databinding.DialogNightModeBinding
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
@@ -57,7 +57,7 @@ class SettingsActivity : AbstractActivity() {
                         getSharedPreferencesKey(Constants.LOCALE),
                         languageCodesArray[position]
                     )
-                    MyMoneyApplication.getInstance().setLocale()
+                    setLocale(applicationContext)
                     Intent().apply {
                         putExtra(
                             Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED,

@@ -54,7 +54,7 @@ class DateUtil {
                 context.getString(R.string.october) -> 10
                 context.getString(R.string.november) -> 11
                 context.getString(R.string.december) -> 12
-                else -> 0
+                else -> Calendar.getInstance().get(Calendar.MONTH) + 1
             }
         }
     }

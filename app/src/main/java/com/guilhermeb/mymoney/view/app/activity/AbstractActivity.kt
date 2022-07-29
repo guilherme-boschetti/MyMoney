@@ -5,10 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.component.CustomProgressDialog
-import com.guilhermeb.mymoney.common.constant.Constants
-import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
-import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
-import java.util.*
+import com.guilhermeb.mymoney.common.util.setLocale
 
 abstract class AbstractActivity : AppCompatActivity() {
 
@@ -17,7 +14,7 @@ abstract class AbstractActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setLocale()
+        setLocale(baseContext)
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -30,33 +27,5 @@ abstract class AbstractActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    @Suppress("DEPRECATION")
-    private fun setLocale() {
-        val localeString =
-            SharedPreferencesHelper.getInstance()
-                .getValue(getSharedPreferencesKey(Constants.LOCALE), null)
-
-        if (localeString != null) {
-
-            val split = localeString.split("-")
-            val language = split[0]
-            val country = split[1]
-
-            val locale = Locale(language, country)
-            Locale.setDefault(locale)
-
-            val configuration = resources.configuration
-
-            configuration.setLocale(locale)
-            configuration.setLayoutDirection(locale)
-
-            //val context = createConfigurationContext(configuration)
-            baseContext.resources.updateConfiguration(
-                configuration,
-                baseContext.resources.displayMetrics
-            )
-        }
     }
 }
