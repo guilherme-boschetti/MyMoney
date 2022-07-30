@@ -114,6 +114,10 @@ class MoneyItemDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        clearMoneyItem()
+    }
+
+    private fun clearMoneyItem() {
         money = null
         moneyViewModel.clearMoneyItem()
     }
@@ -383,6 +387,7 @@ class MoneyItemDetailFragment : Fragment() {
                             if (isTablet) {
                                 activity?.showView(binding.emptyView)
                                 activity?.hideView(binding.coordinator)
+                                clearMoneyItem()
                             } else {
                                 activity?.onBackPressed()
                             }
@@ -405,6 +410,7 @@ class MoneyItemDetailFragment : Fragment() {
                         if (isTablet) {
                             activity?.showView(binding.emptyView)
                             activity?.hideView(binding.coordinator)
+                            clearMoneyItem()
                         } else {
                             activity?.onBackPressed()
                         }
@@ -416,6 +422,7 @@ class MoneyItemDetailFragment : Fragment() {
                 if (isTablet) {
                     activity?.showView(binding.emptyView)
                     activity?.hideView(binding.coordinator)
+                    clearMoneyItem()
                 } else {
                     activity?.onBackPressed()
                 }
