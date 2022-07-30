@@ -1,5 +1,5 @@
 package com.guilhermeb.mymoney.model.repository.contract
 
-interface AsyncProcess {
-    fun onComplete(isSuccessful: Boolean, errorMessage: String?)
+interface AsyncProcess<T> {
+    fun onComplete(isSuccessful: Boolean, result: T?)
 }

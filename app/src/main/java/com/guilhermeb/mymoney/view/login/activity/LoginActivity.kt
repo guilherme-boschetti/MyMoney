@@ -170,20 +170,20 @@ class LoginActivity : AbstractActivity() {
         val email = loginViewBinding.edtEmail.text.toString()
         val password = loginViewBinding.edtPassword.text.toString()
         progressDialog.show()
-        loginViewModel.signIn(email, password, object : AsyncProcess {
-            override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+        loginViewModel.signIn(email, password, object : AsyncProcess<String?> {
+            override fun onComplete(isSuccessful: Boolean, result: String?) {
                 progressDialog.dismiss()
                 if (isSuccessful) {
                     configNightModeAndGoToMoneyHostActivity()
                 } else {
-                    val message = errorMessage ?: getString(R.string.failed_to_login)
+                    val message = result ?: getString(R.string.failed_to_login)
                     showToast(this@LoginActivity, message)
-                    if (errorMessage.equals(getString(R.string.invalid_account)) ||
-                        errorMessage.equals(getString(R.string.invalid_email))
+                    if (result.equals(getString(R.string.invalid_account)) ||
+                        result.equals(getString(R.string.invalid_email))
                     ) {
-                        loginViewBinding.inEmail.error = errorMessage
-                    } else if (errorMessage.equals(getString(R.string.invalid_password))) {
-                        loginViewBinding.inPassword.error = errorMessage
+                        loginViewBinding.inEmail.error = result
+                    } else if (result.equals(getString(R.string.invalid_password))) {
+                        loginViewBinding.inPassword.error = result
                     }
                 }
             }

@@ -67,13 +67,13 @@ class ForgotPasswordActivity : AbstractActivity() {
                 val email = forgotPasswordViewBinding.edtEmail.text.toString()
                 if (forgotPasswordViewModel.isFormDataValid(email)) {
                     progressDialog.show()
-                    forgotPasswordViewModel.sendPasswordResetEmail(email, object : AsyncProcess {
-                        override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+                    forgotPasswordViewModel.sendPasswordResetEmail(email, object : AsyncProcess<String?> {
+                        override fun onComplete(isSuccessful: Boolean, result: String?) {
                             progressDialog.dismiss()
                             if (isSuccessful) {
                                 goToRecoverPasswordActivityWithEmailExtra(email)
                             } else {
-                                val message = errorMessage
+                                val message = result
                                     ?: getString(R.string.failed_to_send_password_recovery_email)
                                 showToast(this@ForgotPasswordActivity, message)
                             }

@@ -87,14 +87,14 @@ class CreateAccountViewModel @Inject constructor(private val authenticationViewM
         return false
     }
 
-    fun createUser(email: String, password: String, asyncProcess: AsyncProcess) {
-        authenticationViewModel.createUser(email, password, object : AsyncProcess {
-            override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+    fun createUser(email: String, password: String, asyncProcess: AsyncProcess<String?>) {
+        authenticationViewModel.createUser(email, password, object : AsyncProcess<String?> {
+            override fun onComplete(isSuccessful: Boolean, result: String?) {
                 DataStorePreferencesHelper.getInstance().saveStringIntoDataStorePreferences(
                     getPreferencesDataStoreKey(Constants.PASSWORD),
                     md5(password)
                 )
-                asyncProcess.onComplete(isSuccessful, errorMessage)
+                asyncProcess.onComplete(isSuccessful, result)
             }
         })
     }

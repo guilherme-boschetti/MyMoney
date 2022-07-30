@@ -15,21 +15,21 @@ class FirebaseAuthentication : Authenticable {
         return Firebase.auth.currentUser?.email
     }
 
-    override fun createUser(email: String, password: String, asyncProcess: AsyncProcess) {
+    override fun createUser(email: String, password: String, asyncProcess: AsyncProcess<String?>) {
         Firebase.auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 asyncProcess.onComplete(task.isSuccessful, errorVerification(task.exception))
             }
     }
 
-    override fun signIn(email: String, password: String, asyncProcess: AsyncProcess) {
+    override fun signIn(email: String, password: String, asyncProcess: AsyncProcess<String?>) {
         Firebase.auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 asyncProcess.onComplete(task.isSuccessful, errorVerification(task.exception))
             }
     }
 
-    override fun sendPasswordResetEmail(email: String, asyncProcess: AsyncProcess) {
+    override fun sendPasswordResetEmail(email: String, asyncProcess: AsyncProcess<String?>) {
         val auth: FirebaseAuth = Firebase.auth
         auth.useAppLanguage()
         auth.sendPasswordResetEmail(email)
@@ -38,7 +38,7 @@ class FirebaseAuthentication : Authenticable {
             }
     }
 
-    override fun updatePassword(newPassword: String, asyncProcess: AsyncProcess) {
+    override fun updatePassword(newPassword: String, asyncProcess: AsyncProcess<String?>) {
         val user = Firebase.auth.currentUser
         user?.let {
             it.updatePassword(newPassword)
@@ -48,7 +48,7 @@ class FirebaseAuthentication : Authenticable {
         }
     }
 
-    override fun deleteUser(asyncProcess: AsyncProcess) {
+    override fun deleteUser(asyncProcess: AsyncProcess<String?>) {
         val user = Firebase.auth.currentUser
         user?.let {
             it.delete()

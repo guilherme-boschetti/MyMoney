@@ -167,14 +167,14 @@ class CreateAccountActivity : AbstractActivity(),
                         )
                     ) {
                         progressDialog.show()
-                        createAccountViewModel.createUser(email, password, object : AsyncProcess {
-                            override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+                        createAccountViewModel.createUser(email, password, object : AsyncProcess<String?> {
+                            override fun onComplete(isSuccessful: Boolean, result: String?) {
                                 progressDialog.dismiss()
                                 if (isSuccessful) {
                                     goToMoneyHostActivity()
                                 } else {
                                     val message =
-                                        errorMessage ?: getString(R.string.failed_to_create_account)
+                                        result ?: getString(R.string.failed_to_create_account)
                                     showToast(this@CreateAccountActivity, message)
                                 }
                             }

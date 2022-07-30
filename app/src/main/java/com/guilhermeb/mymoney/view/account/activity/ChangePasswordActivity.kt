@@ -107,8 +107,8 @@ class ChangePasswordActivity : AbstractActivity() {
                         newPasswordRepeated
                     )
                 ) {
-                    accountViewModel.updatePassword(newPassword, object : AsyncProcess {
-                        override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+                    accountViewModel.updatePassword(newPassword, object : AsyncProcess<String?> {
+                        override fun onComplete(isSuccessful: Boolean, result: String?) {
                             progressDialog.dismiss()
                             if (isSuccessful) {
                                 showToast(
@@ -118,7 +118,7 @@ class ChangePasswordActivity : AbstractActivity() {
                                 finish()
                             } else {
                                 val message =
-                                    errorMessage ?: getString(R.string.failed_to_update_password)
+                                    result ?: getString(R.string.failed_to_update_password)
                                 showToast(this@ChangePasswordActivity, message)
                             }
                         }

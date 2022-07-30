@@ -77,14 +77,14 @@ class AccountActivity : AbstractActivity() {
             showConfirmationDialog(
                 R.string.are_you_sure_you_want_to_delete_account
             ) {
-                accountViewModel.deleteUser(object : AsyncProcess {
-                    override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+                accountViewModel.deleteUser(object : AsyncProcess<String?> {
+                    override fun onComplete(isSuccessful: Boolean, result: String?) {
                         if (isSuccessful) {
                             showToast(this@AccountActivity, R.string.account_deleted_successfully)
                             goToLoginActivity()
                         } else {
                             val message =
-                                errorMessage ?: getString(R.string.failed_to_delete_account)
+                                result ?: getString(R.string.failed_to_delete_account)
                             showToast(this@AccountActivity, message)
                         }
                     }

@@ -41,14 +41,14 @@ class LoginViewModel @Inject constructor(private val authenticationViewModel: Au
         return authenticationViewModel.getCurrentUserEmail()
     }
 
-    fun signIn(email: String, password: String, asyncProcess: AsyncProcess) {
-        authenticationViewModel.signIn(email, password, object : AsyncProcess {
-            override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+    fun signIn(email: String, password: String, asyncProcess: AsyncProcess<String?>) {
+        authenticationViewModel.signIn(email, password, object : AsyncProcess<String?> {
+            override fun onComplete(isSuccessful: Boolean, result: String?) {
                 DataStorePreferencesHelper.getInstance().saveStringIntoDataStorePreferences(
                     getPreferencesDataStoreKey(Constants.PASSWORD),
                     md5(password)
                 )
-                asyncProcess.onComplete(isSuccessful, errorMessage)
+                asyncProcess.onComplete(isSuccessful, result)
             }
         })
     }

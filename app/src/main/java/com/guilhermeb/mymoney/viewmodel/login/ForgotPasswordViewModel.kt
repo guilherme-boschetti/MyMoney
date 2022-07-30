@@ -13,7 +13,7 @@ class ForgotPasswordViewModel @Inject constructor(private val authenticationView
         return isEmailValid(email)
     }
 
-    fun sendPasswordResetEmail(email: String, asyncProcess: AsyncProcess) {
+    fun sendPasswordResetEmail(email: String, asyncProcess: AsyncProcess<String?>) {
         authenticationViewModel.sendPasswordResetEmail(email, asyncProcess)
     }
 }

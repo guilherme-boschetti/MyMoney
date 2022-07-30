@@ -28,17 +28,17 @@ class AccountViewModel @Inject constructor(
         authenticationViewModel.signOut()
     }
 
-    fun deleteUser(asyncProcess: AsyncProcess) {
+    fun deleteUser(asyncProcess: AsyncProcess<String?>) {
         val userEmail = authenticationViewModel.getCurrentUserEmail()
-        authenticationViewModel.deleteUser(object : AsyncProcess {
-            override fun onComplete(isSuccessful: Boolean, errorMessage: String?) {
+        authenticationViewModel.deleteUser(object : AsyncProcess<String?> {
+            override fun onComplete(isSuccessful: Boolean, result: String?) {
                 if (isSuccessful) {
                     userEmail?.let {
                         moneyViewModel.removeAllMoneyItemsByUser(userEmail)
                     }
                     removeUserPreferences(userEmail)
                 }
-                asyncProcess.onComplete(isSuccessful, errorMessage)
+                asyncProcess.onComplete(isSuccessful, result)
             }
         })
     }
@@ -111,7 +111,7 @@ class AccountViewModel @Inject constructor(
         return false
     }
 
-    fun updatePassword(newPassword: String, asyncProcess: AsyncProcess) {
+    fun updatePassword(newPassword: String, asyncProcess: AsyncProcess<String?>) {
         authenticationViewModel.updatePassword(newPassword, asyncProcess)
     }
 
