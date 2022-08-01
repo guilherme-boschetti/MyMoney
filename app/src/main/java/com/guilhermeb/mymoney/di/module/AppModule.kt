@@ -8,6 +8,7 @@ import com.guilhermeb.mymoney.model.data.local.room.database.MyMoneyDB
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.SharedPrefs
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
 import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseAuthentication
+import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +24,12 @@ internal object AppModule {
     @Provides
     fun provideFirebaseAuthentication(): FirebaseAuthentication {
         return FirebaseAuthentication()
+    }
+
+    @Singleton
+    @Provides
+    fun provideFirebaseRealTimeDataBase(): FirebaseRealTimeDataBase {
+        return FirebaseRealTimeDataBase()
     }
 
     @Singleton

@@ -1,5 +1,6 @@
 package com.guilhermeb.mymoney.view.money.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -111,6 +112,18 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
             binding.layoutListOfItems.txtMonthYear.text = it
         }
 
+        moneyViewModel.fetchingDataFromFirebaseRTDB.observe(viewLifecycleOwner) { fetchingData ->
+            if (fetchingData) {
+                binding.layoutListOfItems.txtLoading.visibility = View.VISIBLE
+                binding.layoutListOfItems.progressLoading.visibility = View.VISIBLE
+                binding.layoutListOfItems.fabAddItem.isEnabled = false
+            } else {
+                binding.layoutListOfItems.txtLoading.visibility = View.GONE
+                binding.layoutListOfItems.progressLoading.visibility = View.GONE
+                binding.layoutListOfItems.fabAddItem.isEnabled = true
+            }
+        }
+
         moneyViewModel.moneyItems.observe(viewLifecycleOwner) {
             val adapter: MoneyItemAdapter =
                 binding.layoutListOfItems.recyclerViewMoney.adapter as MoneyItemAdapter
@@ -145,7 +158,7 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
             }
             binding.layoutListOfItems.bottomSheetTotalizer.apply {
                 val balanceValueColor = ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     if (balance < BigDecimal.ZERO) {
                         R.color.red
                     } else if (balance > BigDecimal.ZERO) {
@@ -273,6 +286,7 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
         val menuHost: MenuHost = requireActivity()
 
         menuHost.addMenuProvider(object : MenuProvider {
+            @SuppressLint("RestrictedApi")
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu, menu)
 

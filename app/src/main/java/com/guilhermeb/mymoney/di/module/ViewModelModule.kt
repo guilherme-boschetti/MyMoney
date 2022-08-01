@@ -44,13 +44,19 @@ internal object ViewModelModule {
 
     @Singleton
     @Provides
-    fun provideAccountViewModel(moneyViewModel: MoneyViewModel, authenticationViewModel: AuthenticationViewModel): AccountViewModel {
+    fun provideAccountViewModel(
+        moneyViewModel: MoneyViewModel,
+        authenticationViewModel: AuthenticationViewModel
+    ): AccountViewModel {
         return AccountViewModel(moneyViewModel, authenticationViewModel)
     }
 
     @Singleton
     @Provides
-    fun provideMoneyViewModel(moneyRepository: MoneyRepository, authenticationViewModel: AuthenticationViewModel): MoneyViewModel {
+    fun provideMoneyViewModel(
+        moneyRepository: MoneyRepository,
+        authenticationViewModel: AuthenticationViewModel
+    ): MoneyViewModel {
         return MoneyViewModel(moneyRepository, authenticationViewModel)
     }
 }

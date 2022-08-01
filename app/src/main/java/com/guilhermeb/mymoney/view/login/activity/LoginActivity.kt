@@ -53,7 +53,7 @@ class LoginActivity : AbstractActivity() {
         // Check if user is signed in
         val currentUserEmail = loginViewModel.getCurrentUserEmail()
         if (currentUserEmail != null) {
-            configNightModeAndGoToMoneyHostActivity()
+            configNightModeAndGoToMoneyHostActivity(fetchDataFromFirebaseRTDB = false)
         }
     }
 
@@ -155,13 +155,17 @@ class LoginActivity : AbstractActivity() {
         }
     }
 
-    private fun configNightModeAndGoToMoneyHostActivity() {
+    private fun configNightModeAndGoToMoneyHostActivity(fetchDataFromFirebaseRTDB: Boolean) {
         configNightMode()
-        goToMoneyHostActivity()
+        goToMoneyHostActivity(fetchDataFromFirebaseRTDB)
     }
 
-    private fun goToMoneyHostActivity() {
+    private fun goToMoneyHostActivity(fetchDataFromFirebaseRTDB: Boolean) {
         val intent = Intent(this, MoneyHostActivity::class.java)
+        intent.putExtra(
+            Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB,
+            fetchDataFromFirebaseRTDB
+        )
         startActivity(intent)
         finish()
     }
@@ -174,7 +178,7 @@ class LoginActivity : AbstractActivity() {
             override fun onComplete(isSuccessful: Boolean, result: String?) {
                 progressDialog.dismiss()
                 if (isSuccessful) {
-                    configNightModeAndGoToMoneyHostActivity()
+                    configNightModeAndGoToMoneyHostActivity(fetchDataFromFirebaseRTDB = true)
                 } else {
                     val message = result ?: getString(R.string.failed_to_login)
                     showToast(this@LoginActivity, message)

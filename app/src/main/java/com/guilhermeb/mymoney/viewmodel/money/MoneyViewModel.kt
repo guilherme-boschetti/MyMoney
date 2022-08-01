@@ -8,6 +8,7 @@ import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.util.DateUtil
 import com.guilhermeb.mymoney.common.util.MaskUtil
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.model.repository.money.MoneyRepository
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
 import com.guilhermeb.mymoney.viewmodel.money.state.MoneyFormState
@@ -24,8 +25,8 @@ class MoneyViewModel @Inject constructor(
     private val _moneyItems = MutableLiveData<List<Money>>()
     val moneyItems: LiveData<List<Money>> get() = _moneyItems
 
-    private val _moneyItem = MutableLiveData<Money>()
-    val moneyItem: LiveData<Money> get() = _moneyItem
+    private val _moneyItem = MutableLiveData<Money?>()
+    val moneyItem: LiveData<Money?> get() = _moneyItem
 
     private val _subtypesFiltered = MutableLiveData<List<String>>()
     val subtypesFiltered: LiveData<List<String>> get() = _subtypesFiltered
@@ -41,6 +42,9 @@ class MoneyViewModel @Inject constructor(
 
     private val _moneyFormState = MutableLiveData<MoneyFormState>()
     val moneyFormState: LiveData<MoneyFormState> = _moneyFormState
+
+    private val _fetchingDataFromFirebaseRTDB = MutableLiveData<Boolean>()
+    val fetchingDataFromFirebaseRTDB: LiveData<Boolean> get() = _fetchingDataFromFirebaseRTDB
 
     fun addMoneyItem(moneyItem: Money) {
         viewModelScope.launch {
@@ -175,6 +179,22 @@ class MoneyViewModel @Inject constructor(
 
     fun setDrawerMenuItemChecked(drawerMenuItemChecked: Int) {
         _drawerMenuItemChecked.value = drawerMenuItemChecked
+    }
+
+    fun fetchDataFromFirebaseRTDB() {
+        _fetchingDataFromFirebaseRTDB.value = true
+        moneyRepository.fetchDataFromFirebaseRTDB(
+            getCurrentUserEmail()!!,
+            object : AsyncProcess<List<Money>> {
+                override fun onComplete(isSuccessful: Boolean, result: List<Money>?) {
+                    result?.let {
+                        for (item in result) {
+                            addMoneyItem(item)
+                        }
+                    }
+                    _fetchingDataFromFirebaseRTDB.value = false
+                }
+            })
     }
 
     // == -- User == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==

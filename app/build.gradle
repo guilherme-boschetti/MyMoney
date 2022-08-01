@@ -85,7 +85,7 @@ dependencies {
     // Authentication
     implementation 'com.google.firebase:firebase-auth-ktx'
     // Realtime Database
-    //implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx'
     // Crashlytics
     //implementation 'com.google.firebase:firebase-crashlytics-ktx'
     // == -- == -- ==

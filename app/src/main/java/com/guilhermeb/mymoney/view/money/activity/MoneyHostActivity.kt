@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.guilhermeb.mymoney.R
+import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.util.getAppVersion
 import com.guilhermeb.mymoney.databinding.ActivityMoneyHostBinding
 import com.guilhermeb.mymoney.databinding.NavHeaderDrawerBinding
@@ -37,10 +38,23 @@ class MoneyHostActivity : AbstractActivity() {
         setContentView(binding.root)
         setTitle(R.string.app_name)
 
+        fetchDataFromFirebaseRTDB()
         initScreen()
         observeProperties()
         fetchDrawerData()
         // == -- == -- == -- == -- == -- == --
+    }
+
+    private fun fetchDataFromFirebaseRTDB() {
+        val intentActivity = intent
+        if (intentActivity.hasExtra(Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB) &&
+            intentActivity.getBooleanExtra(
+                Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB,
+                false
+            )
+        ) {
+            moneyViewModel.fetchDataFromFirebaseRTDB()
+        }
     }
 
     private fun initScreen() {

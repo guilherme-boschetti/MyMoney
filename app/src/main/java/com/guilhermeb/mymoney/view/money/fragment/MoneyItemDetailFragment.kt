@@ -127,28 +127,30 @@ class MoneyItemDetailFragment : Fragment() {
             money = it
             if (money != null) {
                 binding.apply {
-                    edtTitle.setText(it.title)
-                    edtDescription.setText(it.description)
-                    edtValue.setText(
-                        MaskUtil.mask(
-                            it.value.toString(),
-                            null
+                    it?.let {
+                        edtTitle.setText(it.title)
+                        edtDescription.setText(it.description)
+                        edtValue.setText(
+                            MaskUtil.mask(
+                                it.value.toString(),
+                                null
+                            )
                         )
-                    )
-                    it.payDate?.let { payDate ->
-                        edtPayDate.setText(DateUtil.DAY_MONTH_YEAR.format(payDate))
+                        it.payDate?.let { payDate ->
+                            edtPayDate.setText(DateUtil.DAY_MONTH_YEAR.format(payDate))
+                        }
+                        it.dueDay?.let { dueDay ->
+                            edtDueDay.setText(dueDay.toString())
+                        }
+                        chkPaid.isChecked = it.paid
+                        chkFixed.isChecked = it.fixed
+                        if (MoneyType.EXPENSE.name == it.type) {
+                            rBtnExpense.isChecked = true
+                        } else {
+                            rBtnIncome.isChecked = true
+                        }
+                        autocompleteSubtype.setText(it.subtype)
                     }
-                    it.dueDay?.let { dueDay ->
-                        edtDueDay.setText(dueDay.toString())
-                    }
-                    chkPaid.isChecked = it.paid
-                    chkFixed.isChecked = it.fixed
-                    if (MoneyType.EXPENSE.name == it.type) {
-                        rBtnExpense.isChecked = true
-                    } else {
-                        rBtnIncome.isChecked = true
-                    }
-                    autocompleteSubtype.setText(it.subtype)
                 }
             }
         }

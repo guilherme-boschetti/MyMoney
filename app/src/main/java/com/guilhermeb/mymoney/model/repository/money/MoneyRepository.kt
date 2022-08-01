@@ -2,24 +2,34 @@ package com.guilhermeb.mymoney.model.repository.money
 
 import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
+import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import kotlinx.coroutines.flow.Flow
 
-class MoneyRepository(private val dataSource: MoneyDao) {
+class MoneyRepository(
+    private val dataSource: MoneyDao,
+    private val dataBackup: FirebaseRealTimeDataBase
+) {
 
     suspend fun insert(moneyItem: Money) {
-        dataSource.insert(moneyItem)
+        val id = dataSource.insert(moneyItem)
+        moneyItem.id = id
+        dataBackup.insert(moneyItem)
     }
 
     suspend fun update(moneyItem: Money) {
         dataSource.update(moneyItem)
+        dataBackup.update(moneyItem)
     }
 
     suspend fun delete(moneyItem: Money) {
         dataSource.delete(moneyItem)
+        dataBackup.delete(moneyItem)
     }
 
     suspend fun removeAllMoneyItemsByUser(userEmail: String) {
         dataSource.removeAllMoneyItemsByUser(userEmail)
+        dataBackup.removeAllMoneyItemsByUser(userEmail)
     }
 
     suspend fun getMoneyItemById(id: Long): Money? {
@@ -40,5 +50,9 @@ class MoneyRepository(private val dataSource: MoneyDao) {
 
     fun getAllMonthsByUser(userEmail: String): Flow<List<String>> {
         return dataSource.getAllMonthsByUser(userEmail)
+    }
+
+    fun fetchDataFromFirebaseRTDB(userEmail: String, asyncProcess: AsyncProcess<List<Money>>) {
+        dataBackup.fetchDataFromFirebaseRTDB(userEmail, asyncProcess)
     }
 }

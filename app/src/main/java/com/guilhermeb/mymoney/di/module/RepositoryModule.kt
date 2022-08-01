@@ -3,6 +3,7 @@ package com.guilhermeb.mymoney.di.module
 import com.guilhermeb.mymoney.model.data.local.datastore.preferences.dataaccess.DataStorePrefsDataAccess
 import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
+import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
 import com.guilhermeb.mymoney.model.repository.authentication.AuthenticationRepository
 import com.guilhermeb.mymoney.model.repository.contract.Authenticable
 import com.guilhermeb.mymoney.model.repository.datastore.preferences.DataStorePreferencesRepository
@@ -26,8 +27,11 @@ internal object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideMoneyRepository(dataSource: MoneyDao): MoneyRepository {
-        return MoneyRepository(dataSource)
+    fun provideMoneyRepository(
+        dataSource: MoneyDao,
+        dataBackup: FirebaseRealTimeDataBase
+    ): MoneyRepository {
+        return MoneyRepository(dataSource, dataBackup)
     }
 
     @Singleton

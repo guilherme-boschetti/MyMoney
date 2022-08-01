@@ -5,6 +5,7 @@ class Constants {
         const val INTENT_EXTRA_KEY_EMAIL = "email"
         const val INTENT_EXTRA_KEY_PASSWORD = "password"
         const val INTENT_EXTRA_KEY_LANGUAGE_CHANGED = "languageChanged"
+        const val INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB = "fetchDataFromFirebaseRTDB"
 
         const val PASSWORD = "password"
         const val LOCALE = "locale"
