@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -87,7 +88,7 @@ dependencies {
     // Realtime Database
     implementation 'com.google.firebase:firebase-database-ktx'
     // Crashlytics
-    //implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
     // == -- == -- ==
     // Hilt
     implementation "com.google.dagger:hilt-android:2.43"
