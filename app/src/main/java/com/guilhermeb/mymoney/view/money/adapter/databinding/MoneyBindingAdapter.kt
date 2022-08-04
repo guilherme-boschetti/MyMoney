@@ -69,7 +69,8 @@ fun TextView.setTextDueDay(moneyItem: Money?) {
             } else {
                 this.context.getString(R.string.due_day)
             }
-            this.text = label + ": " + it.dueDay.toString()
+            val dueDayText = label + ": " + it.dueDay.toString()
+            this.text = dueDayText
         } else {
             this.setText(R.string.due_day)
         }

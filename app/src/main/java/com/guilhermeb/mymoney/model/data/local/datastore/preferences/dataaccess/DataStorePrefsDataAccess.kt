@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class DataStorePrefsDataAccess(private val dataSotorePrefs: DataStorePrefs) {
+class DataStorePrefsDataAccess(private val dataStorePrefs: DataStorePrefs) {
 
     fun saveStringIntoDataStorePreferences(preferencesKey: String, value: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            dataSotorePrefs.dataStore.edit { preferences ->
+            dataStorePrefs.dataStore.edit { preferences ->
                 preferences[stringPreferencesKey(
                     preferencesKey
                 )] = value
@@ -25,7 +25,7 @@ class DataStorePrefsDataAccess(private val dataSotorePrefs: DataStorePrefs) {
 
     @Suppress("unused")
     fun getStringFromDataStorePreferencesAsync(preferencesKey: String): Flow<String?> {
-        val stringFlow: Flow<String?> = dataSotorePrefs.dataStore.data
+        val stringFlow: Flow<String?> = dataStorePrefs.dataStore.data
             .map { preferences ->
                 preferences[stringPreferencesKey(
                     preferencesKey
@@ -39,7 +39,7 @@ class DataStorePrefsDataAccess(private val dataSotorePrefs: DataStorePrefs) {
         // synchronous
         runBlocking {
             stringValue =
-                dataSotorePrefs.dataStore.data.first()[stringPreferencesKey(
+                dataStorePrefs.dataStore.data.first()[stringPreferencesKey(
                     preferencesKey
                 )]
         }
@@ -49,7 +49,7 @@ class DataStorePrefsDataAccess(private val dataSotorePrefs: DataStorePrefs) {
     fun removeStringFromDataStorePreferences(preferencesKey: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val stringPrefKey = stringPreferencesKey(preferencesKey)
-            dataSotorePrefs.dataStore.edit {
+            dataStorePrefs.dataStore.edit {
                 if (it.contains(stringPrefKey)) {
                     it.remove(stringPrefKey)
                 }

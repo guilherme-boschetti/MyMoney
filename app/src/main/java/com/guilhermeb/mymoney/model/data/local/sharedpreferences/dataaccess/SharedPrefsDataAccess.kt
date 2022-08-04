@@ -46,7 +46,7 @@ class SharedPrefsDataAccess(private val sharedPrefs: SharedPrefs) {
     fun setValue(key: String?, value: String?) {
         val editor = sharedPrefs.sharedPreferences.edit()
         editor.putString(key, value)
-        editor.commit()
+        editor.apply()
     }
 
 
@@ -59,7 +59,7 @@ class SharedPrefsDataAccess(private val sharedPrefs: SharedPrefs) {
     fun setValue(key: String?, value: Boolean) {
         val editor = sharedPrefs.sharedPreferences.edit()
         editor.putBoolean(key, value)
-        editor.commit()
+        editor.apply()
     }
 
     /**
@@ -71,7 +71,7 @@ class SharedPrefsDataAccess(private val sharedPrefs: SharedPrefs) {
     fun setValue(key: String?, value: Int) {
         val editor = sharedPrefs.sharedPreferences.edit()
         editor.putInt(key, value)
-        editor.commit()
+        editor.apply()
     }
 
     /**
@@ -82,6 +82,6 @@ class SharedPrefsDataAccess(private val sharedPrefs: SharedPrefs) {
     fun remove(key: String?) {
         val editor = sharedPrefs.sharedPreferences.edit()
         editor.remove(key)
-        editor.commit()
+        editor.apply()
     }
 }
