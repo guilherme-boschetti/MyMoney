@@ -5,7 +5,7 @@ App for financial management.
 
 Language: Kotlin
 
-Architectural Patern: MVVM
+Architectural Pattern: MVVM
 
 Components and Features:
 
