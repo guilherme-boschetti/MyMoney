@@ -10,9 +10,9 @@ import java.util.*
 class DateUtil {
     companion object {
         val YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS =
-            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", getLocaleOrDefault())
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", getLocaleDefault())
         val DAY_MONTH_YEAR =
-            SimpleDateFormat("dd/MM/yyyy", getLocaleOrDefault())
+            SimpleDateFormat("dd/MM/yyyy", getLocaleDefault())
 
         init {
             val timeZone = TimeZone.getTimeZone("UTC")

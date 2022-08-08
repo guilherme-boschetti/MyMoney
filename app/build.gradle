@@ -18,7 +18,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.guilhermeb.mymoney.di.HiltTestRunner" // "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -90,6 +90,9 @@ dependencies {
     def hilt_version = "2.43"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    // Hilt Tests
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"// For instrumented tests
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version" // For Java use androidTestAnnotationProcessor instead of kaptAndroidTest
     // == -- == -- ==
     // == -- Firebase -- ==
     // Import the Firebase BoM

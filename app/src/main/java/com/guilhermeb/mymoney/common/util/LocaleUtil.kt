@@ -21,9 +21,13 @@ fun getLocale(): Locale? {
     return locale
 }
 
-fun getLocaleOrDefault(): Locale {
+/*fun getLocaleOrDefault(): Locale {
     val locale: Locale? = getLocale()
     return locale ?: Locale.getDefault()
+}*/
+
+fun getLocaleDefault(): Locale {
+    return Locale.getDefault()
 }
 
 private fun getCurrentAppLanguageLocale(): String? {

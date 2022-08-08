@@ -34,8 +34,14 @@ internal object AppModule {
 
     @Singleton
     @Provides
-    fun provideMoneyDao(@ApplicationContext context: Context): MoneyDao {
-        return MyMoneyDB.getInstance(context).moneyDao
+    fun provideMyMoneyDB(@ApplicationContext context: Context): MyMoneyDB {
+        return MyMoneyDB.getInstance(context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMoneyDao(myMoneyDB: MyMoneyDB): MoneyDao {
+        return myMoneyDB.moneyDao
     }
 
     @Singleton
