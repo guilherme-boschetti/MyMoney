@@ -43,6 +43,7 @@
     <string name="credentials_already_in_use">Credenciales ya en uso</string>
 
     <!-- Terms and conditions -->
+    <string name="close">Cerrar</string>
     <string name="terms_and_conditions_title">Términos y Condiciones</string>
     <string name="terms_and_conditions_text">Al usar la aplicación, inevitablemente compartirá alguna información. Su privacidad y seguridad son valoradas, lea atentamente esta Política de privacidad para que pueda tomar decisiones informadas sobre su uso de la aplicación.\n
 \nQué tipo de información se recopila de las personas que usan la aplicación?\n
@@ -52,7 +53,7 @@
 \nLos datos no personales se refieren a información que, por sí misma, no lo identifica personalmente.\n
 \nLos datos no personales actualmente no se recopilan en la aplicación.\n
 \nLa Aplicación utiliza servicios de Firebase. Al utilizar la aplicación, acepta los términos de esta política.\n
-\nPuede encontrar más información sobre la política de Firebase aquí: https://firebase.google.com/terms\n
+\nPuede encontrar más información sobre la política de Firebase aquí: <a href="https://firebase.google.com/terms">https://firebase.google.com/terms</a>\n
 \nAceptación de los términos\n
 \nAl usar la aplicación, acepta los términos de esta política. Si no acepta los términos de esta política, no instale ni utilice la aplicación. Su uso continuado de la aplicación después de cualquier cambio en esta política de privacidad se considerará como su aceptación de los cambios y/o nuevos términos.\n
 \nCambios en la política\n
@@ -100,13 +101,14 @@
     <string name="income">Ganado</string>
     <string name="expense">Gastado</string>
     <string name="type">Tipo</string>
-    <string name="subtype">Subtipo</string>
+    <string name="subtype">Categoría o Subtipo</string>
     <string name="paid">Pagado</string>
     <string name="fixed">Fijo</string>
     <string name="due_day">Día de vencimento</string>
     <string name="reception_day">Día de recibo</string>
     <string name="hint_description">Descripción (Opcional)</string>
     <string name="hint_value">0.000,00</string>
+    <string name="hint_subtype">Categoría o Subtipo (Opcional)</string>
     <string name="hint_date">dd/mm/aaaa</string>
     <string name="hint_day">31</string>
     <string name="save_or_edit">Guardar o editar</string>

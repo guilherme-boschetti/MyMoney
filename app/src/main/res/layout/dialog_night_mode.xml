@@ -11,8 +11,9 @@
         android:layout_height="48dp"
         android:layout_gravity="end"
         android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/cancel"
+        android:contentDescription="@string/close"
         android:src="@drawable/ic_baseline_close_24"
+        android:tooltipText="@string/close"
         app:layout_constraintBottom_toTopOf="@id/txt_ui_mode_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -20,7 +21,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:tint="@color/colorPrimaryDark"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck"
+        tools:targetApi="o" />
 
     <TextView
         android:id="@+id/txt_ui_mode_title"

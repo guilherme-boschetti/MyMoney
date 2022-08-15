@@ -42,6 +42,7 @@
     <string name="credentials_already_in_use">Credentials already in use</string>
 
     <!-- Terms and conditions -->
+    <string name="close">Close</string>
     <string name="terms_and_conditions_title">Terms and conditions</string>
     <string name="terms_and_conditions_text">When using the app, you will inevitably share some information. Your privacy and security is valued, please read this Privacy Policy carefully so you can make informed decisions about your use of the app.\n
 \nWhat kind of information is collected from people using the app?\n
@@ -51,7 +52,7 @@
 \nNon-personal data refers to information that, by itself, does not personally identify you.\n
 \nNon-personal data is currently not collected in the app.\n
 \nThe Application uses Firebase services. By using the app, you agree to the terms of this policy.\n
-\nYou can find more information about Firebase policy here: https://firebase.google.com/terms\n
+\nYou can find more information about Firebase policy here: <a href="https://firebase.google.com/terms">https://firebase.google.com/terms</a>\n
 \nAcceptance of terms\n
 \nBy using the app, you agree to the terms of this policy. If you do not accept the terms of this policy, do not install or use the application. Your continued use of the app after any change to this privacy policy will be deemed your acceptance of the changes and/or new terms.\n
 \nPolicy changes\n
@@ -99,13 +100,14 @@
     <string name="income">Income</string>
     <string name="expense">Expense</string>
     <string name="type">Type</string>
-    <string name="subtype">Subtype</string>
+    <string name="subtype">Category or Subtype</string>
     <string name="paid">Paid</string>
     <string name="fixed">Fixed</string>
     <string name="due_day">Due day</string>
     <string name="reception_day">Reception day</string>
     <string name="hint_description">Description (Optional)</string>
     <string name="hint_value">0,000.00</string>
+    <string name="hint_subtype">Category or Subtype (Optional)</string>
     <string name="hint_date">dd/mm/yyyy</string>
     <string name="hint_day">31</string>
     <string name="save_or_edit">Save or edit</string>

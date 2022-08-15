@@ -64,29 +64,29 @@ class FirebaseRealTimeDataBase {
         val userEmailChild = getUserEmailForChild(userEmail)
 
         databaseReference.child(ITEMS).child(userEmailChild).get().addOnSuccessListener {
-            val mapMoneyItems = it.getValue<Map<String, MoneyItem>?>()
-            val entries = mapMoneyItems?.entries
+            val moneyItems = it.getValue<List<MoneyItem?>?>()
 
-            entries?.let {
+            moneyItems?.let {
                 val items = ArrayList<Money>()
-                for (entry in entries) {
-                    val moneyItem = entry.value
-                    items.add(
-                        Money(
-                            moneyItem.id,
-                            moneyItem.userEmail,
-                            moneyItem.title,
-                            moneyItem.description,
-                            BigDecimal(moneyItem.value.toString()),
-                            moneyItem.type,
-                            moneyItem.subtype,
-                            moneyItem.payDate,
-                            moneyItem.paid,
-                            moneyItem.fixed,
-                            moneyItem.dueDay,
-                            moneyItem.creationDate
+                for (moneyItem in moneyItems) {
+                    moneyItem?.let {
+                        items.add(
+                            Money(
+                                moneyItem.id,
+                                moneyItem.userEmail,
+                                moneyItem.title,
+                                moneyItem.description,
+                                BigDecimal(moneyItem.value.toString()),
+                                moneyItem.type,
+                                moneyItem.subtype,
+                                moneyItem.payDate,
+                                moneyItem.paid,
+                                moneyItem.fixed,
+                                moneyItem.dueDay,
+                                moneyItem.creationDate
+                            )
                         )
-                    )
+                    }
                 }
 
                 asyncProcess.onComplete(true, items)

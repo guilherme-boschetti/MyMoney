@@ -15,10 +15,12 @@
         android:layout_height="48dp"
         android:layout_gravity="end"
         android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/cancel"
+        android:contentDescription="@string/close"
         android:src="@drawable/ic_baseline_close_24"
+        android:tooltipText="@string/close"
         app:tint="@color/colorPrimaryDark"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck"
+        tools:targetApi="o" />
 
     <TextView
         android:id="@+id/txt_terms_and_conditions_title"
@@ -48,8 +50,10 @@
             android:id="@+id/txt_terms_and_conditions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autoLink="web"
             android:text="@string/terms_and_conditions_text"
             android:textColor="@color/color_text"
+            android:textColorLink="@color/colorPrimary"
             android:textSize="@dimen/default_text_size"
             tools:ignore="TextContrastCheck" />
 

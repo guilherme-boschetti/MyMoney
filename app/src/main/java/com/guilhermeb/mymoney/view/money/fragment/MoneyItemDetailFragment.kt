@@ -224,6 +224,12 @@ class MoneyItemDetailFragment : Fragment() {
             }
         }
 
+        binding.autocompleteSubtype.changeHintOnFocusChange(
+            activity,
+            getString(R.string.hint_subtype),
+            ""
+        )
+
         binding.edtPayDate.apply {
 
             changeHintOnFocusChange(activity, getString(R.string.hint_date), "")
