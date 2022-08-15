@@ -29,6 +29,26 @@
             app:layout_constraintVertical_bias="0.0"
             tools:text="July 2022" />
 
+        <ImageButton
+            android:id="@+id/img_btn_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bkg_img_btn"
+            android:contentDescription="@string/chart"
+            android:elevation="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_show_chart_24"
+            android:tooltipText="@string/chart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/txt_month_year"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:targetApi="o" />
+
         <View
             android:id="@+id/divider_month_year"
             android:layout_width="0dp"

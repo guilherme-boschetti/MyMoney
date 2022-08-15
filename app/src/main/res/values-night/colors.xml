@@ -20,5 +20,6 @@
     <color name="color_text_link">@color/white</color>
     <color name="cancel_button">#FFE5E5E5</color>
     <color name="cancel_button_pressed">#FFFFFFFF</color>
+    <color name="bkg_image_button_pressed">#19000000</color>
     <color name="progress_bar_circular_background">#1904B804</color>
 </resources>

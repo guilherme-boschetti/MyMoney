@@ -91,6 +91,7 @@
     <string name="received">Received</string>
     <string name="not_received">Not received</string>
     <string name="no_items">No items</string>
+    <string name="chart">Chart</string>
     <!-- Item Detail -->
     <string name="title">Title</string>
     <string name="description">Description</string>
@@ -168,4 +169,8 @@
     <string name="october">October</string>
     <string name="november">November</string>
     <string name="december">December</string>
+    <!-- Chart -->
+    <string name="change_chart">Change chart</string>
+    <string name="no_subtype">No category</string>
+    <string name="chart_description_text">Monthly Expenses by Category (Subtype). Total expenses: %1$s</string>
 </resources>

@@ -2,6 +2,7 @@ package com.guilhermeb.mymoney.model.data.local.room.dao.money
 
 import androidx.room.*
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.model.data.local.room.entity.money.chart.ChartEntry
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -45,4 +46,21 @@ interface MoneyDao {
                 "ORDER BY YEAR_AND_MONTH DESC"
     )
     fun getAllMonthsByUser(userEmail: String): Flow<List<String>>
+
+    @Query(
+        "SELECT SUBTYPE, SUM(VALUE) AS TOTAL " +
+                "FROM MONEY " +
+                "WHERE USER_EMAIL = :userEmail " +
+                "AND TYPE = :type " +
+                "AND CASE WHEN PAY_DATE IS NOT NULL THEN PAY_DATE BETWEEN :startDate AND :endDate " +
+                "ELSE CREATION_DATE BETWEEN :startDate AND :endDate END " +
+                "GROUP BY SUBTYPE " +
+                "ORDER BY SUBTYPE ASC"
+    )
+    fun getChartData(
+        userEmail: String,
+        type: String,
+        startDate: String,
+        endDate: String
+    ): Flow<List<ChartEntry>>
 }

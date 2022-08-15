@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.guilhermeb.mymoney.R
+import com.guilhermeb.mymoney.common.enum.MoneyType
 import com.guilhermeb.mymoney.common.util.DateUtil
 import com.guilhermeb.mymoney.common.util.MaskUtil
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.model.data.local.room.entity.money.chart.ChartEntry
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import com.guilhermeb.mymoney.model.repository.money.MoneyRepository
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
@@ -46,6 +48,9 @@ class MoneyViewModel @Inject constructor(
     private val _fetchingDataFromFirebaseRTDB = MutableLiveData<Boolean>()
     val fetchingDataFromFirebaseRTDB: LiveData<Boolean> get() = _fetchingDataFromFirebaseRTDB
 
+    private val _chartData = MutableLiveData<List<ChartEntry>?>()
+    val chartData: LiveData<List<ChartEntry>?> get() = _chartData
+
     fun addMoneyItem(moneyItem: Money) {
         viewModelScope.launch {
             moneyRepository.insert(moneyItem)
@@ -83,42 +88,9 @@ class MoneyViewModel @Inject constructor(
     fun getMoneyItems() {
         val userEmail = getCurrentUserEmail()!!
 
-        val calendar = Calendar.getInstance()
-
-        if (_selectedYearAndMonthName.value != null) {
-            val yearAndMonthSplit = _selectedYearAndMonthName.value!!.split(" ")
-            val year = yearAndMonthSplit[0]
-            val monthName = yearAndMonthSplit[1]
-            val monthNumber = DateUtil.getMonthNumberByMonthName(monthName)
-
-            calendar.set(Calendar.YEAR, year.toInt())
-            calendar.set(Calendar.MONTH, monthNumber - 1)
-
-            _selectedYearAndMonthName.value =
-                "${calendar.get(Calendar.YEAR)} ${DateUtil.getMonthNameByMonthNumber(monthNumber)}"
-        } else {
-            _selectedYearAndMonthName.value = "${calendar.get(Calendar.YEAR)} ${
-                DateUtil.getMonthNameByMonthNumber(
-                    calendar.get(Calendar.MONTH) + 1
-                )
-            }"
-        }
-
-        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH))
-        calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY))
-        calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE))
-        calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND))
-        calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND))
-
-        val startDate = DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(calendar.time)
-
-        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
-        calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMaximum(Calendar.HOUR_OF_DAY))
-        calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE))
-        calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND))
-        calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND))
-
-        val endDate = DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(calendar.time)
+        val startDateAndEndDate = getStartDateAndEndDateOfMonthSelection()
+        val startDate = startDateAndEndDate[0]
+        val endDate = startDateAndEndDate[1]
 
         getAllMoneyItemsByUserBetweenDates(userEmail, startDate, endDate)
     }
@@ -179,6 +151,47 @@ class MoneyViewModel @Inject constructor(
 
     fun setDrawerMenuItemChecked(drawerMenuItemChecked: Int) {
         _drawerMenuItemChecked.value = drawerMenuItemChecked
+    }
+
+    private fun getStartDateAndEndDateOfMonthSelection(): Array<String> {
+        val calendar = Calendar.getInstance()
+
+        if (_selectedYearAndMonthName.value != null) {
+            val yearAndMonthSplit = _selectedYearAndMonthName.value!!.split(" ")
+            val year = yearAndMonthSplit[0]
+            val monthName = yearAndMonthSplit[1]
+            val monthNumber = DateUtil.getMonthNumberByMonthName(monthName)
+
+            calendar.set(Calendar.YEAR, year.toInt())
+            calendar.set(Calendar.MONTH, monthNumber - 1)
+
+            _selectedYearAndMonthName.value =
+                "${calendar.get(Calendar.YEAR)} ${DateUtil.getMonthNameByMonthNumber(monthNumber)}"
+        } else {
+            _selectedYearAndMonthName.value = "${calendar.get(Calendar.YEAR)} ${
+                DateUtil.getMonthNameByMonthNumber(
+                    calendar.get(Calendar.MONTH) + 1
+                )
+            }"
+        }
+
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH))
+        calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY))
+        calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE))
+        calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND))
+        calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND))
+
+        val startDate = DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(calendar.time)
+
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
+        calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMaximum(Calendar.HOUR_OF_DAY))
+        calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE))
+        calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND))
+        calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND))
+
+        val endDate = DateUtil.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS.format(calendar.time)
+
+        return arrayOf(startDate, endDate)
     }
 
     fun fetchDataFromFirebaseRTDB() {
@@ -279,5 +292,37 @@ class MoneyViewModel @Inject constructor(
             return true
         }
         return false
+    }
+
+    // == -- Chart == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==
+
+    fun getChartData() {
+        val userEmail = getCurrentUserEmail()!!
+
+        val type = MoneyType.EXPENSE.name
+
+        val startDateAndEndDate = getStartDateAndEndDateOfMonthSelection()
+        val startDate = startDateAndEndDate[0]
+        val endDate = startDateAndEndDate[1]
+
+        getChartData(userEmail, type, startDate, endDate)
+    }
+
+    private fun getChartData(
+        userEmail: String,
+        type: String,
+        startDate: String,
+        endDate: String
+    ) {
+        viewModelScope.launch {
+            moneyRepository.getChartData(userEmail, type, startDate, endDate)
+                .collect {
+                    _chartData.value = it
+                }
+        }
+    }
+
+    fun clearChartData() {
+        _chartData.value = null
     }
 }

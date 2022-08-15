@@ -14,6 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMoney">
+        <activity
+            android:name=".view.money.activity.chart.ChartActivity"
+            android:exported="false"
+            android:label="@string/chart" />
         <!--<activity
             android:name=".view.money.activity.incomeexpensesubtype.AddIncomeOrExpenseSubtypeActivity"
             android:exported="false"

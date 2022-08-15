@@ -94,6 +94,7 @@ Room:
 
 	https://developer.android.com/jetpack/androidx/releases/room?gclid=EAIaIQobChMIzqXozaaF-AIVH0JIAB2nlQSkEAAYASAAEgKTdPD_BwE&gclsrc=aw.ds
 	https://developer.android.com/training/data-storage/room/defining-data
+	https://developer.android.com/training/data-storage/room/accessing-data
 	https://stackoverflow.com/questions/44697418/how-to-populate-android-room-database-table-on-fisrt-run
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
@@ -171,5 +172,23 @@ Unit Tests
 
     https://developer.android.com/training/testing/local-tests
     https://www.youtube.com/playlist?list=PLQkwcJG4YTCSYJ13G4kVIJ10X5zisB2Lq
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Charts
+
+    https://stackoverflow.com/questions/9741300/charts-for-android
+    https://stackoverflow.com/questions/26467376/android-charting-libraries
+    https://androidrepo.com/catalog/android-chart_newest_1
+    https://camposha.info/android-examples/android-chart-libraries/#gsc.tab=0
+    AnyChart Android:
+    https://www.anychart.com/pt/technical-integrations/samples/android-charts
+    https://github.com/AnyChart/AnyChart-Android
+    https://www.youtube.com/watch?v=4BwqoaiYpEw
+    MPAndroidChart:
+    https://github.com/PhilJay/MPAndroidChart
+    https://www.youtube.com/watch?v=vhKtbECeazQ
+    https://medium.com/@mobindustry/how-to-quickly-implement-beautiful-charts-in-your-android-app-cf4caf050772
+    https://stackoverflow.com/questions/38857038/mpandroidchart-adding-labels-to-bar-chart
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

@@ -8,6 +8,7 @@ import com.guilhermeb.mymoney.viewmodel.login.CreateAccountViewModel
 import com.guilhermeb.mymoney.viewmodel.login.ForgotPasswordViewModel
 import com.guilhermeb.mymoney.viewmodel.login.LoginViewModel
 import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModel
+import com.guilhermeb.mymoney.viewmodel.money.chart.ChartViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,5 +59,11 @@ internal object ViewModelModule {
         authenticationViewModel: AuthenticationViewModel
     ): MoneyViewModel {
         return MoneyViewModel(moneyRepository, authenticationViewModel)
+    }
+
+    @Singleton
+    @Provides
+    fun provideChartViewModel(moneyViewModel: MoneyViewModel): ChartViewModel {
+        return ChartViewModel(moneyViewModel)
     }
 }

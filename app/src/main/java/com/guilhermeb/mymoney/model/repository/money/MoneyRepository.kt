@@ -2,6 +2,7 @@ package com.guilhermeb.mymoney.model.repository.money
 
 import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.model.data.local.room.entity.money.chart.ChartEntry
 import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import kotlinx.coroutines.flow.Flow
@@ -54,5 +55,14 @@ class MoneyRepository(
 
     fun fetchDataFromFirebaseRTDB(userEmail: String, asyncProcess: AsyncProcess<List<Money>>) {
         dataBackup.fetchDataFromFirebaseRTDB(userEmail, asyncProcess)
+    }
+
+    fun getChartData(
+        userEmail: String,
+        type: String,
+        startDate: String,
+        endDate: String
+    ): Flow<List<ChartEntry>> {
+        return dataSource.getChartData(userEmail, type, startDate, endDate)
     }
 }

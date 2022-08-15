@@ -21,6 +21,7 @@
     <color name="color_text_link">@color/colorPrimary</color>
     <color name="cancel_button">#FFFFFFFF</color>
     <color name="cancel_button_pressed">#FFE5E5E5</color>
+    <color name="bkg_image_button_pressed">#66666666</color>
     <color name="progress_bar_circular_background">#19000000</color>
 
     <color name="black">#FF000000</color> <!-- 100% black-->

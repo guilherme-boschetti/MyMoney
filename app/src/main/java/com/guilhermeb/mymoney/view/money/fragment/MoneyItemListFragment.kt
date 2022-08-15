@@ -39,6 +39,7 @@ import com.guilhermeb.mymoney.view.app.about.activity.AboutActivity
 import com.guilhermeb.mymoney.view.app.settings.activity.SettingsActivity
 import com.guilhermeb.mymoney.view.login.activity.LoginActivity
 import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
+import com.guilhermeb.mymoney.view.money.activity.chart.ChartActivity
 import com.guilhermeb.mymoney.view.money.adapter.MoneyItemAdapter
 import com.guilhermeb.mymoney.view.money.adapter.RecyclerViewSwipeCallBack
 import com.guilhermeb.mymoney.view.money.listener.MoneyItemClickListener
@@ -270,6 +271,11 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                 )
             }
         }
+
+        // Chart ----------
+        binding.layoutListOfItems.imgBtnChart.setOnClickListener {
+            goToChartActivity()
+        }
     }
 
     private fun setupEmptyView(isEmpty: Boolean) {
@@ -374,6 +380,11 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
         val intent = Intent(context, LoginActivity::class.java)
         intent.flags =
             Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // close the activities on stack
+        startActivity(intent)
+    }
+
+    private fun goToChartActivity() {
+        val intent = Intent(context, ChartActivity::class.java)
         startActivity(intent)
     }
 }

@@ -92,6 +92,7 @@
     <string name="received">Recebido</string>
     <string name="not_received">Não recebido</string>
     <string name="no_items">Sem itens</string>
+    <string name="chart">Gráfico</string>
     <!-- Item Detail -->
     <string name="title">Título</string>
     <string name="description">Descrição</string>
@@ -169,4 +170,8 @@
     <string name="october">Outubro</string>
     <string name="november">Novembro</string>
     <string name="december">Dezembro</string>
+    <!-- Chart -->
+    <string name="change_chart">Trocar gráfico</string>
+    <string name="no_subtype">Sem categoria</string>
+    <string name="chart_description_text">Gastos do mês por Categoria (Subtipo). Total de gastos: %1$s</string>
 </resources>
