@@ -65,9 +65,8 @@ class FirebaseRealTimeDataBase {
 
         databaseReference.child(ITEMS).child(userEmailChild).get().addOnSuccessListener {
             val moneyItems = it.getValue<List<MoneyItem?>?>()
-
+            val items = ArrayList<Money>()
             moneyItems?.let {
-                val items = ArrayList<Money>()
                 for (moneyItem in moneyItems) {
                     moneyItem?.let {
                         items.add(
@@ -88,9 +87,8 @@ class FirebaseRealTimeDataBase {
                         )
                     }
                 }
-
-                asyncProcess.onComplete(true, items)
             }
+            asyncProcess.onComplete(true, items)
         }.addOnFailureListener {
             asyncProcess.onComplete(false, null)
         }
