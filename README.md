@@ -31,4 +31,4 @@ Components and Features:
 
 ------------------------------
 
-PS: A valid google-services.json file under app folder is required to run this project.
+PS: A valid google-services.json file into app folder is required to run this project.
