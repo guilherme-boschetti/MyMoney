@@ -190,5 +190,6 @@ Charts
     https://www.youtube.com/watch?v=vhKtbECeazQ
     https://medium.com/@mobindustry/how-to-quickly-implement-beautiful-charts-in-your-android-app-cf4caf050772
     https://stackoverflow.com/questions/38857038/mpandroidchart-adding-labels-to-bar-chart
+    https://stackoverflow.com/questions/36540681/about-mpandroidchart-piechart-with-lines
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

@@ -141,6 +141,7 @@ class ChartActivity : AbstractActivity() {
 
         val pieDataSet = PieDataSet(pieEntries, dataSetLabel)
         pieDataSet.colors = ColorTemplate.COLORFUL_COLORS.toMutableList()
+        pieDataSet.sliceSpace = 1f
 
         pieDataSet.valueTextColor = ContextCompat.getColor(this, R.color.white)
         //pieDataSet.valueTextSize = 18f
