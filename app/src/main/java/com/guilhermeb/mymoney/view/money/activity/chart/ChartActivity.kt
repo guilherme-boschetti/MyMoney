@@ -32,12 +32,11 @@ class ChartActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         chartViewBinding = ActivityChartBinding.inflate(layoutInflater)
         setContentView(chartViewBinding.root)
-        setContentView(chartViewBinding.root)
         title = getExpensesLabel() // setTitle(R.string.chart)
 
         observeProperties()
         fetchData()
-        addListeners()
+        handleClicks()
         initDescriptionText()
     }
 
@@ -64,7 +63,7 @@ class ChartActivity : AbstractActivity() {
         chartViewModel.getChartData()
     }
 
-    private fun addListeners() {
+    private fun handleClicks() {
         chartViewBinding.imgBtnChangeChart.setOnClickListener {
             configChart()
         }

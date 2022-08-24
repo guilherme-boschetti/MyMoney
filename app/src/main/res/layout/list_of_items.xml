@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txt_month_year"
+            android:id="@+id/txt_year_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/screen_margin"
@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:text="July 2022" />
+            tools:text="2022 July" />
 
         <ImageButton
             android:id="@+id/img_btn_chart"
@@ -44,7 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@id/txt_month_year"
+            app:layout_constraintStart_toEndOf="@id/txt_year_month"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:targetApi="o" />
@@ -57,7 +57,7 @@
             android:background="@color/black_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_month_year" />
+            app:layout_constraintTop_toBottomOf="@id/txt_year_month" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_money"
@@ -75,7 +75,7 @@
             android:id="@+id/txt_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/loading"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/progress_loading"
@@ -88,7 +88,9 @@
             android:id="@+id/progress_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="130dp"
+            android:layout_marginBottom="148dp"
+            android:background="@drawable/shape_bkg_progress_bar_circular"
+            android:padding="8dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

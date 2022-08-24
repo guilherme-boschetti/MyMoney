@@ -195,7 +195,7 @@ class SettingsActivity : AbstractActivity() {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             nightModeViewBinding = DialogNightModeBinding.inflate(LayoutInflater.from(context))
             init()
-            addListeners()
+            handleClicks()
             builder.setView(nightModeViewBinding.root)
             dialog = builder.create()
             dialog.show()
@@ -213,7 +213,7 @@ class SettingsActivity : AbstractActivity() {
             }
         }
 
-        private fun addListeners() {
+        private fun handleClicks() {
             nightModeViewBinding.imgBtnClose.setOnClickListener {
                 dialog.dismiss()
             }

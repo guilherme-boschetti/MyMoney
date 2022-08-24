@@ -110,7 +110,7 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
     private fun observeProperties() {
         moneyViewModel.selectedYearAndMonthName.observe(viewLifecycleOwner) {
             // Month Year label ----------
-            binding.layoutListOfItems.txtMonthYear.text = it
+            binding.layoutListOfItems.txtYearMonth.text = it
         }
 
         moneyViewModel.fetchingDataFromFirebaseRTDB.observe(viewLifecycleOwner) { fetchingData ->

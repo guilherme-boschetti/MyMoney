@@ -19,6 +19,7 @@ class TermsAndConditionsDialog(
         val builder: AlertDialog.Builder = AlertDialog.Builder(context)
         termsAndConditionsViewBinding =
             DialogTermsAndConditionsBinding.inflate(LayoutInflater.from(context))
+        handleClicks()
         addListeners()
         termsAndConditionsViewBinding.scrollView.post {
             if (canScroll(termsAndConditionsViewBinding.scrollView)) {
@@ -30,7 +31,7 @@ class TermsAndConditionsDialog(
         dialog.show()
     }
 
-    private fun addListeners() {
+    private fun handleClicks() {
         termsAndConditionsViewBinding.btnAcceptTermsAndConditions.setOnClickListener {
             dialog.dismiss()
             callback.termsAndConditionsAccepted()
@@ -38,6 +39,9 @@ class TermsAndConditionsDialog(
         termsAndConditionsViewBinding.imgBtnClose.setOnClickListener {
             dialog.dismiss()
         }
+    }
+
+    private fun addListeners() {
         val scroll: ScrollView = termsAndConditionsViewBinding.scrollView
         scroll.viewTreeObserver.addOnScrollChangedListener {
             if (scroll.getChildAt(0).bottom <= scroll.height + scroll.scrollY) {

@@ -130,6 +130,15 @@ Firebase Authentication:
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
+Firebase RealTime DataBase:
+
+	https://firebase.google.com/docs/database/security/get-started?authuser=0&hl=pt
+    https://firebase.google.com/docs/database/security/core-syntax?hl=pt&authuser=0
+    https://firebase.google.com/docs/rules/rules-and-auth
+    https://medium.com/@juliomacr/10-firebase-realtime-database-rule-templates-d4894a118a98
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
 Dependency Injection:
 
 	Dagger e Hilt:
