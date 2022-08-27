@@ -42,6 +42,26 @@
             android:src="@drawable/ic_baseline_show_chart_24"
             android:tooltipText="@string/chart"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/img_btn_generate_file"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/txt_year_month"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:targetApi="o" />
+
+        <ImageButton
+            android:id="@+id/img_btn_generate_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bkg_img_btn"
+            android:contentDescription="@string/generate_file"
+            android:elevation="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_outline_file_download_24"
+            android:tooltipText="@string/generate_file"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@id/txt_year_month"
@@ -50,7 +70,7 @@
             tools:targetApi="o" />
 
         <View
-            android:id="@+id/divider_month_year"
+            android:id="@+id/divider_header"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/screen_margin"
@@ -68,7 +88,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_month_year"
+            app:layout_constraintTop_toBottomOf="@id/divider_header"
             tools:listitem="@layout/item_money" />
 
         <TextView
@@ -81,7 +101,7 @@
             app:layout_constraintBottom_toTopOf="@id/progress_loading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_month_year"
+            app:layout_constraintTop_toBottomOf="@id/divider_header"
             app:layout_constraintVertical_bias="1.0" />
 
         <ProgressBar
@@ -95,7 +115,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_month_year" />
+            app:layout_constraintTop_toBottomOf="@id/divider_header" />
 
         <TextView
             android:id="@+id/txt_no_items"
@@ -108,7 +128,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_month_year" />
+            app:layout_constraintTop_toBottomOf="@id/divider_header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

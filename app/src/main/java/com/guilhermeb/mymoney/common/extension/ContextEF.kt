@@ -47,3 +47,14 @@ fun Context.showConfirmationDialog(@StringRes messageId: Int, positiveAction: ()
     val alertDialog: AlertDialog = builder.create()
     alertDialog.show()
 }
+
+fun Context.showInformationDialog(@StringRes messageId: Int) {
+    val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+
+    builder.setMessage(messageId)
+        .setCancelable(false)
+        .setPositiveButton(com.guilhermeb.mymoney.R.string.ok) { dialog, _ -> dialog.dismiss() }
+
+    val alertDialog: AlertDialog = builder.create()
+    alertDialog.show()
+}

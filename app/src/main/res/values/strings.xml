@@ -92,6 +92,7 @@
     <string name="not_received">Not received</string>
     <string name="no_items">No items</string>
     <string name="chart">Chart</string>
+    <string name="generate_file">Generate file</string>
     <!-- Item Detail -->
     <string name="title">Title</string>
     <string name="description">Description</string>
@@ -113,6 +114,8 @@
     <string name="hint_day">31</string>
     <string name="save_or_edit">Save or edit</string>
     <string name="select_the_date">Select the date</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
 
     <string name="title_should_not_be_empty">Title should not be empty</string>
     <string name="value_should_not_be_empty">Value should not be empty</string>
@@ -128,8 +131,6 @@
     <string name="currency">Currency</string>
     <string name="use_previous_month_balance">Use previous month balance</string>
     <string name="dark_mode">Dark mode</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
     <string name="ui_mode">UI mode</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
@@ -173,4 +174,23 @@
     <string name="change_chart">Change chart</string>
     <string name="no_subtype">No category</string>
     <string name="chart_description_text">Monthly Expenses by Category (Subtype). Total expenses: %1$s</string>
+    <!-- File generator -->
+    <string name="file_name">File name</string>
+    <string name="file_extension">File extension</string>
+    <string name="generating_file">Generating file…</string>
+    <string name="generate_file_error">Error generating file</string>
+    <string name="ok">OK</string>
+    <string name="save">Save</string>
+    <string name="invalid_file_name">Invalid file name. Should not contain punctuation, spaces or special characters</string>
+    <string name="file_name_should_not_be_empty">File name should not be empty</string>
+    <string name="file_extension_required">File extension required</string>
+    <string name="csv">.csv</string>
+    <string name="pdf">.pdf</string>
+    <string name="txt">.txt</string>
+    <string name="xls">.xls</string>
+    <string name="view_file_snack_bar_text">File generated</string>
+    <string name="view_file_snack_bar_button_text">VIEW</string>
+    <string name="id">ID</string>
+    <string name="creation_date">Creation date</string>
+    <string name="sheet">Sheet</string>
 </resources>

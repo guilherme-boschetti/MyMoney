@@ -363,10 +363,12 @@ class MoneyItemDetailFragment : Fragment() {
             })
 
             if (itemId > 0 && !editItem) {
+                fabCancel.setText(R.string.back)
                 fabSaveOrEdit.setImageResource(R.drawable.ic_baseline_edit_24)
                 enableViews(layoutAddItemParent, false)
                 changeDrawableColorOfTheEditText(edtPayDate, false)
             } else {
+                fabCancel.setText(R.string.cancel)
                 setupFabAppearance(
                     fabSaveOrEdit,
                     R.drawable.ic_baseline_done_24,
@@ -389,7 +391,6 @@ class MoneyItemDetailFragment : Fragment() {
                 ) {
                     if (itemId > 0) {
                         if (update) {
-                            // Update
                             val moneyItem = getMoneyItem()
                             moneyViewModel.updateMoneyItem(moneyItem)
                             if (isTablet) {
@@ -401,6 +402,7 @@ class MoneyItemDetailFragment : Fragment() {
                             }
                         } else {
                             update = true
+                            fabCancel.setText(R.string.cancel)
                             enableViews(layoutAddItemParent, true)
                             changeDrawableColorOfTheEditText(edtPayDate, true)
                             setupFabAppearance(

@@ -202,3 +202,44 @@ Charts
     https://stackoverflow.com/questions/36540681/about-mpandroidchart-piechart-with-lines
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Choose directory to save file
+
+    https://developer.android.com/training/data-storage/shared/documents-files
+    https://developer.android.com/reference/androidx/core/content/FileProvider
+    https://developer.android.com/training/secure-file-sharing/setup-sharing
+    https://stackoverflow.com/questions/9942560/when-to-clear-the-cache-dir-in-android
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+pdf file
+
+    https://stackoverflow.com/questions/34296149/creating-a-pdf-file-in-android-programmatically-and-writing-in-it
+    https://stackoverflow.com/questions/35059554/how-can-i-create-landscape-pdf-using-android-native-pdfdocument-api
+    https://www.geeksforgeeks.org/how-to-generate-a-pdf-file-in-android-app/
+    https://www.blueappsoftware.com/how-to-create-pdf-file-in-android/
+    https://developer.android.com/reference/android/graphics/pdf/PdfDocument
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+xls file (Excel)
+
+    JExcelAPI:
+    https://www.google.com.br/search?q=criar+arquivo+xlsx+no+android+programmatically
+    https://nglauber.medium.com/criando-arquivos-excel-no-android-edabe0833959
+    http://www.nglauber.com.br/2012/06/criando-arquivos-excel-no-android.html
+    http://jexcelapi.sourceforge.net/
+    https://sourceforge.net/projects/jexcelapi/files/
+    https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl/2.6.12
+    https://www.tabnine.com/code/java/methods/jxl.write.WritableCellFormat/setBorder
+    https://www.tabnine.com/code/java/methods/jxl.write.WritableSheet/mergeCells
+    https://stackoverflow.com/questions/1665391/jxl-cell-formatting
+    Apache POI:
+    https://www.google.com.br/search?q=Apache+POI
+    https://poi.apache.org/
+    https://www.devmedia.com.br/apache-poi-manipulando-documentos-em-java/31778
+    https://acervolima.com/apache-poi-introducao/
+    https://www.redspark.io/lendocriando-planilhas-excel-em-java-com-a-biblioteca-apache-poi/
+    https://www.tutorialspoint.com/apache_poi/apache_poi_overview.htm
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

@@ -93,6 +93,7 @@
     <string name="not_received">Não recebido</string>
     <string name="no_items">Sem itens</string>
     <string name="chart">Gráfico</string>
+    <string name="generate_file">Gerar arquivo</string>
     <!-- Item Detail -->
     <string name="title">Título</string>
     <string name="description">Descrição</string>
@@ -114,6 +115,8 @@
     <string name="hint_day">31</string>
     <string name="save_or_edit">Salvar ou editar</string>
     <string name="select_the_date">Selecione a data</string>
+    <string name="cancel">Cancelar</string>
+    <string name="back">Voltar</string>
 
     <string name="title_should_not_be_empty">Título não deve estar vazio</string>
     <string name="value_should_not_be_empty">Valor não deve estar vazio</string>
@@ -129,8 +132,6 @@
     <string name="currency">Moeda</string>
     <string name="use_previous_month_balance">Usar o saldo do mês anterior</string>
     <string name="dark_mode">Modo escuro</string>
-    <string name="cancel">Cancelar</string>
-    <string name="save">Salvar</string>
     <string name="ui_mode">Modo da tela</string>
     <string name="light">Claro</string>
     <string name="dark">Escuro</string>
@@ -174,4 +175,23 @@
     <string name="change_chart">Trocar gráfico</string>
     <string name="no_subtype">Sem categoria</string>
     <string name="chart_description_text">Gastos do mês por Categoria (Subtipo). Total de gastos: %1$s</string>
+    <!-- File generator -->
+    <string name="file_name">Nome do arquivo</string>
+    <string name="file_extension">Extensão do arquivo</string>
+    <string name="generating_file">Gerando arquivo…</string>
+    <string name="generate_file_error">Erro ao gerar o arquivo</string>
+    <string name="ok">OK</string>
+    <string name="save">Salvar</string>
+    <string name="invalid_file_name">Nome do arquivo inválido. Não deve conter pontuação, espaços nem caracteres especiais</string>
+    <string name="file_name_should_not_be_empty">O nome do arquivo não deve estar vazio</string>
+    <string name="file_extension_required">Extensão de arquivo necessária</string>
+    <string name="csv">.csv</string>
+    <string name="pdf">.pdf</string>
+    <string name="txt">.txt</string>
+    <string name="xls">.xls</string>
+    <string name="view_file_snack_bar_text">Arquivo gerado</string>
+    <string name="view_file_snack_bar_button_text">VISUALIZAR</string>
+    <string name="id">ID</string>
+    <string name="creation_date">Data de criação</string>
+    <string name="sheet">Planilha</string>
 </resources>

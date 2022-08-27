@@ -109,4 +109,6 @@ dependencies {
     // == -- == -- ==
     // Charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    // Excel file .xls
+    implementation group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.12'
 }

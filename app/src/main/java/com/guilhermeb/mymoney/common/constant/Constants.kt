@@ -15,5 +15,11 @@ class Constants {
         const val YES = "yes"
         const val NO = "no"
         const val PREVIOUS_MONTH_BALANCE = "previous_month_balance"
+
+        const val TXT_MIME_TYPE = "text/plain"
+        const val CSV_MIME_TYPE = "text/csv"
+        const val PDF_MIME_TYPE = "application/pdf"
+        const val EXCEL_MIME_TYPE = "application/vnd.ms-excel"
+        const val UNKNOWN_FILE_MIME_TYPE = "application/octet-stream"
     }
 }

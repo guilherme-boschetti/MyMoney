@@ -40,6 +40,7 @@ import com.guilhermeb.mymoney.view.app.settings.activity.SettingsActivity
 import com.guilhermeb.mymoney.view.login.activity.LoginActivity
 import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
 import com.guilhermeb.mymoney.view.money.activity.chart.ChartActivity
+import com.guilhermeb.mymoney.view.money.activity.file.generator.GenerateFileActivity
 import com.guilhermeb.mymoney.view.money.adapter.MoneyItemAdapter
 import com.guilhermeb.mymoney.view.money.adapter.RecyclerViewSwipeCallBack
 import com.guilhermeb.mymoney.view.money.listener.MoneyItemClickListener
@@ -276,6 +277,11 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
         binding.layoutListOfItems.imgBtnChart.setOnClickListener {
             goToChartActivity()
         }
+
+        // Generate File ----------
+        binding.layoutListOfItems.imgBtnGenerateFile.setOnClickListener {
+            goToGenerateFileActivity()
+        }
     }
 
     private fun setupEmptyView(isEmpty: Boolean) {
@@ -385,6 +391,11 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
 
     private fun goToChartActivity() {
         val intent = Intent(context, ChartActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToGenerateFileActivity() {
+        val intent = Intent(context, GenerateFileActivity::class.java)
         startActivity(intent)
     }
 }

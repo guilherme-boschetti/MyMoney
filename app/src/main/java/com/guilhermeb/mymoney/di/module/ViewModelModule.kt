@@ -9,6 +9,7 @@ import com.guilhermeb.mymoney.viewmodel.login.ForgotPasswordViewModel
 import com.guilhermeb.mymoney.viewmodel.login.LoginViewModel
 import com.guilhermeb.mymoney.viewmodel.money.MoneyViewModel
 import com.guilhermeb.mymoney.viewmodel.money.chart.ChartViewModel
+import com.guilhermeb.mymoney.viewmodel.money.file.generator.GenerateFileViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -65,5 +66,11 @@ internal object ViewModelModule {
     @Provides
     fun provideChartViewModel(moneyViewModel: MoneyViewModel): ChartViewModel {
         return ChartViewModel(moneyViewModel)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGenerateFileViewModel(moneyViewModel: MoneyViewModel): GenerateFileViewModel {
+        return GenerateFileViewModel(moneyViewModel)
     }
 }
