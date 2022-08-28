@@ -391,15 +391,10 @@ class MoneyItemDetailFragment : Fragment() {
                 ) {
                     if (itemId > 0) {
                         if (update) {
+                            // Update item
                             val moneyItem = getMoneyItem()
                             moneyViewModel.updateMoneyItem(moneyItem)
-                            if (isTablet) {
-                                activity?.showView(binding.emptyView)
-                                activity?.hideView(binding.coordinator)
-                                clearMoneyItem()
-                            } else {
-                                activity?.onBackPressed()
-                            }
+                            exitFragment()
                         } else {
                             update = true
                             fabCancel.setText(R.string.cancel)
@@ -414,29 +409,28 @@ class MoneyItemDetailFragment : Fragment() {
                             rotateView(fabSaveOrEdit)
                         }
                     } else {
-                        // Save
+                        // Save item
                         val moneyItem = getMoneyItem()
                         moneyViewModel.addMoneyItem(moneyItem)
-                        if (isTablet) {
-                            activity?.showView(binding.emptyView)
-                            activity?.hideView(binding.coordinator)
-                            clearMoneyItem()
-                        } else {
-                            activity?.onBackPressed()
-                        }
+                        exitFragment()
                     }
                 }
             }
 
             fabCancel.setOnClickListener {
-                if (isTablet) {
-                    activity?.showView(binding.emptyView)
-                    activity?.hideView(binding.coordinator)
-                    clearMoneyItem()
-                } else {
-                    activity?.onBackPressed()
-                }
+                exitFragment()
             }
+        }
+    }
+
+    private fun exitFragment() {
+        moneyViewModel.clearListSelection()
+        if (isTablet) {
+            activity?.showView(binding.emptyView)
+            activity?.hideView(binding.coordinator)
+            clearMoneyItem()
+        } else {
+            activity?.onBackPressed()
         }
     }
 

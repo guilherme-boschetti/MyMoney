@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/item_money_background"
+        android:background="@color/color_bkg_list_item_money"
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/screen_margin"
         tools:ignore="UnusedAttribute">

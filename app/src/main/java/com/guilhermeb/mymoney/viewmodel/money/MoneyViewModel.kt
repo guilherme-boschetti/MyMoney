@@ -48,8 +48,8 @@ class MoneyViewModel @Inject constructor(
     private val _fetchingDataFromFirebaseRTDB = MutableLiveData<Boolean>()
     val fetchingDataFromFirebaseRTDB: LiveData<Boolean> get() = _fetchingDataFromFirebaseRTDB
 
-    private val _chartData = MutableLiveData<List<ChartEntry>?>()
-    val chartData: LiveData<List<ChartEntry>?> get() = _chartData
+    private val _clearListSelection = MutableLiveData<Boolean>()
+    val clearListSelection: LiveData<Boolean> get() = _clearListSelection
 
     fun addMoneyItem(moneyItem: Money) {
         viewModelScope.launch {
@@ -210,6 +210,10 @@ class MoneyViewModel @Inject constructor(
             })
     }
 
+    fun clearListSelection() {
+        _clearListSelection.value = _clearListSelection.value?.not()
+    }
+
     // == -- User == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==
 
     fun getCurrentUserEmail(): String? {
@@ -295,6 +299,9 @@ class MoneyViewModel @Inject constructor(
     }
 
     // == -- Chart == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==
+
+    private val _chartData = MutableLiveData<List<ChartEntry>?>()
+    val chartData: LiveData<List<ChartEntry>?> get() = _chartData
 
     fun getChartData() {
         val userEmail = getCurrentUserEmail()!!

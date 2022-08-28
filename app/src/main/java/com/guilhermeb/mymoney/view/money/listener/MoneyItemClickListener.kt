@@ -3,7 +3,9 @@ package com.guilhermeb.mymoney.view.money.listener
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.guilhermeb.mymoney.R
+import com.guilhermeb.mymoney.view.money.adapter.MoneyItemAdapter
 import com.guilhermeb.mymoney.view.money.fragment.MoneyItemDetailFragment
 
 class MoneyItemClickListener(
@@ -11,7 +13,8 @@ class MoneyItemClickListener(
     private val isTablet: Boolean,
     private val newItem: Boolean,
     var editItem: Boolean,
-    private val rootView: View
+    private val rootView: View,
+    private val viewHolder: RecyclerView.ViewHolder? = null
 ) : View.OnClickListener {
 
     override fun onClick(view: View?) {
@@ -29,6 +32,27 @@ class MoneyItemClickListener(
                 .navigate(R.id.fragment_item_detail, bundle)
         } else {
             rootView.findNavController().navigate(R.id.show_item_detail, bundle)
+        }
+        markOrUnmarkSelectedItem(rootView, viewHolder)
+    }
+
+    companion object {
+        fun markOrUnmarkSelectedItem(rootView: View, viewHolder: RecyclerView.ViewHolder? = null) {
+            val recyclerView = rootView.findViewById<RecyclerView>(R.id.recycler_view_money)
+            recyclerView.adapter?.let {
+                if (recyclerView.adapter is MoneyItemAdapter) {
+                    val moneyItemAdapter: MoneyItemAdapter =
+                        recyclerView.adapter as MoneyItemAdapter
+                    var selectedPos = RecyclerView.NO_POSITION
+                    viewHolder?.let {
+                        selectedPos = viewHolder.bindingAdapterPosition
+                    }
+                    // Updating old as well as new positions
+                    moneyItemAdapter.notifyItemChanged(moneyItemAdapter.selectedPosition)
+                    moneyItemAdapter.selectedPosition = selectedPos
+                    moneyItemAdapter.notifyItemChanged(moneyItemAdapter.selectedPosition)
+                }
+            }
         }
     }
 }

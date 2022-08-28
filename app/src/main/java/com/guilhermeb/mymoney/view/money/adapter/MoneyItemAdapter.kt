@@ -16,6 +16,8 @@ class MoneyItemAdapter(
     private val rootView: View
 ) : ListAdapter<Money, RecyclerView.ViewHolder>(MoneyDiffCallBack()) {
 
+    var selectedPosition = RecyclerView.NO_POSITION
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MoneyItemViewHolder.from(parent, this)
     }
@@ -25,8 +27,9 @@ class MoneyItemAdapter(
             val moneyItem = currentList[position]
             holder.bind(
                 moneyItem,
-                MoneyItemClickListener(moneyItem.id, isTablet, false, newItem, rootView)
+                MoneyItemClickListener(moneyItem.id, isTablet, false, newItem, rootView, holder)
             )
+            holder.itemView.isSelected = selectedPosition == position
         }
     }
 

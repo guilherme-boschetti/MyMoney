@@ -200,6 +200,10 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     MaskUtil.getFormattedValueText(totalExpenseNotPaid)
             }
         }
+
+        moneyViewModel.clearListSelection.observe(viewLifecycleOwner) {
+            MoneyItemClickListener.markOrUnmarkSelectedItem(binding.root)
+        }
     }
 
     private fun fetchData() {
