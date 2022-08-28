@@ -73,6 +73,8 @@ class MoneyItemDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        clearMoneyItem()
+
         arguments?.let {
             if (it.containsKey(ARG_ITEM_ID)) {
                 itemId = it.getLong(ARG_ITEM_ID)

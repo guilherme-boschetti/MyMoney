@@ -1,6 +1,7 @@
 package com.guilhermeb.mymoney.model.repository.contract
 
 interface Authenticable {
+    fun getCurrentUserUid(): String?
     fun getCurrentUserEmail(): String?
     fun createUser(email: String, password: String, asyncProcess: AsyncProcess<String?>)
     fun signIn(email: String, password: String, asyncProcess: AsyncProcess<String?>)

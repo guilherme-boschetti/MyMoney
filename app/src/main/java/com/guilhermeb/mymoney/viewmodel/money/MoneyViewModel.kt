@@ -196,18 +196,16 @@ class MoneyViewModel @Inject constructor(
 
     fun fetchDataFromFirebaseRTDB() {
         _fetchingDataFromFirebaseRTDB.value = true
-        moneyRepository.fetchDataFromFirebaseRTDB(
-            getCurrentUserEmail()!!,
-            object : AsyncProcess<List<Money>> {
-                override fun onComplete(isSuccessful: Boolean, result: List<Money>?) {
-                    result?.let {
-                        for (item in result) {
-                            addMoneyItem(item)
-                        }
+        moneyRepository.fetchDataFromFirebaseRTDB(object : AsyncProcess<List<Money>> {
+            override fun onComplete(isSuccessful: Boolean, result: List<Money>?) {
+                result?.let {
+                    for (item in result) {
+                        addMoneyItem(item)
                     }
-                    _fetchingDataFromFirebaseRTDB.value = false
                 }
-            })
+                _fetchingDataFromFirebaseRTDB.value = false
+            }
+        })
     }
 
     fun clearListSelection() {

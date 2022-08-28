@@ -28,8 +28,8 @@ internal object AppModule {
 
     @Singleton
     @Provides
-    fun provideFirebaseRealTimeDataBase(): FirebaseRealTimeDataBase {
-        return FirebaseRealTimeDataBase()
+    fun provideFirebaseRealTimeDataBase(firebaseAuthentication: FirebaseAuthentication): FirebaseRealTimeDataBase {
+        return FirebaseRealTimeDataBase(firebaseAuthentication)
     }
 
     @Singleton

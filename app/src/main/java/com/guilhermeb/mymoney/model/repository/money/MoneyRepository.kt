@@ -30,7 +30,7 @@ class MoneyRepository(
 
     suspend fun removeAllMoneyItemsByUser(userEmail: String) {
         dataSource.removeAllMoneyItemsByUser(userEmail)
-        dataBackup.removeAllMoneyItemsByUser(userEmail)
+        dataBackup.removeAllMoneyItemsByUser()
     }
 
     suspend fun getMoneyItemById(id: Long): Money? {
@@ -53,8 +53,8 @@ class MoneyRepository(
         return dataSource.getAllMonthsByUser(userEmail)
     }
 
-    fun fetchDataFromFirebaseRTDB(userEmail: String, asyncProcess: AsyncProcess<List<Money>>) {
-        dataBackup.fetchDataFromFirebaseRTDB(userEmail, asyncProcess)
+    fun fetchDataFromFirebaseRTDB(asyncProcess: AsyncProcess<List<Money>>) {
+        dataBackup.fetchDataFromFirebaseRTDB(asyncProcess)
     }
 
     fun getChartData(

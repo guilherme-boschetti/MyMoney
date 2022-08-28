@@ -8,9 +8,10 @@ import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import java.math.BigDecimal
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class FirebaseRealTimeDataBase {
+class FirebaseRealTimeDataBase @Inject constructor(private val firebaseAuthentication: FirebaseAuthentication) {
 
     companion object {
         const val ITEMS = "items"
@@ -27,15 +28,15 @@ class FirebaseRealTimeDataBase {
         Firebase.database.reference
     }
 
-    private fun getUserEmailForChild(userEmail: String): String {
-        return userEmail.replace(".", "_")
+    private fun getUserUidForChild(): String {
+        return firebaseAuthentication.getCurrentUserUid()!!
     }
 
     private fun setValueForUserEmailChildAndItemIdChild(moneyItem: Money) {
-        val userEmailChild = getUserEmailForChild(moneyItem.userEmail)
+        val userUid = getUserUidForChild()
         val itemId = moneyItem.id.toString()
 
-        databaseReference.child(ITEMS).child(userEmailChild).child(itemId)
+        databaseReference.child(ITEMS).child(userUid).child(itemId)
             .setValue(MoneyItem(moneyItem))
     }
 
@@ -48,43 +49,41 @@ class FirebaseRealTimeDataBase {
     }
 
     fun delete(moneyItem: Money) {
-        val userEmail = getUserEmailForChild(moneyItem.userEmail)
+        val userUid = getUserUidForChild()
         val itemId = moneyItem.id.toString()
 
-        databaseReference.child(ITEMS).child(userEmail).child(itemId).removeValue()
+        databaseReference.child(ITEMS).child(userUid).child(itemId).removeValue()
     }
 
-    fun removeAllMoneyItemsByUser(userEmail: String) {
-        val userEmailChild = getUserEmailForChild(userEmail)
+    fun removeAllMoneyItemsByUser() {
+        val userUid = getUserUidForChild()
 
-        databaseReference.child(ITEMS).child(userEmailChild).removeValue()
+        databaseReference.child(ITEMS).child(userUid).removeValue()
     }
 
-    fun fetchDataFromFirebaseRTDB(userEmail: String, asyncProcess: AsyncProcess<List<Money>>) {
-        val userEmailChild = getUserEmailForChild(userEmail)
+    fun fetchDataFromFirebaseRTDB(asyncProcess: AsyncProcess<List<Money>>) {
+        val userUid = getUserUidForChild()
 
-        databaseReference.child(ITEMS).child(userEmailChild).get().addOnSuccessListener {
-            val moneyItems = it.getValue<List<MoneyItem?>?>()
+        databaseReference.child(ITEMS).child(userUid).get().addOnSuccessListener {
             val items = ArrayList<Money>()
-            moneyItems?.let {
-                for (moneyItem in moneyItems) {
-                    moneyItem?.let {
-                        items.add(
-                            Money(
-                                moneyItem.id,
-                                moneyItem.userEmail,
-                                moneyItem.title,
-                                moneyItem.description,
-                                BigDecimal(moneyItem.value.toString()),
-                                moneyItem.type,
-                                moneyItem.subtype,
-                                moneyItem.payDate,
-                                moneyItem.paid,
-                                moneyItem.fixed,
-                                moneyItem.dueDay,
-                                moneyItem.creationDate
-                            )
-                        )
+            try {
+                // More than one item returns a List
+                val moneyItems = it.getValue<List<MoneyItem?>?>()
+                moneyItems?.let {
+                    for (moneyItem in moneyItems) {
+                        moneyItem?.let {
+                            items.add(createMoney(moneyItem))
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                // Only one item returns a Map
+                val mapMoneyItems = it.getValue<Map<String, MoneyItem>?>()
+                val entries = mapMoneyItems?.entries
+                entries?.let {
+                    for (entry in entries) {
+                        val moneyItem = entry.value
+                        items.add(createMoney(moneyItem))
                     }
                 }
             }
@@ -92,6 +91,23 @@ class FirebaseRealTimeDataBase {
         }.addOnFailureListener {
             asyncProcess.onComplete(false, null)
         }
+    }
+
+    private fun createMoney(moneyItem: MoneyItem): Money {
+        return Money(
+            moneyItem.id,
+            moneyItem.userEmail,
+            moneyItem.title,
+            moneyItem.description,
+            BigDecimal(moneyItem.value.toString()),
+            moneyItem.type,
+            moneyItem.subtype,
+            moneyItem.payDate,
+            moneyItem.paid,
+            moneyItem.fixed,
+            moneyItem.dueDay,
+            moneyItem.creationDate
+        )
     }
 }
 

@@ -11,6 +11,10 @@ import java.lang.Exception
 
 class FirebaseAuthentication : Authenticable {
 
+    override fun getCurrentUserUid(): String? {
+        return Firebase.auth.currentUser?.uid
+    }
+
     override fun getCurrentUserEmail(): String? {
         return Firebase.auth.currentUser?.email
     }
