@@ -48,6 +48,9 @@ class MoneyViewModel @Inject constructor(
     private val _fetchingDataFromFirebaseRTDB = MutableLiveData<Boolean>()
     val fetchingDataFromFirebaseRTDB: LiveData<Boolean> get() = _fetchingDataFromFirebaseRTDB
 
+    private val _previousMonthBalance = MutableLiveData<BigDecimal>()
+    val previousMonthBalance: LiveData<BigDecimal> get() = _previousMonthBalance
+
     private val _clearListSelection = MutableLiveData<Boolean>()
     val clearListSelection: LiveData<Boolean> get() = _clearListSelection
 
@@ -153,7 +156,7 @@ class MoneyViewModel @Inject constructor(
         _drawerMenuItemChecked.value = drawerMenuItemChecked
     }
 
-    private fun getStartDateAndEndDateOfMonthSelection(): Array<String> {
+    private fun getStartDateAndEndDateOfMonthSelection(previousMonth: Boolean = false): Array<String> {
         val calendar = Calendar.getInstance()
 
         if (_selectedYearAndMonthName.value != null) {
@@ -173,6 +176,10 @@ class MoneyViewModel @Inject constructor(
                     calendar.get(Calendar.MONTH) + 1
                 )
             }"
+        }
+
+        if (previousMonth) {
+            calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1)
         }
 
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH))
@@ -206,6 +213,21 @@ class MoneyViewModel @Inject constructor(
                 _fetchingDataFromFirebaseRTDB.value = false
             }
         })
+    }
+
+    fun getPreviousMonthBalance() {
+        val userEmail = getCurrentUserEmail()!!
+
+        val startDateAndEndDate = getStartDateAndEndDateOfMonthSelection(previousMonth = true)
+        val startDate = startDateAndEndDate[0]
+        val endDate = startDateAndEndDate[1]
+
+        viewModelScope.launch {
+            moneyRepository.getPreviousMonthBalance(userEmail, startDate, endDate)
+                .collect {
+                    _previousMonthBalance.value = it
+                }
+        }
     }
 
     fun clearListSelection() {

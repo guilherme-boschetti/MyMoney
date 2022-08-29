@@ -6,6 +6,7 @@ import com.guilhermeb.mymoney.model.data.local.room.entity.money.chart.ChartEntr
 import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 
 class MoneyRepository(
     private val dataSource: MoneyDao,
@@ -55,6 +56,14 @@ class MoneyRepository(
 
     fun fetchDataFromFirebaseRTDB(asyncProcess: AsyncProcess<List<Money>>) {
         dataBackup.fetchDataFromFirebaseRTDB(asyncProcess)
+    }
+
+    fun getPreviousMonthBalance(
+        userEmail: String,
+        startDate: String,
+        endDate: String
+    ): Flow<BigDecimal> {
+        return dataSource.getPreviousMonthBalance(userEmail, startDate, endDate)
     }
 
     fun getChartData(

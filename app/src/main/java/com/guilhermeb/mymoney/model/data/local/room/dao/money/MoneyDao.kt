@@ -4,6 +4,7 @@ import androidx.room.*
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.chart.ChartEntry
 import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 
 @Dao
 interface MoneyDao {
@@ -46,6 +47,27 @@ interface MoneyDao {
                 "ORDER BY YEAR_AND_MONTH DESC"
     )
     fun getAllMonthsByUser(userEmail: String): Flow<List<String>>
+
+    @Query(
+        "SELECT " +
+                "( SELECT SUM(VALUE) AS INCOME FROM MONEY " +
+                "WHERE USER_EMAIL = :userEmail " +
+                "AND TYPE = 'INCOME' " +
+                "AND CASE WHEN PAY_DATE IS NOT NULL THEN PAY_DATE BETWEEN :startDate AND :endDate " +
+                "ELSE CREATION_DATE BETWEEN :startDate AND :endDate END ) " +
+                "- " +
+                "( SELECT SUM(VALUE) AS EXPENSE FROM MONEY " +
+                "WHERE USER_EMAIL = :userEmail " +
+                "AND TYPE = 'EXPENSE' " +
+                "AND CASE WHEN PAY_DATE IS NOT NULL THEN PAY_DATE BETWEEN :startDate AND :endDate " +
+                "ELSE CREATION_DATE BETWEEN :startDate AND :endDate END ) " +
+                "AS BALANCE"
+    )
+    fun getPreviousMonthBalance(
+        userEmail: String,
+        startDate: String,
+        endDate: String
+    ): Flow<BigDecimal>
 
     @Query(
         "SELECT SUBTYPE, SUM(VALUE) AS TOTAL " +

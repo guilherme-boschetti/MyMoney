@@ -96,7 +96,6 @@
             android:textColor="@color/color_text"
             android:textSize="@dimen/default_text_size"
             android:theme="@style/AppCheckBoxAndRadioButtonAndSwitch"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

@@ -60,13 +60,20 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
     @Inject
     lateinit var moneyViewModel: MoneyViewModel
 
-    private var resultLauncher =
+    private var settingsResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 val data: Intent? = result.data
                 data?.let {
-                    if (it.hasExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED) &&
-                        it.getBooleanExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED, false)
+                    if ((it.hasExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED) &&
+                                it.getBooleanExtra(
+                                    Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED,
+                                    false
+                                )) || (it.hasExtra(Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED) &&
+                                it.getBooleanExtra(
+                                    Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED,
+                                    false
+                                ))
                     ) {
                         activity?.let { fragmentActivity ->
                             if (fragmentActivity is MoneyHostActivity) {
@@ -109,6 +116,10 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
     }
 
     private fun observeProperties() {
+        val usePreviousMonthBalance = SharedPreferencesHelper.getInstance()
+            .getValue(getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE), false)
+        var selectedMonthBalance: BigDecimal = BigDecimal.ZERO
+
         moneyViewModel.selectedYearAndMonthName.observe(viewLifecycleOwner) {
             // Month Year label ----------
             binding.layoutListOfItems.txtYearMonth.text = it
@@ -133,13 +144,18 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
 
             setupEmptyView(it == null || it.isEmpty())
 
+            var balance: BigDecimal = BigDecimal.ZERO
+
             var totalIncome: BigDecimal = BigDecimal.ZERO
             var totalExpense: BigDecimal = BigDecimal.ZERO
+
+            val previousMonthBalance = BigDecimal.ZERO
+
             var totalExpenseFixed: BigDecimal = BigDecimal.ZERO
             var totalExpenseNotFixed: BigDecimal = BigDecimal.ZERO
             var totalExpensePaid: BigDecimal = BigDecimal.ZERO
             var totalExpenseNotPaid: BigDecimal = BigDecimal.ZERO
-            var balance: BigDecimal = BigDecimal.ZERO
+
             for (money in it) {
                 if (MoneyType.EXPENSE.name == money.type) {
                     totalExpense = totalExpense.add(money.value)
@@ -158,6 +174,12 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                 }
                 balance = totalIncome.subtract(totalExpense)
             }
+
+            if (usePreviousMonthBalance) {
+                selectedMonthBalance = balance
+                moneyViewModel.getPreviousMonthBalance()
+            }
+
             binding.layoutListOfItems.bottomSheetTotalizer.apply {
                 val balanceValueColor = ContextCompat.getColor(
                     requireContext(),
@@ -170,8 +192,6 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     }
                 )
 
-                val usePreviousMonthBalance = SharedPreferencesHelper.getInstance()
-                    .getValue(getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE), false)
                 if (usePreviousMonthBalance) {
                     txtBalanceDescription.text =
                         getString(R.string.balance_description_with_previous_month)
@@ -186,10 +206,15 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                 txtBalanceValueTitle.setTextColor(balanceValueColor)
                 txtBalanceValueTitle.text =
                     MaskUtil.getFormattedCurrencyValueText(balance)
+
                 txtTotalIncomeValue.text =
                     MaskUtil.getFormattedValueText(totalIncome)
                 txtTotalExpenseValue.text =
                     MaskUtil.getFormattedValueText(totalExpense)
+
+                txtPreviousMonthBalanceValue.text =
+                    MaskUtil.getFormattedValueText(previousMonthBalance)
+
                 txtTotalExpenseFixedValue.text =
                     MaskUtil.getFormattedValueText(totalExpenseFixed)
                 txtTotalExpenseNotFixedValue.text =
@@ -198,6 +223,16 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     MaskUtil.getFormattedValueText(totalExpensePaid)
                 txtTotalExpenseNotPaidValue.text =
                     MaskUtil.getFormattedValueText(totalExpenseNotPaid)
+            }
+        }
+
+        if (usePreviousMonthBalance) {
+            moneyViewModel.previousMonthBalance.observe(viewLifecycleOwner) { previousMonthBalance ->
+                val balanceValue = selectedMonthBalance.add(previousMonthBalance)
+                binding.layoutListOfItems.bottomSheetTotalizer.txtBalanceValueTitle.text =
+                    MaskUtil.getFormattedCurrencyValueText(balanceValue)
+                binding.layoutListOfItems.bottomSheetTotalizer.txtPreviousMonthBalanceValue.text =
+                    MaskUtil.getFormattedValueText(previousMonthBalance)
             }
         }
 
@@ -346,7 +381,7 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     }
                     R.id.menu_settings -> {
                         val it = Intent(context, SettingsActivity::class.java)
-                        resultLauncher.launch(it)
+                        settingsResultLauncher.launch(it)
                         true
                     }
                     R.id.menu_logout -> {

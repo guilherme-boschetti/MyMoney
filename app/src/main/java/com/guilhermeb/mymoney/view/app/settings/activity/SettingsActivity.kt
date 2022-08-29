@@ -31,6 +31,7 @@ class SettingsActivity : AbstractActivity() {
         setContentView(settingsViewBinding.root)
         setTitle(R.string.settings)
         initScreen()
+        addListeners()
     }
 
     override fun recreate() {
@@ -43,6 +44,7 @@ class SettingsActivity : AbstractActivity() {
     private fun initScreen() {
         settingsViewBinding.apply {
 
+            // == -- AutoCompleteLanguage == --
             autocompleteLanguage.setText(getCurrentLanguage())
             val adapterLanguage: ArrayAdapter<String> = ArrayAdapter<String>(
                 this@SettingsActivity,
@@ -50,6 +52,35 @@ class SettingsActivity : AbstractActivity() {
                 getLanguageList()
             )
             autocompleteLanguage.setAdapter(adapterLanguage)
+            // == -- == --
+
+            // == -- AutoCompleteCurrency == --
+            autocompleteCurrency.setText(getCurrentCurrency())
+            val adapterCurrency: ArrayAdapter<String> = ArrayAdapter<String>(
+                this@SettingsActivity,
+                android.R.layout.simple_spinner_dropdown_item,
+                getCurrencyList()
+            )
+            autocompleteCurrency.setAdapter(adapterCurrency)
+            // == -- == --
+
+            // == -- SwitchNightMode == --
+            swhNightMode.isChecked = isUiModeNightActive()
+            // == -- == --
+
+            // == -- SwitchUsePreviousMonthBalance == --
+            swhUsePreviousMonthBalance.isChecked = sharedPreferencesHelper.getValue(
+                getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE),
+                false
+            )
+            // == -- == --
+        }
+    }
+
+    private fun addListeners() {
+        settingsViewBinding.apply {
+
+            // == -- AutoCompleteLanguage == --
             autocompleteLanguage.onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     val languageCodesArray = resources.getStringArray(R.array.language_codes)
@@ -59,22 +90,14 @@ class SettingsActivity : AbstractActivity() {
                     )
                     setLocale(applicationContext)
                     Intent().apply {
-                        putExtra(
-                            Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED,
-                            true
-                        )
+                        putExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED, true)
                         setResult(RESULT_OK, this)
                     }
                     recreate()
                 }
+            // == -- == --
 
-            autocompleteCurrency.setText(getCurrentCurrency())
-            val adapterCurrency: ArrayAdapter<String> = ArrayAdapter<String>(
-                this@SettingsActivity,
-                android.R.layout.simple_spinner_dropdown_item,
-                getCurrencyList()
-            )
-            autocompleteCurrency.setAdapter(adapterCurrency)
+            // == -- AutoCompleteCurrency == --
             autocompleteCurrency.onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     val currenciesArray = resources.getStringArray(R.array.currencies)
@@ -83,13 +106,14 @@ class SettingsActivity : AbstractActivity() {
                         currenciesArray[position]
                     )
                 }
+            // == -- == --
 
+            // == -- SwitchNightMode == --
             swhNightMode.setOnLongClickListener {
                 NightModeDialog(this@SettingsActivity).openDialog()
                 return@setOnLongClickListener true
             }
 
-            swhNightMode.isChecked = isUiModeNightActive()
             swhNightMode.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -101,14 +125,20 @@ class SettingsActivity : AbstractActivity() {
                     if (checked) Constants.YES else Constants.NO
                 )
             }
+            // == -- == --
 
-            val sharedPreferencesKeyPreviousMonthBalance =
-                getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE)
-            swhUsePreviousMonthBalance.isChecked =
-                sharedPreferencesHelper.getValue(sharedPreferencesKeyPreviousMonthBalance, false)
+            // == -- SwitchUsePreviousMonthBalance == --
             swhUsePreviousMonthBalance.setOnCheckedChangeListener { _, checked ->
-                sharedPreferencesHelper.setValue(sharedPreferencesKeyPreviousMonthBalance, checked)
+                sharedPreferencesHelper.setValue(
+                    getSharedPreferencesKey(Constants.PREVIOUS_MONTH_BALANCE),
+                    checked
+                )
+                Intent().apply {
+                    putExtra(Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED, true)
+                    setResult(RESULT_OK, this)
+                }
             }
+            // == -- == --
         }
     }
 
