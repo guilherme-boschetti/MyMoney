@@ -14,8 +14,8 @@
 
     <color name="nav_gradient_start_color">@color/black_80</color>
     <color name="app_screen_background">#66666666</color>
-    <color name="item_money_background">#FF343434</color>
-    <color name="item_money_selected_background">#FF242424</color>
+    <color name="item_money_background">#FF303030</color>
+    <color name="item_money_selected_background">#FF292929</color>
     <color name="bottom_sheet_background">#FFCC8B02</color>
     <color name="color_text">@color/black_10</color>
     <color name="color_text_link">@color/white</color>

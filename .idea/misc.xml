@@ -13,12 +13,27 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/gradient_background_logo.xml" value="0.169" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/gradient_background_splash.xml" value="0.1625" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.169" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_bar_chart_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.169" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.169" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.169" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_keyboard_arrow_up_24.xml" value="0.169" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.169" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_nights_stay_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_pie_chart_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_show_chart_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_visibility_24.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_wifi_off_136.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_menu_camera.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_my_money_logo.xml" value="0.25" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_outline_file_download_24.xml" value="0.1785" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_spinner_progress_dialog.xml" value="0.1795" />
@@ -28,6 +43,9 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/shape_button_cancel_normal.xml" value="0.1785" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/shape_button_cancel_pressed.xml" value="0.173" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/shape_img_btn_disabled.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/shape_img_btn_normal.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/shape_img_btn_pressed.xml" value="0.179" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/side_nav_bar.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout-sw600dp/activity_terms_and_conditions.xml" value="0.1" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout-sw600dp/fragment_item_detail.xml" value="0.1" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout-sw600dp/fragment_item_list.xml" value="0.1" />
