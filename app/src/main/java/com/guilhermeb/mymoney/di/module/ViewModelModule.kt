@@ -1,9 +1,11 @@
 package com.guilhermeb.mymoney.di.module
 
 import com.guilhermeb.mymoney.model.repository.authentication.AuthenticationRepository
+import com.guilhermeb.mymoney.model.repository.currency.CurrencyRepository
 import com.guilhermeb.mymoney.model.repository.money.MoneyRepository
 import com.guilhermeb.mymoney.viewmodel.account.AccountViewModel
 import com.guilhermeb.mymoney.viewmodel.authentication.AuthenticationViewModel
+import com.guilhermeb.mymoney.viewmodel.currency.CurrencyConverterViewModel
 import com.guilhermeb.mymoney.viewmodel.login.CreateAccountViewModel
 import com.guilhermeb.mymoney.viewmodel.login.ForgotPasswordViewModel
 import com.guilhermeb.mymoney.viewmodel.login.LoginViewModel
@@ -72,5 +74,11 @@ internal object ViewModelModule {
     @Provides
     fun provideGenerateFileViewModel(moneyViewModel: MoneyViewModel): GenerateFileViewModel {
         return GenerateFileViewModel(moneyViewModel)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCurrencyViewModel(currencyRepository: CurrencyRepository): CurrencyConverterViewModel {
+        return CurrencyConverterViewModel(currencyRepository)
     }
 }

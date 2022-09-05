@@ -193,4 +193,15 @@
     <string name="id">ID</string>
     <string name="creation_date">Creation date</string>
     <string name="sheet">Sheet</string>
+    <!-- Currency Converter -->
+    <string name="currency_converter">Currency Converter</string>
+    <string name="amount">Amount</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="convert">Convert</string>
+    <string name="amount_should_not_be_empty">Amount should not be empty</string>
+    <string name="from_currency_required">Currency \"From\" required</string>
+    <string name="to_currency_required">Currency \"To\" required</string>
+    <string name="from_to_currency_should_not_be_equal">\"From\" currency should not be equal to \"To\" currency</string>
+    <string name="failure">Failure</string>
 </resources>

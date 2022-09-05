@@ -96,8 +96,10 @@ class GenerateFileActivity : AbstractActivity() {
     }
 
     private fun initScreen() {
-        generateFileViewBinding.txtYearMonth.text =
-            generateFileViewModel.selectedYearAndMonthName.value
+        generateFileViewBinding.apply {
+            txtYearMonth.text = generateFileViewModel.selectedYearAndMonthName.value
+            layoutProgressLoading.txtLoading.setText(R.string.generating_file)
+        }
     }
 
     private fun handleInputEvents() {
@@ -267,8 +269,7 @@ class GenerateFileActivity : AbstractActivity() {
         } else {
             View.GONE
         }
-        generateFileViewBinding.txtGeneratingFile.visibility = visibility
-        generateFileViewBinding.progressLoading.visibility = visibility
+        generateFileViewBinding.layoutProgressLoading.root.visibility = visibility
     }
 
     private fun generateFileSuccess(uri: Uri?) {

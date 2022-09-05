@@ -32,11 +32,14 @@ import com.guilhermeb.mymoney.common.extension.showConfirmationDialog
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
 import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import com.guilhermeb.mymoney.common.util.MaskUtil
+import com.guilhermeb.mymoney.common.util.isNetworkAvailable
 import com.guilhermeb.mymoney.databinding.FragmentMoneyItemListBinding
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.view.account.activity.AccountActivity
 import com.guilhermeb.mymoney.view.app.about.activity.AboutActivity
+import com.guilhermeb.mymoney.view.app.offline.activity.OfflineActivity
 import com.guilhermeb.mymoney.view.app.settings.activity.SettingsActivity
+import com.guilhermeb.mymoney.view.currency.activity.CurrencyConverterActivity
 import com.guilhermeb.mymoney.view.login.activity.LoginActivity
 import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
 import com.guilhermeb.mymoney.view.money.activity.chart.ChartActivity
@@ -127,12 +130,10 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
 
         moneyViewModel.fetchingDataFromFirebaseRTDB.observe(viewLifecycleOwner) { fetchingData ->
             if (fetchingData) {
-                binding.layoutListOfItems.txtLoading.visibility = View.VISIBLE
-                binding.layoutListOfItems.progressLoading.visibility = View.VISIBLE
+                binding.layoutListOfItems.layoutProgressLoading.root.visibility = View.VISIBLE
                 binding.layoutListOfItems.fabAddItem.isEnabled = false
             } else {
-                binding.layoutListOfItems.txtLoading.visibility = View.GONE
-                binding.layoutListOfItems.progressLoading.visibility = View.GONE
+                binding.layoutListOfItems.layoutProgressLoading.root.visibility = View.GONE
                 binding.layoutListOfItems.fabAddItem.isEnabled = true
             }
         }
@@ -382,6 +383,16 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     R.id.menu_settings -> {
                         val it = Intent(context, SettingsActivity::class.java)
                         settingsResultLauncher.launch(it)
+                        true
+                    }
+                    R.id.menu_currency -> {
+                        if (isNetworkAvailable()) {
+                            val it = Intent(context, CurrencyConverterActivity::class.java)
+                            startActivity(it)
+                        } else {
+                            val intent = Intent(context, OfflineActivity::class.java)
+                            startActivity(intent)
+                        }
                         true
                     }
                     R.id.menu_logout -> {

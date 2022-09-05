@@ -194,4 +194,15 @@
     <string name="id">ID</string>
     <string name="creation_date">Día de creación</string>
     <string name="sheet">Hoja</string>
+    <!-- Currency Converter -->
+    <string name="currency_converter">Convertidor de moneda</string>
+    <string name="amount">Monto</string>
+    <string name="from">De</string>
+    <string name="to">Para</string>
+    <string name="convert">Convertir</string>
+    <string name="amount_should_not_be_empty">Monto no debe estar vacío</string>
+    <string name="from_currency_required">Moneda \"De\" requerida</string>
+    <string name="to_currency_required">Moneda \"Para\" requerida</string>
+    <string name="from_to_currency_should_not_be_equal">Moneda \"De\" no debe ser igual a Moneda \"Para\"</string>
+    <string name="failure">falla</string>
 </resources>

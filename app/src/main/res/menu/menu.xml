@@ -23,6 +23,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menu_currency"
+        android:icon="@drawable/ic_baseline_currency_exchange_24"
+        android:title="@string/currency_converter"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_logout"
         android:icon="@drawable/ic_baseline_logout_24"
         android:title="@string/logout"

@@ -194,4 +194,15 @@
     <string name="id">ID</string>
     <string name="creation_date">Data de criação</string>
     <string name="sheet">Planilha</string>
+    <!-- Currency Converter -->
+    <string name="currency_converter">Conversor de moeda</string>
+    <string name="amount">Quantia</string>
+    <string name="from">De</string>
+    <string name="to">Para</string>
+    <string name="convert">Converter</string>
+    <string name="amount_should_not_be_empty">Quantia não deve estar vazia</string>
+    <string name="from_currency_required">Necessário selecionar moeda \"De\" para conversão</string>
+    <string name="to_currency_required">Necessário selecionar moeda \"Para\" para conversão</string>
+    <string name="from_to_currency_should_not_be_equal">Moeda \"De\" não deve ser igual a moeda \"Para\"</string>
+    <string name="failure">Falha</string>
 </resources>

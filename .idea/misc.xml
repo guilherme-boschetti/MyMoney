@@ -17,6 +17,7 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_bar_chart_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.169" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_currency_exchange_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.169" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.179" />
@@ -56,8 +57,10 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_chart.xml" value="0.25" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_create_account.xml" value="0.25" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_currency_converter.xml" value="0.1414324569356301" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_drawer.xml" value="0.11594202898550725" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_generate_file.xml" value="0.1414324569356301" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_income_or_expense_subtypes.xml" value="0.1513467293715263" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_item_detail.xml" value="0.1" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_list_of_items.xml" value="0.14" />
@@ -87,6 +90,7 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/list_of_items.xml" value="0.21" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/logo_and_name.xml" value="0.1322463768115942" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/nav_header_drawer.xml" value="0.25" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/progress_loading.xml" value="0.25" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/menu/activity_main_drawer.xml" value="0.184375" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/menu/drawer.xml" value="0.184375" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/menu/menu.xml" value="0.184375" />

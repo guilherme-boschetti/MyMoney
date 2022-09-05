@@ -91,26 +91,12 @@
             app:layout_constraintTop_toBottomOf="@id/divider_header"
             tools:listitem="@layout/item_money" />
 
-        <TextView
-            android:id="@+id/txt_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/loading"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/progress_loading"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_header"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <ProgressBar
-            android:id="@+id/progress_loading"
+        <include
+            android:id="@+id/layout_progress_loading"
+            layout="@layout/progress_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="148dp"
-            android:background="@drawable/shape_bkg_progress_bar_circular"
-            android:padding="8dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

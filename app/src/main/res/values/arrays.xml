@@ -15,6 +15,11 @@
         <item>Euro - EUR</item>
         <item>Real - BRL</item>
     </string-array>
+    <string-array name="currencies_codes">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>BRL</item>
+    </string-array>
     <string-array name="currency_signs">
         <item>US$</item>
         <item>€</item>

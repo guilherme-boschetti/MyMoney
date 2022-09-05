@@ -243,3 +243,16 @@ xls file (Excel)
     https://www.tutorialspoint.com/apache_poi/apache_poi_overview.htm
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Retrofit
+
+    https://square.github.io/retrofit/
+    https://github.com/square/retrofit
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Currency API
+
+    https://docs.awesomeapi.com.br/api-de-moedas
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

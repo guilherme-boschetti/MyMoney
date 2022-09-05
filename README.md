@@ -3,7 +3,7 @@ App for financial management.
 
 ------------------------------
 
-Language: Kotlin
+Programming Language: Kotlin
 
 Architectural Pattern: MVVM
 
@@ -15,14 +15,15 @@ Components and Features:
 - DataBinding
 - LiveData
 - RecyclerView
-- Navigation
+- Navigation (on Master Detail flow)
 - DataStore Preferences
 - Room
 - Coroutines
 - Flow
 - DI (dependency injection) (Hilt)
-- Unit Test
-- Multi Language
+- Retrofit
+- (Some few) Unit Tests
+- Multiple Languages (en-US, es-ES, pt-BR)
 
 - Firebase:
     - Authentication

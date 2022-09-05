@@ -1,4 +1,4 @@
-Language: Kotlin
+Programming Language: Kotlin
 
 Architectural Pattern: MVVM
 
@@ -16,12 +16,15 @@ Components and Features:
 - Coroutines
 - Flow
 - DI (dependency injection) (Hilt)
-- Unit Test
-- Multi Language
+- Retrofit
+- Unit Tests [TO DO more unit tests]
+- Multiple Languages (en-US, es-ES, pt-BR)
+- Product Flavors (build variants) [TO DO]
+- Multiple Themes [TO DO]
 
 - Firebase:
   - Authentication
   - RealTime Database
   - Crashlytics
-  - ADS (advertisements)
 
+- AdMob (advertisements) [TO DO]

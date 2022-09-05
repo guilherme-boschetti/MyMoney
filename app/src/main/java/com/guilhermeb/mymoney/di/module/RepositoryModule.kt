@@ -4,8 +4,10 @@ import com.guilhermeb.mymoney.model.data.local.datastore.preferences.dataaccess.
 import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
 import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
+import com.guilhermeb.mymoney.model.data.remote.retrofit.currency.api.CurrencyApi
 import com.guilhermeb.mymoney.model.repository.authentication.AuthenticationRepository
 import com.guilhermeb.mymoney.model.repository.contract.Authenticable
+import com.guilhermeb.mymoney.model.repository.currency.CurrencyRepository
 import com.guilhermeb.mymoney.model.repository.datastore.preferences.DataStorePreferencesRepository
 import com.guilhermeb.mymoney.model.repository.money.MoneyRepository
 import com.guilhermeb.mymoney.model.repository.sharedpreferences.SharedPreferencesRepository
@@ -44,5 +46,11 @@ internal object RepositoryModule {
     @Provides
     fun provideDataStorePreferencesRepository(dataSource: DataStorePrefsDataAccess): DataStorePreferencesRepository {
         return DataStorePreferencesRepository(dataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCurrencyRepository(currencyApi: CurrencyApi): CurrencyRepository {
+        return CurrencyRepository(currencyApi)
     }
 }

@@ -9,11 +9,14 @@ import com.guilhermeb.mymoney.model.data.local.sharedpreferences.SharedPrefs
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
 import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseAuthentication
 import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
+import com.guilhermeb.mymoney.model.data.remote.retrofit.currency.CurrencyRetrofitClient
+import com.guilhermeb.mymoney.model.data.remote.retrofit.currency.api.CurrencyApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -66,5 +69,17 @@ internal object AppModule {
     @Provides
     fun provideDataStorePrefsDataAccess(dataStorePrefs: DataStorePrefs): DataStorePrefsDataAccess {
         return DataStorePrefsDataAccess(dataStorePrefs)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCurrencyRetrofitClient(): Retrofit {
+        return CurrencyRetrofitClient.getInstance()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCurrencyApi(retrofitClient: Retrofit): CurrencyApi {
+        return retrofitClient.create(CurrencyApi::class.java)
     }
 }
