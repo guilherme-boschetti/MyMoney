@@ -95,6 +95,11 @@ class GenerateFileActivity : AbstractActivity() {
         observeProperties()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        generateFileViewModel.clearFormState()
+    }
+
     private fun initScreen() {
         generateFileViewBinding.apply {
             txtYearMonth.text = generateFileViewModel.selectedYearAndMonthName.value

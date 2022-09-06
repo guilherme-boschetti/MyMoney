@@ -15,8 +15,8 @@ import javax.inject.Inject
 class CurrencyConverterViewModel @Inject constructor(private val currencyRepository: CurrencyRepository) :
     ViewModel() {
 
-    private val _currencyApiResponse = MutableLiveData<ApiResponse<List<Currency>>>()
-    val currencyApiResponse: LiveData<ApiResponse<List<Currency>>> get() = _currencyApiResponse
+    private val _currencyApiResponse = MutableLiveData<ApiResponse<List<Currency?>?>>()
+    val currencyApiResponse: LiveData<ApiResponse<List<Currency?>?>> get() = _currencyApiResponse
 
     fun getCurrency(currency: String) {
         viewModelScope.launch {
@@ -59,7 +59,7 @@ class CurrencyConverterViewModel @Inject constructor(private val currencyReposit
                 isFormCompleted = true,
                 toCurrencyError = R.string.to_currency_required
             )
-        } else if (fromCurrency.equals(toCurrency)) {
+        } else if (fromCurrency == toCurrency) {
             _currencyConverterFormState.value = CurrencyConverterFormState(
                 isFormCompleted = true,
                 fromCurrencyError = R.string.from_to_currency_should_not_be_equal,
@@ -74,4 +74,9 @@ class CurrencyConverterViewModel @Inject constructor(private val currencyReposit
     }
 
     // == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- == -- ==
+
+    fun clearData() {
+        _currencyApiResponse.value = ApiResponse(null, null)
+        _currencyConverterFormState.value = CurrencyConverterFormState()
+    }
 }

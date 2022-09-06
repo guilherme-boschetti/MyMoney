@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 
 class CurrencyRepository(private val dataSourceApi: CurrencyApi) {
 
-    fun getCurrency(currency: String): Flow<ApiResponse<List<Currency>>> {
+    fun getCurrency(currency: String): Flow<ApiResponse<List<Currency?>?>> {
         return flow {
             var errorMessage: String? = null
             var resultObject: List<Currency>? = null

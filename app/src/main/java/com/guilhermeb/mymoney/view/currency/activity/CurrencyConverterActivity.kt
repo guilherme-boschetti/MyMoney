@@ -36,6 +36,11 @@ class CurrencyConverterActivity : AbstractActivity() {
         observeProperties()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        currencyViewModel.clearData()
+    }
+
     private fun initScreen() {
         loadAutoCompleteTexts()
         handleInputEvents()
@@ -60,8 +65,10 @@ class CurrencyConverterActivity : AbstractActivity() {
             } else {
 
                 var result = BigDecimal.ZERO
-                response.data?.let {
-                    result = amount.multiply(BigDecimal(response.data[0].getBid().toString()))
+                response.data?.let { data ->
+                    data[0]?.let {
+                        result = amount.multiply(BigDecimal(it.getBid().toString()))
+                    }
                 }
 
                 val from = currencyConverterViewBinding.autocompleteFromCurrency.text.toString()
@@ -99,8 +106,8 @@ class CurrencyConverterActivity : AbstractActivity() {
                 currencyConverterViewBinding.inToCurrency.error
             }
 
-            // clear result text
             currencyConverterViewBinding.txtResult.text = ""
+            currencyConverterViewBinding.btnCancel.setText(R.string.cancel)
         }
     }
 
@@ -205,7 +212,7 @@ class CurrencyConverterActivity : AbstractActivity() {
         val visibility = if (visible) {
             View.VISIBLE
         } else {
-            View.GONE
+            View.INVISIBLE
         }
         currencyConverterViewBinding.layoutProgressLoading.root.visibility = visibility
 

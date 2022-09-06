@@ -56,6 +56,10 @@ class GenerateFileViewModel @Inject constructor(private val moneyViewModel: Mone
         return false
     }
 
+    fun clearFormState() {
+        _generateFileFormState.value = GenerateFileFormState()
+    }
+
     private val p: Pattern = Pattern.compile("^[a-zA-Z0-9]*$")
 
     private fun isAlphaNumeric(s: String): Boolean {
