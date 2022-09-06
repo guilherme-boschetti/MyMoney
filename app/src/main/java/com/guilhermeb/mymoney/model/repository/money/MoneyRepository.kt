@@ -13,6 +13,10 @@ class MoneyRepository(
     private val dataBackup: FirebaseRealTimeDataBase
 ) {
 
+    suspend fun insertOrReplaceLocal(moneyItem: Money) {
+        dataSource.insert(moneyItem)
+    }
+
     suspend fun insert(moneyItem: Money) {
         val id = dataSource.insert(moneyItem)
         moneyItem.id = id
@@ -56,6 +60,10 @@ class MoneyRepository(
 
     fun fetchDataFromFirebaseRTDB(asyncProcess: AsyncProcess<List<Money>>) {
         dataBackup.fetchDataFromFirebaseRTDB(asyncProcess)
+    }
+
+    fun observeMoneyItemsFirebaseRTDB(asyncProcess: AsyncProcess<List<Money>?>) {
+        dataBackup.observeMoneyItemsFirebaseRTDB(asyncProcess)
     }
 
     fun getPreviousMonthBalance(

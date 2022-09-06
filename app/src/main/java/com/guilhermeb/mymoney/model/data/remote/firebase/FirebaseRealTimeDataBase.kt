@@ -1,6 +1,10 @@
 package com.guilhermeb.mymoney.model.data.remote.firebase
 
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
@@ -91,6 +95,43 @@ class FirebaseRealTimeDataBase @Inject constructor(private val firebaseAuthentic
         }.addOnFailureListener {
             asyncProcess.onComplete(false, null)
         }
+    }
+
+    fun observeMoneyItemsFirebaseRTDB(asyncProcess: AsyncProcess<List<Money>?>) {
+        val userUid = getUserUidForChild()
+
+        val moneyItemListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get MoneyItem object(s) and use the value to update the local data base
+                try {
+                    // More than one item returns a List
+                    val moneyItems = dataSnapshot.getValue<List<MoneyItem?>?>()
+                    moneyItems?.let {
+                        val items = ArrayList<Money>()
+                        for (moneyItem in moneyItems) {
+                            moneyItem?.let {
+                                items.add(createMoney(moneyItem))
+                            }
+                        }
+                        asyncProcess.onComplete(true, items)
+                    }
+                } catch (e: Exception) {
+                    // Only one item
+                    val moneyItem = dataSnapshot.getValue<MoneyItem?>()
+                    moneyItem?.let {
+                        val items = ArrayList<Money>()
+                        items.add(createMoney(moneyItem))
+                        asyncProcess.onComplete(true, items)
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting MoneyItem failed
+                Log.e("FirebaseRTDB", databaseError.message)
+            }
+        }
+        databaseReference.child(ITEMS).child(userUid).addValueEventListener(moneyItemListener)
     }
 
     private fun createMoney(moneyItem: MoneyItem): Money {

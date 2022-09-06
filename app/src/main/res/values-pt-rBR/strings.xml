@@ -131,6 +131,7 @@
     <string name="language">Idioma</string>
     <string name="currency">Moeda</string>
     <string name="use_previous_month_balance">Usar o saldo do mês anterior</string>
+    <string name="update_changes_in_real_time">Atualizar alterações em tempo real</string>
     <string name="dark_mode">Modo escuro</string>
     <string name="ui_mode">Modo da tela</string>
     <string name="light">Claro</string>

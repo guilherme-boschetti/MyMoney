@@ -215,6 +215,20 @@ class MoneyViewModel @Inject constructor(
         })
     }
 
+    fun observeMoneyItemsFirebaseRTDB() {
+        moneyRepository.observeMoneyItemsFirebaseRTDB(object : AsyncProcess<List<Money>?> {
+            override fun onComplete(isSuccessful: Boolean, result: List<Money>?) {
+                result?.let {
+                    for (item in result) {
+                        viewModelScope.launch {
+                            moneyRepository.insertOrReplaceLocal(item)
+                        }
+                    }
+                }
+            }
+        })
+    }
+
     fun getPreviousMonthBalance() {
         val userEmail = getCurrentUserEmail()!!
 

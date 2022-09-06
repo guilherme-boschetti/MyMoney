@@ -104,6 +104,25 @@
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="TextContrastCheck" />
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/swh_update_changes_in_real_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:drawableStart="@drawable/ic_baseline_update_24"
+            android:drawablePadding="8dp"
+            android:text="@string/update_changes_in_real_time"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/default_text_size"
+            android:theme="@style/AppCheckBoxAndRadioButtonAndSwitch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/swh_use_previous_month_balance"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="TextContrastCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

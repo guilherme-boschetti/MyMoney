@@ -132,10 +132,11 @@ Firebase Authentication:
 
 Firebase RealTime DataBase:
 
-	https://firebase.google.com/docs/database/security/get-started?authuser=0&hl=pt
-    https://firebase.google.com/docs/database/security/core-syntax?hl=pt&authuser=0
-    https://firebase.google.com/docs/rules/rules-and-auth
-    https://medium.com/@juliomacr/10-firebase-realtime-database-rule-templates-d4894a118a98
+	https://firebase.google.com/docs/database/android/read-and-write
+    https://firebase.google.com/docs/database/security/get-started?authuser=0&hl=pt
+	https://firebase.google.com/docs/database/security/core-syntax?hl=pt&authuser=0
+	https://firebase.google.com/docs/rules/rules-and-auth
+	https://medium.com/@juliomacr/10-firebase-realtime-database-rule-templates-d4894a118a98
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
@@ -179,80 +180,80 @@ DataBinding:
 
 Unit Tests
 
-    https://developer.android.com/training/testing/local-tests
-    https://www.youtube.com/playlist?list=PLQkwcJG4YTCSYJ13G4kVIJ10X5zisB2Lq
+	https://developer.android.com/training/testing/local-tests
+	https://www.youtube.com/playlist?list=PLQkwcJG4YTCSYJ13G4kVIJ10X5zisB2Lq
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
 Charts
 
-    https://stackoverflow.com/questions/9741300/charts-for-android
-    https://stackoverflow.com/questions/26467376/android-charting-libraries
-    https://androidrepo.com/catalog/android-chart_newest_1
-    https://camposha.info/android-examples/android-chart-libraries/#gsc.tab=0
-    AnyChart Android:
-    https://www.anychart.com/pt/technical-integrations/samples/android-charts
-    https://github.com/AnyChart/AnyChart-Android
-    https://www.youtube.com/watch?v=4BwqoaiYpEw
-    MPAndroidChart:
-    https://github.com/PhilJay/MPAndroidChart
-    https://www.youtube.com/watch?v=vhKtbECeazQ
-    https://medium.com/@mobindustry/how-to-quickly-implement-beautiful-charts-in-your-android-app-cf4caf050772
-    https://stackoverflow.com/questions/38857038/mpandroidchart-adding-labels-to-bar-chart
-    https://stackoverflow.com/questions/36540681/about-mpandroidchart-piechart-with-lines
+	https://stackoverflow.com/questions/9741300/charts-for-android
+	https://stackoverflow.com/questions/26467376/android-charting-libraries
+	https://androidrepo.com/catalog/android-chart_newest_1
+	https://camposha.info/android-examples/android-chart-libraries/#gsc.tab=0
+	AnyChart Android:
+	https://www.anychart.com/pt/technical-integrations/samples/android-charts
+	https://github.com/AnyChart/AnyChart-Android
+	https://www.youtube.com/watch?v=4BwqoaiYpEw
+	MPAndroidChart:
+	https://github.com/PhilJay/MPAndroidChart
+	https://www.youtube.com/watch?v=vhKtbECeazQ
+	https://medium.com/@mobindustry/how-to-quickly-implement-beautiful-charts-in-your-android-app-cf4caf050772
+	https://stackoverflow.com/questions/38857038/mpandroidchart-adding-labels-to-bar-chart
+	https://stackoverflow.com/questions/36540681/about-mpandroidchart-piechart-with-lines
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
 Choose directory to save file
 
-    https://developer.android.com/training/data-storage/shared/documents-files
-    https://developer.android.com/reference/androidx/core/content/FileProvider
-    https://developer.android.com/training/secure-file-sharing/setup-sharing
-    https://stackoverflow.com/questions/9942560/when-to-clear-the-cache-dir-in-android
+	https://developer.android.com/training/data-storage/shared/documents-files
+	https://developer.android.com/reference/androidx/core/content/FileProvider
+	https://developer.android.com/training/secure-file-sharing/setup-sharing
+	https://stackoverflow.com/questions/9942560/when-to-clear-the-cache-dir-in-android
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
 pdf file
 
-    https://stackoverflow.com/questions/34296149/creating-a-pdf-file-in-android-programmatically-and-writing-in-it
-    https://stackoverflow.com/questions/35059554/how-can-i-create-landscape-pdf-using-android-native-pdfdocument-api
-    https://www.geeksforgeeks.org/how-to-generate-a-pdf-file-in-android-app/
-    https://www.blueappsoftware.com/how-to-create-pdf-file-in-android/
-    https://developer.android.com/reference/android/graphics/pdf/PdfDocument
+	https://stackoverflow.com/questions/34296149/creating-a-pdf-file-in-android-programmatically-and-writing-in-it
+	https://stackoverflow.com/questions/35059554/how-can-i-create-landscape-pdf-using-android-native-pdfdocument-api
+	https://www.geeksforgeeks.org/how-to-generate-a-pdf-file-in-android-app/
+	https://www.blueappsoftware.com/how-to-create-pdf-file-in-android/
+	https://developer.android.com/reference/android/graphics/pdf/PdfDocument
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
 xls file (Excel)
 
-    JExcelAPI:
-    https://www.google.com.br/search?q=criar+arquivo+xlsx+no+android+programmatically
-    https://nglauber.medium.com/criando-arquivos-excel-no-android-edabe0833959
-    http://www.nglauber.com.br/2012/06/criando-arquivos-excel-no-android.html
-    http://jexcelapi.sourceforge.net/
-    https://sourceforge.net/projects/jexcelapi/files/
-    https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl/2.6.12
-    https://www.tabnine.com/code/java/methods/jxl.write.WritableCellFormat/setBorder
-    https://www.tabnine.com/code/java/methods/jxl.write.WritableSheet/mergeCells
-    https://stackoverflow.com/questions/1665391/jxl-cell-formatting
-    Apache POI:
-    https://www.google.com.br/search?q=Apache+POI
-    https://poi.apache.org/
-    https://www.devmedia.com.br/apache-poi-manipulando-documentos-em-java/31778
-    https://acervolima.com/apache-poi-introducao/
-    https://www.redspark.io/lendocriando-planilhas-excel-em-java-com-a-biblioteca-apache-poi/
-    https://www.tutorialspoint.com/apache_poi/apache_poi_overview.htm
+	JExcelAPI:
+	https://www.google.com.br/search?q=criar+arquivo+xlsx+no+android+programmatically
+	https://nglauber.medium.com/criando-arquivos-excel-no-android-edabe0833959
+	http://www.nglauber.com.br/2012/06/criando-arquivos-excel-no-android.html
+	http://jexcelapi.sourceforge.net/
+	https://sourceforge.net/projects/jexcelapi/files/
+	https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl/2.6.12
+	https://www.tabnine.com/code/java/methods/jxl.write.WritableCellFormat/setBorder
+	https://www.tabnine.com/code/java/methods/jxl.write.WritableSheet/mergeCells
+	https://stackoverflow.com/questions/1665391/jxl-cell-formatting
+	Apache POI:
+	https://www.google.com.br/search?q=Apache+POI
+	https://poi.apache.org/
+	https://www.devmedia.com.br/apache-poi-manipulando-documentos-em-java/31778
+	https://acervolima.com/apache-poi-introducao/
+	https://www.redspark.io/lendocriando-planilhas-excel-em-java-com-a-biblioteca-apache-poi/
+	https://www.tutorialspoint.com/apache_poi/apache_poi_overview.htm
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
 Retrofit
 
-    https://square.github.io/retrofit/
-    https://github.com/square/retrofit
+	https://square.github.io/retrofit/
+	https://github.com/square/retrofit
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
 
 Currency API
 
-    https://docs.awesomeapi.com.br/api-de-moedas
+	https://docs.awesomeapi.com.br/api-de-moedas
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

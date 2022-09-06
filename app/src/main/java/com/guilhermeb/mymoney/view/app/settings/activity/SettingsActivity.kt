@@ -74,6 +74,13 @@ class SettingsActivity : AbstractActivity() {
                 false
             )
             // == -- == --
+
+            // == -- SwhUpdateChangesInRealTime == --
+            swhUpdateChangesInRealTime.isChecked = sharedPreferencesHelper.getValue(
+                getSharedPreferencesKey(Constants.UPDATE_CHANGES_IN_REAL_TIME),
+                false
+            )
+            // == -- == --
         }
     }
 
@@ -135,6 +142,19 @@ class SettingsActivity : AbstractActivity() {
                 )
                 Intent().apply {
                     putExtra(Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED, true)
+                    setResult(RESULT_OK, this)
+                }
+            }
+            // == -- == --
+
+            // == -- SwhUpdateChangesInRealTime == --
+            swhUpdateChangesInRealTime.setOnCheckedChangeListener { _, checked ->
+                sharedPreferencesHelper.setValue(
+                    getSharedPreferencesKey(Constants.UPDATE_CHANGES_IN_REAL_TIME),
+                    checked
+                )
+                Intent().apply {
+                    putExtra(Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME, true)
                     setResult(RESULT_OK, this)
                 }
             }

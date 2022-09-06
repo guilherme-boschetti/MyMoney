@@ -9,6 +9,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
+import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
+import com.guilhermeb.mymoney.common.helper.getSharedPreferencesKey
 import com.guilhermeb.mymoney.common.util.getAppVersion
 import com.guilhermeb.mymoney.databinding.ActivityMoneyHostBinding
 import com.guilhermeb.mymoney.databinding.NavHeaderDrawerBinding
@@ -46,14 +48,20 @@ class MoneyHostActivity : AbstractActivity() {
     }
 
     private fun fetchDataFromFirebaseRTDB() {
-        val intentActivity = intent
-        if (intentActivity.hasExtra(Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB) &&
-            intentActivity.getBooleanExtra(
-                Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB,
-                false
-            )
-        ) {
-            moneyViewModel.fetchDataFromFirebaseRTDB()
+        val useRealTimeListener = SharedPreferencesHelper.getInstance()
+            .getValue(getSharedPreferencesKey(Constants.UPDATE_CHANGES_IN_REAL_TIME), false)
+        if (useRealTimeListener) {
+            moneyViewModel.observeMoneyItemsFirebaseRTDB()
+        } else {
+            val intentActivity = intent
+            if (intentActivity.hasExtra(Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB) &&
+                intentActivity.getBooleanExtra(
+                    Constants.INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB,
+                    false
+                )
+            ) {
+                moneyViewModel.fetchDataFromFirebaseRTDB()
+            }
         }
     }
 

@@ -76,6 +76,10 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                                 it.getBooleanExtra(
                                     Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED,
                                     false
+                                )) || (it.hasExtra(Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME) &&
+                                it.getBooleanExtra(
+                                    Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME,
+                                    false
                                 ))
                     ) {
                         activity?.let { fragmentActivity ->
