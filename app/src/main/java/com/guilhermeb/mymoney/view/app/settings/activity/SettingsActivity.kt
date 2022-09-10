@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
@@ -41,7 +43,15 @@ class SettingsActivity : AbstractActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
+    private fun setupFeaturesFlavors() {
+        if (BuildConfig.IS_FREE || BuildConfig.IS_PRO) {
+            settingsViewBinding.swhUsePreviousMonthBalance.visibility = View.GONE
+        }
+    }
+
     private fun initScreen() {
+        setupFeaturesFlavors()
+
         settingsViewBinding.apply {
 
             // == -- AutoCompleteLanguage == --

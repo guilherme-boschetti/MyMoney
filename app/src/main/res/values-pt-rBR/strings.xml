@@ -7,7 +7,7 @@
     <string name="hint_email">exemplo@exemplo.com</string>
     <string name="password">Senha</string>
     <string name="hint_password">********</string>
-    <string name="login">Login</string>
+    <string name="login">Entrar</string>
     <string name="forgot_password"><u>Esqueceu a senha?</u></string>
     <string name="do_not_have_an_account">Não tem uma conta?</string>
     <string name="create_account">Criar conta</string>

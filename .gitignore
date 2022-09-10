@@ -13,4 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+## Confidential ##
 google-services.json
+signing.properties
+keystore/**

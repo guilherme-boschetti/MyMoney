@@ -257,3 +257,14 @@ Currency API
 	https://docs.awesomeapi.com.br/api-de-moedas
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Build Variants (Build Types and Product Flavors)
+
+	https://developer.android.com/studio/build/build-variants
+	https://www.digitalocean.com/community/tutorials/android-build-types-product-flavors
+	https://medium.com/android-dev-br/flavors-2fa7b2ba4a9a
+	https://riptutorial.com/android/example/2542/define-and-use-build-configuration-fields
+	Signing Configs
+	https://developer.android.com/studio/publish/app-signing#generate-key
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

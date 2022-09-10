@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.component.AnchoredFabBehavior
 import com.guilhermeb.mymoney.common.constant.Constants
@@ -250,7 +251,18 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
         moneyViewModel.getMoneyItems()
     }
 
+    private fun setupFeaturesFlavors() {
+        if (BuildConfig.IS_FREE) {
+            binding.layoutListOfItems.apply {
+                imgBtnChart.visibility = View.GONE
+                imgBtnGenerateFile.visibility = View.GONE
+            }
+        }
+    }
+
     private fun initScreen() {
+        setupFeaturesFlavors()
+
         // RecyclerView ----------
         val adapter = MoneyItemAdapter(
             this,
@@ -369,6 +381,8 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                             )
                         }
                     }
+
+                    this.findItem(R.id.menu_currency).isVisible = !(BuildConfig.IS_FREE || BuildConfig.IS_PRO)
                 }
             }
 

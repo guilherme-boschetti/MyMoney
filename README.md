@@ -24,6 +24,7 @@ Components and Features:
 - Retrofit
 - (Some few) Unit Tests
 - Multiple Languages (en-US, es-ES, pt-BR)
+- Build Variants (Product Flavors and Build Types)
 
 - Firebase:
     - Authentication

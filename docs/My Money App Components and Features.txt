@@ -19,7 +19,7 @@ Components and Features:
 - Retrofit
 - Unit Tests [TO DO more unit tests]
 - Multiple Languages (en-US, es-ES, pt-BR)
-- Product Flavors (build variants) [TO DO]
+- Build Variants (Product Flavors and Build Types)
 - Multiple Themes [TO DO]
 
 - Firebase:
