@@ -1,0 +1,21 @@
+Versions:
+
+	Full:
+		* Without Advertisements [TO DO: To implement]
+		# (Stores data locally and in Firebase)
+		- All features available
+
+	Pro:
+		* Without Advertisements [TO DO: To implement]
+		# (Stores data locally and in Firebase)
+		- Without feature: Use previous month balance
+		- Without feature: Currency Converter
+
+	Free:
+		* With Advertisements [TO DO: To implement]
+		# (Stores data locally only)
+		- Without feature: Use previous month balance
+		- Without feature: Currency Converter
+		- Without feature: Chart
+		- Without feature: Generate file
+		- Without feature: Multiple Themes [TO DO: To implement]

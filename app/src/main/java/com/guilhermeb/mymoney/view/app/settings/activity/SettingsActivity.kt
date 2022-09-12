@@ -47,6 +47,9 @@ class SettingsActivity : AbstractActivity() {
         if (BuildConfig.IS_FREE || BuildConfig.IS_PRO) {
             settingsViewBinding.swhUsePreviousMonthBalance.visibility = View.GONE
         }
+        if (BuildConfig.IS_FREE) {
+            settingsViewBinding.swhUpdateChangesInRealTime.visibility = View.GONE
+        }
     }
 
     private fun initScreen() {

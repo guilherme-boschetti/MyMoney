@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
 import com.guilhermeb.mymoney.common.helper.SharedPreferencesHelper
@@ -40,7 +41,9 @@ class MoneyHostActivity : AbstractActivity() {
         setContentView(binding.root)
         setTitle(R.string.app_name)
 
-        fetchDataFromFirebaseRTDB()
+        if (!BuildConfig.IS_FREE) {
+            fetchDataFromFirebaseRTDB()
+        }
         initScreen()
         observeProperties()
         fetchDrawerData()
