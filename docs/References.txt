@@ -264,6 +264,7 @@ Build Variants (Build Types and Product Flavors)
 	https://www.digitalocean.com/community/tutorials/android-build-types-product-flavors
 	https://medium.com/android-dev-br/flavors-2fa7b2ba4a9a
 	https://riptutorial.com/android/example/2542/define-and-use-build-configuration-fields
+	https://stackoverflow.com/questions/22875948/how-to-provide-different-android-app-icons-for-different-gradle-buildtypes
 	Signing Configs
 	https://developer.android.com/studio/publish/app-signing#generate-key
 

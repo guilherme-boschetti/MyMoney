@@ -53,18 +53,30 @@ android {
     productFlavors {
         full {
             dimension "version"
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher",
+                    appRoundIcon: "@mipmap/ic_launcher_round"
+            ]
         }
         free {
             dimension "version"
             applicationIdSuffix ".free"
             versionNameSuffix "-Free"
             buildConfigField "boolean", "IS_FREE", "true"
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_free",
+                    appRoundIcon: "@mipmap/ic_launcher_free_round"
+            ]
         }
         pro {
             dimension "version"
             applicationIdSuffix ".pro"
             versionNameSuffix "-Pro"
             buildConfigField "boolean", "IS_PRO", "true"
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_pro",
+                    appRoundIcon: "@mipmap/ic_launcher_pro_round"
+            ]
         }
     }
 
@@ -90,7 +102,7 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     // Material Components
     implementation 'com.google.android.material:material:1.6.1'
     // ConstraintLayout
