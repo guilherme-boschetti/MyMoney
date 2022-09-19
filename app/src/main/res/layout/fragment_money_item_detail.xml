@@ -68,8 +68,9 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_description"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textCapSentences"
+                        android:layout_height="@dimen/text_area_height"
+                        android:gravity="start|top"
+                        android:inputType="textCapSentences|textMultiLine"
                         android:textSize="@dimen/default_text_size"
                         tools:ignore="TextContrastCheck" />
 
