@@ -85,7 +85,7 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     ) {
                         activity?.let { fragmentActivity ->
                             if (fragmentActivity is MoneyHostActivity) {
-                                fragmentActivity.recreateActivity()
+                                fragmentActivity.recreate()
                             }
                         }
                     }
@@ -389,24 +389,24 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.menu_about -> {
-                        val it = Intent(context, AboutActivity::class.java)
-                        startActivity(it)
+                        val intent = Intent(context, AboutActivity::class.java)
+                        startActivity(intent)
                         true
                     }
                     R.id.menu_account -> {
-                        val it = Intent(context, AccountActivity::class.java)
-                        startActivity(it)
+                        val intent = Intent(context, AccountActivity::class.java)
+                        startActivity(intent)
                         true
                     }
                     R.id.menu_settings -> {
-                        val it = Intent(context, SettingsActivity::class.java)
-                        settingsResultLauncher.launch(it)
+                        val intent = Intent(context, SettingsActivity::class.java)
+                        settingsResultLauncher.launch(intent)
                         true
                     }
                     R.id.menu_currency -> {
                         if (isNetworkAvailable()) {
-                            val it = Intent(context, CurrencyConverterActivity::class.java)
-                            startActivity(it)
+                            val intent = Intent(context, CurrencyConverterActivity::class.java)
+                            startActivity(intent)
                         } else {
                             val intent = Intent(context, OfflineActivity::class.java)
                             startActivity(intent)

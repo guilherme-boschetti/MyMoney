@@ -43,8 +43,8 @@ class AccountActivity : AbstractActivity() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == 1) {
-                    val it = Intent(this@AccountActivity, TermsAndConditionsActivity::class.java)
-                    startActivity(it)
+                    val intent = Intent(this@AccountActivity, TermsAndConditionsActivity::class.java)
+                    startActivity(intent)
                     return true
                 }
                 return false

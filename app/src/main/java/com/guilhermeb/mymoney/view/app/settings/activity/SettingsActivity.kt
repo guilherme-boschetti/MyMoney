@@ -36,13 +36,6 @@ class SettingsActivity : AbstractActivity() {
         addListeners()
     }
 
-    override fun recreate() {
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-    }
-
     private fun setupFeaturesFlavors() {
         if (BuildConfig.IS_FREE || BuildConfig.IS_PRO) {
             settingsViewBinding.swhUsePreviousMonthBalance.visibility = View.GONE

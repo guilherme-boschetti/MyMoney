@@ -181,11 +181,4 @@ class MoneyHostActivity : AbstractActivity() {
         val navController = findNavController(R.id.nav_host_fragment_item_detail)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    fun recreateActivity() {
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-    }
 }
