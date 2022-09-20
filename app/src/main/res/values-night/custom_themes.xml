@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark -->
+    <style name="Theme.MyMoney.Dark" parent="Theme.MyMoney">
+        <item name="themePrimary">@color/colorPrimary</item>
+        <item name="themePrimaryDark">@color/colorPrimaryDark</item>
+
+        <item name="themeAppScreenBackground">@color/app_screen_background</item>
+        <item name="themeItemMoneyBackground">@color/item_money_background</item>
+        <item name="themeItemMoneySelectedBackground">@color/item_money_selected_background</item>
+    </style>
+    <!-- == == == == == Custom Themes == == == == == -->
+    <!-- Green -->
+    <style name="Theme.MyMoney.Green" parent="Theme.MyMoney.Dark" />
+    <!-- Red -->
+    <style name="Theme.MyMoney.Red" parent="Theme.MyMoney.Dark" />
+    <!-- Blue -->
+    <style name="Theme.MyMoney.Blue" parent="Theme.MyMoney.Dark" />
+    <!-- Pink -->
+    <style name="Theme.MyMoney.Pink" parent="Theme.MyMoney.Dark" />
+    <!-- Purple -->
+    <style name="Theme.MyMoney.Purple" parent="Theme.MyMoney.Dark" />
+    <!-- == == == == == == == == == == -->
+</resources>

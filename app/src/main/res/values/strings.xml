@@ -205,4 +205,12 @@
     <string name="to_currency_required">Currency \"To\" required</string>
     <string name="from_to_currency_should_not_be_equal">\"From\" currency should not be equal to \"To\" currency</string>
     <string name="failure">Failure</string>
+    <!-- Themes -->
+    <string name="themes">Themes</string>
+    <string name="default_with_brackets">(Default)</string>
+    <string name="green">Green</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="pink">Pink</string>
+    <string name="purple">Purple</string>
 </resources>

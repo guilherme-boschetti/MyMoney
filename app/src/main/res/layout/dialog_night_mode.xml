@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:tint="@color/colorPrimaryDark"
+        app:tint="?colorPrimaryDark"
         tools:ignore="ImageContrastCheck"
         tools:targetApi="o" />
 
@@ -31,7 +31,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:text="@string/ui_mode"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="?colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/r_grp_mode_night"

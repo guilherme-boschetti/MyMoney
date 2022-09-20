@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="${appRoundIcon}"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyMoney">
+        android:theme="@style/Theme.MyMoney.Green">
         <activity
             android:name=".view.currency.activity.CurrencyConverterActivity"
             android:exported="false"
@@ -34,7 +34,7 @@
             android:name=".view.money.activity.MoneyHostActivity"
             android:exported="false"
             android:resizeableActivity="true"
-            android:theme="@style/Theme.MyMoney.NoActionBar"
+            android:theme="@style/Theme.MyMoney.Green.NoActionBar"
             tools:targetApi="24" />
         <activity
             android:name=".view.account.activity.TermsAndConditionsActivity"
@@ -52,6 +52,10 @@
             android:name=".view.app.about.activity.AboutActivity"
             android:exported="false"
             android:label="@string/about" />
+        <activity
+            android:name=".view.app.themes.activity.ThemesActivity"
+            android:exported="false"
+            android:label="@string/themes" />
         <activity
             android:name=".view.app.settings.activity.SettingsActivity"
             android:exported="false"

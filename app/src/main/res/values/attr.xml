@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ThemeStyleColors">
+        <attr name="themePrimary" format="color" />
+        <attr name="themePrimaryDark" format="color" />
+
+        <attr name="themeTextLink" format="color" />
+        <attr name="themeAppScreenBackground" format="color" />
+        <attr name="themeItemMoneyBackground" format="color" />
+        <attr name="themeItemMoneySelectedBackground" format="color" />
+    </declare-styleable>
+</resources>

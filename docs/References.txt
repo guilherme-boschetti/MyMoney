@@ -269,3 +269,18 @@ Build Variants (Build Types and Product Flavors)
 	https://developer.android.com/studio/publish/app-signing#generate-key
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Themes
+
+	https://medium.com/mindorks/mastering-android-themes-chapter-1-4aadfa750ca7
+	https://medium.com/mindorks/mastering-android-themes-chapter-2-79d5092aca5
+	https://medium.com/mindorks/mastering-android-themes-chapter-3-26a5b7773b6b
+	https://medium.com/mindorks/mastering-android-themes-chapter-4-591e03320182
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+FlexboxLayout
+
+	https://github.com/google/flexbox-layout
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

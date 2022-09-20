@@ -5,7 +5,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.component.CustomProgressDialog
+import com.guilhermeb.mymoney.common.util.getSelectedTheme
 import com.guilhermeb.mymoney.common.util.setLocale
+import com.guilhermeb.mymoney.view.money.activity.MoneyHostActivity
 
 abstract class AbstractActivity : AppCompatActivity() {
 
@@ -14,6 +16,7 @@ abstract class AbstractActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(getSelectedTheme(this is MoneyHostActivity))
         setLocale(baseContext)
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -8,6 +8,7 @@ class Constants {
         const val INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED = "previousMonthBalanceChanged"
         const val INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME = "updateChangesInRealTime"
         const val INTENT_EXTRA_KEY_FETCH_DATA_FROM_FIREBASE_RTDB = "fetchDataFromFirebaseRTDB"
+        const val INTENT_EXTRA_KEY_THEME_CHANGED = "changeTheme"
 
         const val PASSWORD = "password"
         const val LOCALE = "locale"
@@ -18,6 +19,7 @@ class Constants {
         const val NO = "no"
         const val PREVIOUS_MONTH_BALANCE = "previous_month_balance"
         const val UPDATE_CHANGES_IN_REAL_TIME = "update_changes_in_real_time"
+        const val CURRENT_THEME = "current_theme"
 
         const val TXT_MIME_TYPE = "text/plain"
         const val CSV_MIME_TYPE = "text/csv"

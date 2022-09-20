@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import com.guilhermeb.mymoney.BuildConfig
@@ -20,12 +21,33 @@ import com.guilhermeb.mymoney.common.util.setLocale
 import com.guilhermeb.mymoney.databinding.ActivitySettingsBinding
 import com.guilhermeb.mymoney.databinding.DialogNightModeBinding
 import com.guilhermeb.mymoney.view.app.activity.AbstractActivity
+import com.guilhermeb.mymoney.view.app.themes.activity.ThemesActivity
 import kotlin.collections.ArrayList
 
 class SettingsActivity : AbstractActivity() {
 
     private lateinit var settingsViewBinding: ActivitySettingsBinding
     private val sharedPreferencesHelper = SharedPreferencesHelper.getInstance()
+
+    private var themesResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                data?.let {
+                    if ((it.hasExtra(Constants.INTENT_EXTRA_KEY_THEME_CHANGED) && it.getBooleanExtra(
+                            Constants.INTENT_EXTRA_KEY_THEME_CHANGED,
+                            false
+                        ))
+                    ) {
+                        Intent().apply {
+                            putExtra(Constants.INTENT_EXTRA_KEY_THEME_CHANGED, true)
+                            setResult(RESULT_OK, this)
+                        }
+                        recreate()
+                    }
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +64,7 @@ class SettingsActivity : AbstractActivity() {
         }
         if (BuildConfig.IS_FREE) {
             settingsViewBinding.swhUpdateChangesInRealTime.visibility = View.GONE
+            settingsViewBinding.btnThemes.visibility = View.GONE
         }
     }
 
@@ -86,6 +109,10 @@ class SettingsActivity : AbstractActivity() {
                 getSharedPreferencesKey(Constants.UPDATE_CHANGES_IN_REAL_TIME),
                 false
             )
+            // == -- == --
+
+            // == -- BtnThemes == --
+            btnThemes.isEnabled = !isUiModeNightActive()
             // == -- == --
         }
     }
@@ -136,6 +163,7 @@ class SettingsActivity : AbstractActivity() {
                     getSharedPreferencesKey(Constants.NIGHT_MODE),
                     if (checked) Constants.YES else Constants.NO
                 )
+                btnThemes.isEnabled = !checked
             }
             // == -- == --
 
@@ -162,6 +190,13 @@ class SettingsActivity : AbstractActivity() {
                     putExtra(Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME, true)
                     setResult(RESULT_OK, this)
                 }
+            }
+            // == -- == --
+
+            // == -- BtnThemes == --
+            btnThemes.setOnClickListener {
+                val intent = Intent(this@SettingsActivity, ThemesActivity::class.java)
+                themesResultLauncher.launch(intent)
             }
             // == -- == --
         }

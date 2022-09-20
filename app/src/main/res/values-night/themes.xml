@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.MyMoney" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -10,10 +10,13 @@
         <item name="colorSecondaryVariant">@color/app_yellow_dark</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowAnimationStyle">@style/ActivityAnimationTransition</item>
         <!-- https://stackoverflow.com/questions/68241378/unable-to-change-the-color-of-action-bar-in-the-app -->
         <item name="actionBarStyle">@style/Widget.MaterialComponents.ActionBar.Primary</item>
+        <!-- Custom themes colors. -->
+        <item name="colorPrimaryDark">?themePrimaryDark</item>
+        <item name="themeTextLink">@color/color_text_link</item>
     </style>
 </resources>

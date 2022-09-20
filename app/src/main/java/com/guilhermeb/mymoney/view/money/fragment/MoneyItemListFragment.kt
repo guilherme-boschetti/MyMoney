@@ -69,19 +69,22 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
             if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 val data: Intent? = result.data
                 data?.let {
-                    if ((it.hasExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED) &&
-                                it.getBooleanExtra(
-                                    Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED,
-                                    false
-                                )) || (it.hasExtra(Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED) &&
-                                it.getBooleanExtra(
-                                    Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED,
-                                    false
-                                )) || (it.hasExtra(Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME) &&
-                                it.getBooleanExtra(
-                                    Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME,
-                                    false
-                                ))
+                    if ((it.hasExtra(Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED) && it.getBooleanExtra(
+                            Constants.INTENT_EXTRA_KEY_LANGUAGE_CHANGED,
+                            false
+                        ))
+                        || (it.hasExtra(Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED) && it.getBooleanExtra(
+                            Constants.INTENT_EXTRA_KEY_PREVIOUS_MONTH_BALANCE_CHANGED,
+                            false
+                        ))
+                        || (it.hasExtra(Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME) && it.getBooleanExtra(
+                            Constants.INTENT_EXTRA_KEY_UPDATE_CHANGES_IN_REAL_TIME,
+                            false
+                        ))
+                        || (it.hasExtra(Constants.INTENT_EXTRA_KEY_THEME_CHANGED) && it.getBooleanExtra(
+                            Constants.INTENT_EXTRA_KEY_THEME_CHANGED,
+                            false
+                        ))
                     ) {
                         activity?.let { fragmentActivity ->
                             if (fragmentActivity is MoneyHostActivity) {
@@ -382,7 +385,8 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                         }
                     }
 
-                    this.findItem(R.id.menu_currency).isVisible = !(BuildConfig.IS_FREE || BuildConfig.IS_PRO)
+                    this.findItem(R.id.menu_currency).isVisible =
+                        !(BuildConfig.IS_FREE || BuildConfig.IS_PRO)
                 }
             }
 

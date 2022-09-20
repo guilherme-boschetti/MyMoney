@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_screen_background"
+        android:background="?themeAppScreenBackground"
         android:paddingStart="@dimen/form_side_margin"
         android:paddingTop="@dimen/screen_margin"
         android:paddingEnd="@dimen/form_side_margin"
@@ -137,7 +137,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:padding="8dp"
             android:text="@string/terms_and_conditions_underlined"
-            android:textColor="@color/color_text_link"
+            android:textColor="?themeTextLink"
             android:textSize="@dimen/default_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/chk_terms_and_conditions"
             app:layout_constraintStart_toEndOf="@+id/chk_terms_and_conditions"

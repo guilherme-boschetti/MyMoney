@@ -24,7 +24,7 @@
                 android:id="@+id/layout_add_item_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/app_screen_background"
+                android:background="?themeAppScreenBackground"
                 android:padding="@dimen/screen_margin">
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -196,7 +196,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
-                        android:drawableTint="@color/colorPrimary"
+                        android:drawableTint="?colorPrimary"
                         android:inputType="number"
                         android:textSize="@dimen/default_text_size"
                         tools:ignore="TextContrastCheck"
@@ -320,7 +320,7 @@
         android:id="@+id/empty_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/app_screen_background"
+        android:background="?themeAppScreenBackground"
         android:padding="@dimen/screen_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

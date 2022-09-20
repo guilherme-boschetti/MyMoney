@@ -29,6 +29,7 @@ import com.guilhermeb.mymoney.common.extension.hideView
 import com.guilhermeb.mymoney.common.extension.showView
 import com.guilhermeb.mymoney.common.util.DateUtil
 import com.guilhermeb.mymoney.common.util.MaskUtil
+import com.guilhermeb.mymoney.common.util.getColorPrimaryResId
 import com.guilhermeb.mymoney.common.util.showToast
 import com.guilhermeb.mymoney.databinding.FragmentMoneyItemDetailBinding
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
@@ -375,7 +376,7 @@ class MoneyItemDetailFragment : Fragment() {
                     fabSaveOrEdit,
                     R.drawable.ic_baseline_done_24,
                     R.color.white,
-                    R.color.colorPrimary
+                    getColorPrimaryResId(requireContext())
                 )
             }
 
@@ -406,7 +407,7 @@ class MoneyItemDetailFragment : Fragment() {
                                 fabSaveOrEdit,
                                 R.drawable.ic_baseline_done_24,
                                 R.color.white,
-                                R.color.colorPrimary
+                                getColorPrimaryResId(requireContext())
                             )
                             rotateView(fabSaveOrEdit)
                         }

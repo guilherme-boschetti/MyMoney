@@ -206,4 +206,12 @@
     <string name="to_currency_required">Moneda \"Para\" requerida</string>
     <string name="from_to_currency_should_not_be_equal">Moneda \"De\" no debe ser igual a Moneda \"Para\"</string>
     <string name="failure">falla</string>
+    <!-- Themes -->
+    <string name="themes">Temas</string>
+    <string name="default_with_brackets">(Predefinido)</string>
+    <string name="green">Verde</string>
+    <string name="red">Rojo</string>
+    <string name="blue">Azul</string>
+    <string name="pink">Rosado</string>
+    <string name="purple">Violeta</string>
 </resources>

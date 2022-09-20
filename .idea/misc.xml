@@ -17,6 +17,7 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_bar_chart_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.169" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_color_lens_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_currency_exchange_24.xml" value="0.179" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.169" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.179" />
@@ -73,6 +74,7 @@
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_settings.xml" value="0.1838768115942029" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_splash.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.1513467293715263" />
+        <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/activity_themes.xml" value="0.1513467293715263" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/app_bar_list_of_items.xml" value="0.1838768115942029" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/bottom_sheet_totalizer.xml" value="0.22" />
         <entry key="..\:/Users/Guilherme/AndroidStudioProjects/MyMoney/app/src/main/res/layout/content_drawer.xml" value="0.11594202898550725" />

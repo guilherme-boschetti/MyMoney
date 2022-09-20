@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Green -->
+    <color name="colorPrimaryGreen">@color/app_green</color>
+    <color name="colorPrimaryDarkGreen">@color/app_green_dark</color>
+
+    <color name="app_screen_background_green">#1904B804</color>
+    <color name="item_money_background_green">#FFE3FAE3</color>
+    <color name="item_money_selected_background_green">#FFD0FFD0</color>
+    <!-- -->
+
+    <!-- Red -->
+    <color name="colorPrimaryRed">#FFE30202</color>
+    <color name="colorPrimaryDarkRed">#FFD10404</color>
+
+    <color name="app_screen_background_red">#19E30202</color>
+    <color name="item_money_background_red">#FFFAE3E3</color>
+    <color name="item_money_selected_background_red">#FFFFCDCD</color>
+    <!-- -->
+
+    <!-- Blue -->
+    <color name="colorPrimaryBlue">#FF0303E8</color>
+    <color name="colorPrimaryDarkBlue">#FF0404D3</color>
+
+    <color name="app_screen_background_blue">#190303E8</color>
+    <color name="item_money_background_blue">#FFE3E8FA</color>
+    <color name="item_money_selected_background_blue">#FFD0DAFF</color>
+    <!-- -->
+
+    <!-- Pink -->
+    <color name="colorPrimaryPink">#FFFF0066</color>
+    <color name="colorPrimaryDarkPink">#FFED0361</color>
+
+    <color name="app_screen_background_pink">#19EE00FF</color>
+    <color name="item_money_background_pink">#FFFAE3FA</color>
+    <color name="item_money_selected_background_pink">#FFFDD0FF</color>
+    <!-- -->
+
+    <!-- Purple -->
+    <color name="colorPrimaryPurple">#FF9900CC</color>
+    <color name="colorPrimaryDarkPurple">#FF8E02BB</color>
+
+    <color name="app_screen_background_purple">#199900CC</color>
+    <color name="item_money_background_purple">#FFEFE3FA</color>
+    <color name="item_money_selected_background_purple">#FFEDD0FF</color>
+    <!-- -->
+</resources>

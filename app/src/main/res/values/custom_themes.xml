@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- == == == == == Custom Themes == == == == == -->
+    <!-- Green -->
+    <style name="Theme.MyMoney.Green" parent="Theme.MyMoney">
+        <item name="themePrimary">@color/colorPrimary</item>
+        <item name="themePrimaryDark">@color/colorPrimaryDark</item>
+
+        <item name="themeAppScreenBackground">@color/app_screen_background</item>
+        <item name="themeItemMoneyBackground">@color/item_money_background</item>
+        <item name="themeItemMoneySelectedBackground">@color/item_money_selected_background</item>
+    </style>
+    <!-- Red -->
+    <style name="Theme.MyMoney.Red" parent="Theme.MyMoney">
+        <item name="themePrimary">@color/colorPrimaryRed</item>
+        <item name="themePrimaryDark">@color/colorPrimaryDarkRed</item>
+
+        <item name="themeAppScreenBackground">@color/app_screen_background_red</item>
+        <item name="themeItemMoneyBackground">@color/item_money_background_red</item>
+        <item name="themeItemMoneySelectedBackground">@color/item_money_selected_background_red</item>
+    </style>
+    <!-- Blue -->
+    <style name="Theme.MyMoney.Blue" parent="Theme.MyMoney">
+        <item name="themePrimary">@color/colorPrimaryBlue</item>
+        <item name="themePrimaryDark">@color/colorPrimaryDarkBlue</item>
+
+        <item name="themeAppScreenBackground">@color/app_screen_background_blue</item>
+        <item name="themeItemMoneyBackground">@color/item_money_background_blue</item>
+        <item name="themeItemMoneySelectedBackground">@color/item_money_selected_background_blue</item>
+    </style>
+    <!-- Pink -->
+    <style name="Theme.MyMoney.Pink" parent="Theme.MyMoney">
+        <item name="themePrimary">@color/colorPrimaryPink</item>
+        <item name="themePrimaryDark">@color/colorPrimaryDarkPink</item>
+
+        <item name="themeAppScreenBackground">@color/app_screen_background_pink</item>
+        <item name="themeItemMoneyBackground">@color/item_money_background_pink</item>
+        <item name="themeItemMoneySelectedBackground">@color/item_money_selected_background_pink</item>
+    </style>
+    <!-- Purple -->
+    <style name="Theme.MyMoney.Purple" parent="Theme.MyMoney">
+        <item name="themePrimary">@color/colorPrimaryPurple</item>
+        <item name="themePrimaryDark">@color/colorPrimaryDarkPurple</item>
+
+        <item name="themeAppScreenBackground">@color/app_screen_background_purple</item>
+        <item name="themeItemMoneyBackground">@color/item_money_background_purple</item>
+        <item name="themeItemMoneySelectedBackground">@color/item_money_selected_background_purple</item>
+    </style>
+    <!-- == == == == == == == == == == -->
+    <!-- == == == == == Themes NoActionBar == == == == == -->
+    <!-- Green -->
+    <style name="Theme.MyMoney.Green.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- Red -->
+    <style name="Theme.MyMoney.Red.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- Blue -->
+    <style name="Theme.MyMoney.Blue.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- Pink -->
+    <style name="Theme.MyMoney.Pink.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- Purple -->
+    <style name="Theme.MyMoney.Purple.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- == == == == == == == == == == -->
+</resources>
