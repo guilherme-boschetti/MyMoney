@@ -105,16 +105,6 @@ class MoneyHostActivity : AbstractActivity() {
         navHeaderDrawerBinding.txtAppVersion.text = getAppVersion()
         navHeaderDrawerBinding.txtEmail.text = moneyViewModel.getCurrentUserEmail()
 
-        /*val drawerMenuMonths = moneyViewModel.getAllMonthsByUser(moneyViewModel.getCurrentUserEmail()!!)
-        for (i in 0 until drawerMenuMonths.size) {
-            val textMenuDrawer = drawerMenuMonths[i]
-            // groupId, itemId, order, title
-            binding.navViewDrawer.menu.add(R.id.group_menu_drawer, i, i, textMenuDrawer)
-                .setIcon(R.drawable.ic_baseline_calendar_month_24)
-        }
-
-        binding.navViewDrawer.menu.setGroupCheckable(R.id.group_menu_drawer, true, true)*/
-
         binding.navViewDrawer.setNavigationItemSelectedListener {
             if (this::mDrawerMenuMonths.isInitialized) {
                 moneyViewModel.setSelectedYearAndMonthName(mDrawerMenuMonths[it.itemId])
@@ -138,6 +128,7 @@ class MoneyHostActivity : AbstractActivity() {
                     .setIcon(R.drawable.ic_baseline_calendar_month_24)
             }
 
+            // After adding the menus
             binding.navViewDrawer.menu.setGroupCheckable(R.id.group_menu_drawer, true, true)
 
             moneyViewModel.drawerMenuItemChecked.value?.let {
