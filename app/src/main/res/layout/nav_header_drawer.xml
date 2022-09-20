@@ -63,4 +63,51 @@
         app:layout_constraintTop_toBottomOf="@id/txt_app_version"
         tools:text="@string/hint_email" />
 
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#29FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_email" />
+
+    <TextView
+        android:id="@+id/txt_rate_the_app"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_bkg_progress_bar_circular"
+        android:drawableTint="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/rate_the_app"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text_size"
+        app:drawableEndCompat="@drawable/ic_baseline_star_24"
+        app:drawableStartCompat="@drawable/ic_baseline_thumb_up_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_divider"
+        tools:ignore="UnusedAttribute,UseCompatTextViewDrawableXml" />
+
+    <TextView
+        android:id="@+id/txt_know_pro_version"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_bkg_progress_bar_circular"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/know_the_pro_version"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_rate_the_app"
+        tools:ignore="UnusedAttribute" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

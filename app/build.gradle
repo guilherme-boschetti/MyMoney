@@ -174,4 +174,10 @@ dependencies {
     // == -- == -- ==
     // FlexboxLayout
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    // == -- Google Play review (rate the app) -- ==
+    def review_version = "2.0.0"
+    implementation "com.google.android.play:review:$review_version"
+    // For Kotlin users also add the Kotlin extensions library for Play In-App Review:
+    implementation "com.google.android.play:review-ktx:$review_version"
+    // == -- == -- ==
 }

@@ -213,4 +213,7 @@
     <string name="blue">Blue</string>
     <string name="pink">Pink</string>
     <string name="purple">Purple</string>
+    <!-- Drawer Header -->
+    <string name="rate_the_app">Liked? Rate the app</string>
+    <string name="know_the_pro_version">Know the Pro version</string>
 </resources>

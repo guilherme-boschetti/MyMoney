@@ -284,3 +284,11 @@ FlexboxLayout
 	https://github.com/google/flexbox-layout
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Rate the app
+
+	https://stackoverflow.com/questions/10816757/rate-this-app-link-in-google-play-store-app-on-the-phone
+	https://developer.android.com/guide/playcore/in-app-review
+	https://developer.android.com/guide/playcore/in-app-review/kotlin-java
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

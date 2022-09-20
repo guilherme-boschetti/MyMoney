@@ -214,4 +214,7 @@
     <string name="blue">Azul</string>
     <string name="pink">Rosado</string>
     <string name="purple">Violeta</string>
+    <!-- Drawer Header -->
+    <string name="rate_the_app">Apreciado? Califica la aplicación</string>
+    <string name="know_the_pro_version">Conoce la versión Pro</string>
 </resources>

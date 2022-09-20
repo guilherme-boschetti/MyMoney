@@ -10,6 +10,16 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
+    <!-- https://stackoverflow.com/questions/62834292/list-of-apps-doesnt-populate-on-android-11-using-packagemanager -->
+    <!-- https://stackoverflow.com/questions/62535856/intent-resolveactivity-returns-null-in-api-30 -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <application
         android:name=".MyMoneyApplication"
         android:allowBackup="true"

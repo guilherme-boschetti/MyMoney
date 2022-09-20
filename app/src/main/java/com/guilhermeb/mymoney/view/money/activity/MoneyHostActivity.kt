@@ -1,12 +1,17 @@
 package com.guilhermeb.mymoney.view.money.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.constant.Constants
@@ -105,6 +110,9 @@ class MoneyHostActivity : AbstractActivity() {
         navHeaderDrawerBinding.txtAppVersion.text = getAppVersion()
         navHeaderDrawerBinding.txtEmail.text = moneyViewModel.getCurrentUserEmail()
 
+        setupFeaturesFlavors(navHeaderDrawerBinding)
+        handleEvents(navHeaderDrawerBinding)
+
         binding.navViewDrawer.setNavigationItemSelectedListener {
             if (this::mDrawerMenuMonths.isInitialized) {
                 moneyViewModel.setSelectedYearAndMonthName(mDrawerMenuMonths[it.itemId])
@@ -112,6 +120,60 @@ class MoneyHostActivity : AbstractActivity() {
             }
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
+        }
+    }
+
+    private fun setupFeaturesFlavors(navHeaderDrawerBinding: NavHeaderDrawerBinding) {
+        if (!BuildConfig.IS_FREE) {
+            navHeaderDrawerBinding.txtKnowProVersion.visibility = View.GONE
+        }
+    }
+
+    private fun handleEvents(navHeaderDrawerBinding: NavHeaderDrawerBinding) {
+        navHeaderDrawerBinding.txtRateTheApp.setOnClickListener {
+            val manager = ReviewManagerFactory.create(this)
+            val request = manager.requestReviewFlow()
+            request.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // We got the ReviewInfo object
+                    val reviewInfo = task.result
+                    val flow = manager.launchReviewFlow(this, reviewInfo)
+                    flow.addOnCompleteListener {
+                        // The flow has finished. The API does not indicate whether the user
+                        // reviewed or not, or even whether the review dialog was shown. Thus, no
+                        // matter the result, we continue our app flow.
+                    }
+                } else {
+                    // There was some problem.
+                    task.exception?.let { exception ->
+                        exception.localizedMessage?.let { message ->
+                            Log.e("REVIEW", message)
+                        }
+                    }
+                    goToPlayStore(packageName)
+                }
+            }
+        }
+
+        navHeaderDrawerBinding.txtKnowProVersion.setOnClickListener {
+            val packageNameProVersion = "com.guilhermeb.mymoney.pro"
+            goToPlayStore(packageNameProVersion)
+        }
+    }
+
+    private fun goToPlayStore(appPackageName: String) {
+        val appUri = Uri.parse("market://details?id=$appPackageName")
+        val goToMarketIntent = Intent(Intent.ACTION_VIEW, appUri)
+
+        if (goToMarketIntent.resolveActivity(packageManager) != null) {
+            // To count with Play market backstack, After pressing back button, to taken back to our application, we need to add following flags to intent.
+            goToMarketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+            startActivity(goToMarketIntent)
+        } else {
+            val uri =
+                Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
         }
     }
 
