@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.R
 import com.guilhermeb.mymoney.common.enum.MoneyType
 import com.guilhermeb.mymoney.common.util.DateUtil
@@ -56,7 +57,11 @@ class MoneyViewModel @Inject constructor(
 
     fun addMoneyItem(moneyItem: Money) {
         viewModelScope.launch {
-            moneyRepository.insert(moneyItem)
+            if (BuildConfig.IS_FREE) {
+                moneyRepository.insertOrReplaceLocal(moneyItem)
+            } else {
+                moneyRepository.insert(moneyItem)
+            }
         }
     }
 
