@@ -13,7 +13,6 @@
     <color name="red">#FFFF0000</color>
     <color name="red_pressed">#FFBB0202</color>
 
-    <color name="nav_gradient_start_color">#FF12F812</color>
     <color name="app_screen_background">#1904B804</color>
     <color name="item_money_background">#FFE3FAE3</color>
     <color name="item_money_selected_background">#FFD0FFD0</color>

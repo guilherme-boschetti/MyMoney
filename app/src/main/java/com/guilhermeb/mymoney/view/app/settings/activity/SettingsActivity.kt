@@ -133,7 +133,6 @@ class SettingsActivity : AbstractActivity() {
                 NightModeDialog(this@SettingsActivity).openDialog()
                 return@setOnLongClickListener true
             }
-
             swhNightMode.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
