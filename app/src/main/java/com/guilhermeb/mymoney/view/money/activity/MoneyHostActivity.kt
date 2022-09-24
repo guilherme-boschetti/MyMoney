@@ -11,6 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.R
@@ -37,6 +39,8 @@ class MoneyHostActivity : AbstractActivity() {
 
     private lateinit var mDrawerMenuMonths: List<String>
 
+    private var isAdLoaded: Boolean = false
+
     @Inject
     lateinit var moneyViewModel: MoneyViewModel
 
@@ -53,6 +57,30 @@ class MoneyHostActivity : AbstractActivity() {
         observeProperties()
         fetchDrawerData()
         // == -- == -- == -- == -- == -- == --
+    }
+
+    // Called when leaving the activity
+    public override fun onPause() {
+        if (isAdLoaded) {
+            binding.adView.pause()
+        }
+        super.onPause()
+    }
+
+    // Called when returning to the activity
+    public override fun onResume() {
+        super.onResume()
+        if (isAdLoaded) {
+            binding.adView.resume()
+        }
+    }
+
+    // Called before the activity is destroyed
+    public override fun onDestroy() {
+        if (isAdLoaded) {
+            binding.adView.destroy()
+        }
+        super.onDestroy()
     }
 
     private fun fetchDataFromFirebaseRTDB() {
@@ -124,9 +152,19 @@ class MoneyHostActivity : AbstractActivity() {
     }
 
     private fun setupFeaturesFlavors(navHeaderDrawerBinding: NavHeaderDrawerBinding) {
-        if (!BuildConfig.IS_FREE) {
+        if (BuildConfig.IS_FREE) {
+            loadAds()
+        } else {
             navHeaderDrawerBinding.txtKnowProVersion.visibility = View.GONE
         }
+    }
+
+    private fun loadAds() {
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+        binding.adView.visibility = View.VISIBLE
+        isAdLoaded = true
     }
 
     private fun handleEvents(navHeaderDrawerBinding: NavHeaderDrawerBinding) {

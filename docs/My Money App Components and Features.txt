@@ -15,7 +15,7 @@ Components and Features:
 - Room
 - Coroutines
 - Flow
-- DI (dependency injection) (Hilt)
+- DI (dependency injection) (Dagger Hilt)
 - Retrofit
 - Unit Tests [TO DO more unit tests]
 - Multiple Languages (en-US, es-ES, pt-BR)
@@ -27,4 +27,4 @@ Components and Features:
   - RealTime Database
   - Crashlytics
 
-- AdMob (advertisements) [TO DO]
+- AdMob (advertisements)

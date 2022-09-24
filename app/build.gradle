@@ -11,6 +11,12 @@ apply plugin: 'kotlin-android'
 android {
     compileSdk 32
 
+    Properties admobProps = new Properties()
+    admobProps.load(new FileInputStream(file("../admob.properties")))
+
+    Properties signingProps = new Properties()
+    signingProps.load(new FileInputStream(file("../signing.properties")))
+
     defaultConfig {
         applicationId "com.guilhermeb.mymoney"
         minSdk 21
@@ -20,12 +26,12 @@ android {
 
         testInstrumentationRunner "com.guilhermeb.mymoney.di.HiltTestRunner" // "androidx.test.runner.AndroidJUnitRunner"
 
+        manifestPlaceholders = [adMobAppID: admobProps.ADMOB_APP_ID]
+        resValue "string", "admob_banner_id_moneyhostactivity", admobProps.ADMOB_BANNER_ID_MONEYHOSTACTIVITY
+
         buildConfigField "boolean", "IS_FREE", "false"
         buildConfigField "boolean", "IS_PRO", "false"
     }
-
-    Properties signingProps = new Properties()
-    signingProps.load(new FileInputStream(file("../signing.properties")))
 
     signingConfigs {
         release {
@@ -142,11 +148,11 @@ dependencies {
     // Coroutines Tests
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
     // == -- == -- ==
-    // == -- Hilt -- ==
+    // == -- Dagger Hilt (DI: dependency injection) -- ==
     def hilt_version = "2.43"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    // Hilt Tests
+    // Dagger Hilt Tests
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"// For instrumented tests
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version" // For Java use androidTestAnnotationProcessor instead of kaptAndroidTest
     // == -- == -- ==
@@ -180,4 +186,6 @@ dependencies {
     // For Kotlin users also add the Kotlin extensions library for Play In-App Review:
     implementation "com.google.android.play:review-ktx:$review_version"
     // == -- == -- ==
+    // Google AdMob (Ads SDK)
+    implementation 'com.google.android.gms:play-services-ads:21.2.0'
 }

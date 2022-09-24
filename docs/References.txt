@@ -292,3 +292,14 @@ Rate the app
 	https://developer.android.com/guide/playcore/in-app-review/kotlin-java
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+AdMob (advertisements)
+
+	https://developers.google.com/admob/android/quick-start
+	https://developers.google.com/admob/android/banner
+	https://firebase.google.com/docs/admob/android/quick-start?hl=pt-br
+	https://github.com/googleads/googleads-mobile-android-examples
+	https://www.androidpro.com.br/blog/carreira/admob-intro/
+	https://www.devmedia.com.br/google-admob-monetizando-seu-aplicativo-android/30934
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

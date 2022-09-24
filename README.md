@@ -20,7 +20,7 @@ Components and Features:
 - Room
 - Coroutines
 - Flow
-- DI (dependency injection) (Hilt)
+- DI (dependency injection) (Dagger Hilt)
 - Retrofit
 - (Some few) Unit Tests
 - Multiple Languages (en-US, es-ES, pt-BR)
@@ -32,6 +32,9 @@ Components and Features:
     - RealTime Database
     - Crashlytics
 
+- AdMob (advertisements)
+
 ------------------------------
 
-PS: A valid google-services.json file into app folder is required to run this project.
+PS: - A valid google-services.json file into app folder is required to run this project;
+- A valid AdMob APPLICATION_ID in the AndroidManifest.xml file is required to run this project (could be a valid test AdMob APPLICATION_ID).

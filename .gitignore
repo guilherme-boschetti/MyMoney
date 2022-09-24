@@ -16,5 +16,6 @@ local.properties
 
 ## Confidential ##
 google-services.json
+admob.properties
 signing.properties
 keystore/**
