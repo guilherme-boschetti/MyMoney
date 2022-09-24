@@ -36,5 +36,4 @@ Components and Features:
 
 ------------------------------
 
-PS: - A valid google-services.json file into app folder is required to run this project;
-- A valid AdMob APPLICATION_ID in the AndroidManifest.xml file is required to run this project (could be a valid test AdMob APPLICATION_ID).
+PS: 1- A valid google-services.json file into app folder is required to run this project; 2- A valid AdMob APPLICATION_ID in the AndroidManifest.xml file is required to run this project (could be a valid test AdMob APPLICATION_ID).
