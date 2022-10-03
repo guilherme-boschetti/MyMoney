@@ -9,7 +9,7 @@ plugins {
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     Properties admobProps = new Properties()
     admobProps.load(new FileInputStream(file("../admob.properties")))
@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId "com.guilhermeb.mymoney"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -104,7 +104,7 @@ android {
 
 dependencies {
     // KTX
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // AppCompat
@@ -114,7 +114,7 @@ dependencies {
     // ConstraintLayout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     // Annotation
-    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'androidx.annotation:annotation:1.5.0'
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     // LifeCycle LiveData
