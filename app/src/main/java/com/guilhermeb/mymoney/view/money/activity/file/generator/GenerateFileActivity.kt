@@ -255,7 +255,7 @@ class GenerateFileActivity : AbstractActivity() {
             }
         }
 
-        return FileContent(contentTitle, contentAttributesLabels, contentAttributesValues)
+        return FileContent(contentTitle, contentAttributesLabels.toCollection(ArrayList()), contentAttributesValues)
     }
 
     private fun generateFile(): File? {

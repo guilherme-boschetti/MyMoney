@@ -559,7 +559,7 @@ class MoneyItemDetailFragment : Fragment() {
     private fun setupFabAppearance(
         fabSaveOrEdit: FloatingActionButton,
         @DrawableRes iconDrawable: Int,
-        @Nullable @ColorRes iconColor: Int?,
+        @ColorRes iconColor: Int?,
         @ColorRes backgroundColor: Int
     ) {
         if (iconColor != null) {
