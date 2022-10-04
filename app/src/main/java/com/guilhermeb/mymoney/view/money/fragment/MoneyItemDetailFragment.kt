@@ -12,13 +12,14 @@ import android.view.*
 import android.view.animation.OvershootInterpolator
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import androidx.annotation.Nullable
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.guilhermeb.mymoney.R
@@ -50,6 +51,10 @@ class MoneyItemDetailFragment : Fragment() {
 
     private var update: Boolean = false
 
+    private var money: Money? = null
+
+    private lateinit var adapterSubtypes: ArrayAdapter<String>
+
     private var _binding: FragmentMoneyItemDetailBinding? = null
 
     private val binding get() = _binding!! // This property is only valid between onCreateView and onDestroyView.
@@ -57,9 +62,20 @@ class MoneyItemDetailFragment : Fragment() {
     @Inject
     lateinit var moneyViewModel: MoneyViewModel
 
-    private var money: Money? = null
-
-    private lateinit var adapterSubtypes: ArrayAdapter<String>
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (isTablet) {
+                if (binding.emptyView.visibility != View.VISIBLE) {
+                    exitFragment()
+                    this.remove()
+                } else {
+                    findNavController().navigateUp()
+                }
+            } else {
+                findNavController().navigateUp()
+            }
+        }
+    }
 
     /**
      * The fragment arguments.
@@ -73,6 +89,8 @@ class MoneyItemDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         clearMoneyItem()
 
@@ -433,7 +451,7 @@ class MoneyItemDetailFragment : Fragment() {
             activity?.hideView(binding.coordinator)
             clearMoneyItem()
         } else {
-            activity?.onBackPressed()
+            findNavController().navigateUp()
         }
     }
 

@@ -303,3 +303,14 @@ AdMob (advertisements)
 	https://www.devmedia.com.br/google-admob-monetizando-seu-aplicativo-android/30934
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+onBackPressed deprecated:
+
+	https://developer.android.com/about/versions/13/features/predictive-back-gesture
+	https://developer.android.com/codelabs/gesture-navigation?hl=en#0
+	https://stackoverflow.com/questions/72634225/onbackpressed-deprecated-what-is-the-alternative
+	https://oguzhanaslann.medium.com/onbackpressed-deprecated-so-what-to-use-92ddd55fc21d
+	https://www.youtube.com/watch?v=Riz5eb5f0do
+	https://www.youtube.com/watch?v=fL5UggoTBbI
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==

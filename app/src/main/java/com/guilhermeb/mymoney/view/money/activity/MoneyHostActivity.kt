@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -44,11 +45,23 @@ class MoneyHostActivity : AbstractActivity() {
     @Inject
     lateinit var moneyViewModel: MoneyViewModel
 
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                mDrawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                finish()
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoneyHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setTitle(R.string.app_name)
+
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         if (!BuildConfig.IS_FREE) {
             fetchDataFromFirebaseRTDB()
@@ -109,7 +122,7 @@ class MoneyHostActivity : AbstractActivity() {
             if (mDrawerToggle.isDrawerIndicatorEnabled) {
                 mDrawerLayout.openDrawer(GravityCompat.START)
             } else {
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
         }
 
@@ -126,7 +139,7 @@ class MoneyHostActivity : AbstractActivity() {
             if (mDrawerToggle.isDrawerIndicatorEnabled) {
                 mDrawerLayout.openDrawer(GravityCompat.START)
             } else {
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
         }
         binding.drawerLayout.addDrawerListener(mDrawerToggle)
@@ -257,14 +270,6 @@ class MoneyHostActivity : AbstractActivity() {
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         } else {
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-        }
-    }
-
-    override fun onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mDrawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
         }
     }
 

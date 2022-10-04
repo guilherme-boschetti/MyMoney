@@ -23,11 +23,13 @@
     <application
         android:name=".MyMoneyApplication"
         android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
         android:icon="${appIcon}"
         android:label="@string/app_name"
         android:roundIcon="${appRoundIcon}"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyMoney.Green">
+        android:theme="@style/Theme.MyMoney.Green"
+        tools:targetApi="tiramisu">
         <activity
             android:name=".view.currency.activity.CurrencyConverterActivity"
             android:exported="false"
@@ -108,7 +110,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="${adMobAppID}"/>
+            android:value="${adMobAppID}" />
 
     </application>
 
