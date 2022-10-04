@@ -371,14 +371,14 @@ class MoneyItemListFragment : Fragment(), MoneyItemAdapter.DeleteMoneyItemCallba
                     for (index in 0 until this.size()) {
                         val item = this.getItem(index)
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                            item.icon.colorFilter =
+                            item.icon?.colorFilter =
                                 BlendModeColorFilter(
                                     context?.getAndroidTextColorPrimary() ?: -1,
                                     BlendMode.SRC_IN
                                 )
                         } else {
                             @Suppress("DEPRECATION")
-                            item.icon.setColorFilter(
+                            item.icon?.setColorFilter(
                                 context?.getAndroidTextColorPrimary() ?: -1,
                                 PorterDuff.Mode.SRC_IN
                             )
