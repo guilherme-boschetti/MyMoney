@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.text.DecimalFormat
 import kotlin.math.pow
 
@@ -103,7 +104,7 @@ class MaskUtil {
                         aux = aux.divide(
                             BigDecimal.valueOf(10.0.pow(2.0)),
                             2,
-                            BigDecimal.ROUND_HALF_EVEN
+                            RoundingMode.HALF_EVEN
                         )
                         mascara = getDecimalFormat().format(aux)
                         isUpdating = true
