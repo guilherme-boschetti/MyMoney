@@ -102,19 +102,23 @@ android {
     namespace 'com.guilhermeb.mymoney'
 }
 
+kapt {
+    correctErrorTypes true
+}
+
 dependencies {
     // KTX
     implementation 'androidx.core:core-ktx:1.9.0'
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     // Material Components
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     // ConstraintLayout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     // Annotation
-    implementation 'androidx.annotation:annotation:1.5.0'
+    implementation 'androidx.annotation:annotation:1.6.0'
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     // LifeCycle LiveData
@@ -122,14 +126,14 @@ dependencies {
     // LifeCycle ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     // == -- Navigation -- ==
-    def navigation_version = "2.5.2"
+    def navigation_version = "2.5.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     // == -- == -- ==
     // == -- Unit Tests -- ==
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "com.google.truth:truth:1.1.3" // Google Truth
     // == -- == -- ==
     // SplashScreen
@@ -137,7 +141,7 @@ dependencies {
     // DataStore
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
     // == -- Room Database -- ==
-    def room_version = "2.4.3"
+    def room_version = "2.5.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version" // For Java use annotationProcessor instead of kapt
     implementation "androidx.room:room-ktx:$room_version" // Kotlin Extensions and Coroutines support for Room
@@ -149,7 +153,6 @@ dependencies {
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
     // == -- == -- ==
     // == -- Dagger Hilt (DI: dependency injection) -- ==
-    def hilt_version = "2.43"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     // Dagger Hilt Tests
@@ -181,11 +184,11 @@ dependencies {
     // FlexboxLayout
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     // == -- Google Play review (rate the app) -- ==
-    def review_version = "2.0.0"
+    def review_version = "2.0.1"
     implementation "com.google.android.play:review:$review_version"
     // For Kotlin users also add the Kotlin extensions library for Play In-App Review:
     implementation "com.google.android.play:review-ktx:$review_version"
     // == -- == -- ==
     // Google AdMob (Ads SDK)
-    implementation 'com.google.android.gms:play-services-ads:21.2.0'
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
 }
