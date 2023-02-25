@@ -314,3 +314,10 @@ onBackPressed deprecated:
 	https://www.youtube.com/watch?v=fL5UggoTBbI
 
 // == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
+
+Semantic Versioning:
+
+	https://developer.android.com/studio/publish/versioning
+	https://semver.org/
+
+// == -- == -- == == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == --  == -- == -- ==
