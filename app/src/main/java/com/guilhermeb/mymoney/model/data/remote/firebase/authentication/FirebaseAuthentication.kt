@@ -1,4 +1,4 @@
-package com.guilhermeb.mymoney.model.data.remote.firebase
+package com.guilhermeb.mymoney.model.data.remote.firebase.authentication
 
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth

@@ -3,7 +3,7 @@ package com.guilhermeb.mymoney.di.module
 import com.guilhermeb.mymoney.model.data.local.datastore.preferences.dataaccess.DataStorePrefsDataAccess
 import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
-import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
+import com.guilhermeb.mymoney.model.data.remote.firebase.rtdb.FirebaseRealTimeDataBase
 import com.guilhermeb.mymoney.model.data.remote.retrofit.currency.api.CurrencyApi
 import com.guilhermeb.mymoney.model.repository.authentication.AuthenticationRepository
 import com.guilhermeb.mymoney.model.repository.contract.Authenticable

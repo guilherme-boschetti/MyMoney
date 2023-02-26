@@ -1,6 +1,6 @@
 package com.guilhermeb.mymoney.di.module
 
-import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseAuthentication
+import com.guilhermeb.mymoney.model.data.remote.firebase.authentication.FirebaseAuthentication
 import com.guilhermeb.mymoney.model.repository.contract.Authenticable
 import dagger.Binds
 import dagger.Module

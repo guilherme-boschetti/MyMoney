@@ -1,4 +1,4 @@
-package com.guilhermeb.mymoney.model.data.remote.firebase
+package com.guilhermeb.mymoney.model.data.remote.firebase.rtdb
 
 import android.util.Log
 import com.google.firebase.database.DataSnapshot
@@ -9,6 +9,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
+import com.guilhermeb.mymoney.model.data.remote.firebase.authentication.FirebaseAuthentication
 import com.guilhermeb.mymoney.model.repository.contract.AsyncProcess
 import java.math.BigDecimal
 import java.util.*

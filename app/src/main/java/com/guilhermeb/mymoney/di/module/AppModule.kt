@@ -7,8 +7,8 @@ import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.room.database.MyMoneyDB
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.SharedPrefs
 import com.guilhermeb.mymoney.model.data.local.sharedpreferences.dataaccess.SharedPrefsDataAccess
-import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseAuthentication
-import com.guilhermeb.mymoney.model.data.remote.firebase.FirebaseRealTimeDataBase
+import com.guilhermeb.mymoney.model.data.remote.firebase.authentication.FirebaseAuthentication
+import com.guilhermeb.mymoney.model.data.remote.firebase.rtdb.FirebaseRealTimeDataBase
 import com.guilhermeb.mymoney.model.data.remote.retrofit.currency.CurrencyRetrofitClient
 import com.guilhermeb.mymoney.model.data.remote.retrofit.currency.api.CurrencyApi
 import dagger.Module
