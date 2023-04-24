@@ -1,5 +1,6 @@
 package com.guilhermeb.mymoney.model.repository.money
 
+import com.guilhermeb.mymoney.BuildConfig
 import com.guilhermeb.mymoney.model.data.local.room.dao.money.MoneyDao
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.Money
 import com.guilhermeb.mymoney.model.data.local.room.entity.money.chart.ChartEntry
@@ -19,23 +20,31 @@ class MoneyRepository(
 
     suspend fun insert(moneyItem: Money) {
         val id = dataSource.insert(moneyItem)
-        moneyItem.id = id
-        dataBackup.insert(moneyItem)
+        if (!BuildConfig.IS_FREE) {
+            moneyItem.id = id
+            dataBackup.insert(moneyItem)
+        }
     }
 
     suspend fun update(moneyItem: Money) {
         dataSource.update(moneyItem)
-        dataBackup.update(moneyItem)
+        if (!BuildConfig.IS_FREE) {
+            dataBackup.update(moneyItem)
+        }
     }
 
     suspend fun delete(moneyItem: Money) {
         dataSource.delete(moneyItem)
-        dataBackup.delete(moneyItem)
+        if (!BuildConfig.IS_FREE) {
+            dataBackup.delete(moneyItem)
+        }
     }
 
     suspend fun removeAllMoneyItemsByUser(userEmail: String) {
         dataSource.removeAllMoneyItemsByUser(userEmail)
-        dataBackup.removeAllMoneyItemsByUser()
+        if (!BuildConfig.IS_FREE) {
+            dataBackup.removeAllMoneyItemsByUser()
+        }
     }
 
     suspend fun getMoneyItemById(id: Long): Money? {
