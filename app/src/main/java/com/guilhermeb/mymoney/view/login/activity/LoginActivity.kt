@@ -106,12 +106,7 @@ class LoginActivity : AbstractActivity() {
 
     private fun handleClicks() {
         loginViewBinding.btnLogin.setOnClickListener {
-            if (isNetworkAvailable()) {
-                signIn()
-            } else {
-                val intent = Intent(this@LoginActivity, OfflineActivity::class.java)
-                startActivity(intent)
-            }
+            signIn()
         }
 
         loginViewBinding.txtForgotPassword.setOnClickListener {
@@ -171,26 +166,31 @@ class LoginActivity : AbstractActivity() {
     }
 
     private fun signIn() {
-        val email = loginViewBinding.edtEmail.text.toString()
-        val password = loginViewBinding.edtPassword.text.toString()
-        progressDialog.show()
-        loginViewModel.signIn(email, password, object : AsyncProcess<String?> {
-            override fun onComplete(isSuccessful: Boolean, result: String?) {
-                progressDialog.dismiss()
-                if (isSuccessful) {
-                    configNightModeAndGoToMoneyHostActivity(fetchDataFromFirebaseRTDB = true)
-                } else {
-                    val message = result ?: getString(R.string.failed_to_login)
-                    showToast(this@LoginActivity, message)
-                    if (result.equals(getString(R.string.invalid_account)) ||
-                        result.equals(getString(R.string.invalid_email))
-                    ) {
-                        loginViewBinding.inEmail.error = result
-                    } else if (result.equals(getString(R.string.invalid_password))) {
-                        loginViewBinding.inPassword.error = result
+        if (isNetworkAvailable()) {
+            val email = loginViewBinding.edtEmail.text.toString()
+            val password = loginViewBinding.edtPassword.text.toString()
+            progressDialog.show()
+            loginViewModel.signIn(email, password, object : AsyncProcess<String?> {
+                override fun onComplete(isSuccessful: Boolean, result: String?) {
+                    progressDialog.dismiss()
+                    if (isSuccessful) {
+                        configNightModeAndGoToMoneyHostActivity(fetchDataFromFirebaseRTDB = true)
+                    } else {
+                        val message = result ?: getString(R.string.failed_to_login)
+                        showToast(this@LoginActivity, message)
+                        if (result.equals(getString(R.string.invalid_account)) ||
+                            result.equals(getString(R.string.invalid_email))
+                        ) {
+                            loginViewBinding.inEmail.error = result
+                        } else if (result.equals(getString(R.string.invalid_password))) {
+                            loginViewBinding.inPassword.error = result
+                        }
                     }
                 }
-            }
-        })
+            })
+        } else {
+            val intent = Intent(this@LoginActivity, OfflineActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
