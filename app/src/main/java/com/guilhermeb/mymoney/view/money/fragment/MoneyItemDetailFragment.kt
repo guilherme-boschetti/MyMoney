@@ -108,6 +108,8 @@ class MoneyItemDetailFragment : Fragment() {
                 editItem = it.getBoolean(ARG_EDIT_ITEM, false)
             }
         }
+
+        update = editItem
     }
 
     override fun onCreateView(
